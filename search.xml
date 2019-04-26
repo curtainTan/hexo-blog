@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[第一篇文章]]></title>
-    <url>%2Fhexo-blog%2F2019%2F04%2F26%2F%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%2F</url>
+    <url>%2Fcurtaintan.github.io%2F2019%2F04%2F26%2F%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%2F</url>
     <content type="text"><![CDATA[第一篇文章记录下，嘻嘻三级标题 列表一 列表二 a 子列表a b 子列表2 c 子列表3 列表三 链接测试-优秀博客 下面是关于字体斜体字字体加粗代码块引用&lt;html&gt; &lt;head&gt; &lt;title&gt;标题&lt;/title&gt; &lt;/head&gt; &lt;/html&gt; 这里是引用]]></content>
       <categories>
         <category>前端</category>
@@ -14,7 +14,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2Fhexo-blog%2F2019%2F04%2F26%2Fhello-world%2F</url>
+    <url>%2Fcurtaintan.github.io%2F2019%2F04%2F26%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
