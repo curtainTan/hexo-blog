@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[加载本地图片测试]]></title>
-    <url>%2F2019%2F06%2F13%2F%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95%2F</url>
+    <url>%2Fhexo-blog%2F2019%2F06%2F13%2F%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95%2F</url>
     <content type="text"><![CDATA[加载本地图片：]]></content>
       <categories>
         <category>hexo</category>
@@ -13,7 +13,7 @@
   </entry>
   <entry>
     <title><![CDATA[flutter配置web]]></title>
-    <url>%2F2019%2F06%2F13%2Fflutter%E9%85%8D%E7%BD%AEweb%2F</url>
+    <url>%2Fhexo-blog%2F2019%2F06%2F13%2Fflutter%E9%85%8D%E7%BD%AEweb%2F</url>
     <content type="text"><![CDATA[flutter配置web今天配置了web端，记一下配置过程，配置还是蛮复杂的 第一步：下载web包 下载整个项目到本地， 运行：flutter pub global activate webdev 此时会提示：将.pub-cache/bin加入电脑的环境变量，他会把完整的路径给你，如果没有，你可以去自己flutterSDK的安装目录下找到]]></content>
       <categories>
         <category>flutter</category>
@@ -25,7 +25,7 @@
   </entry>
   <entry>
     <title><![CDATA[第一篇文章]]></title>
-    <url>%2F2019%2F04%2F26%2F%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%2F</url>
+    <url>%2Fhexo-blog%2F2019%2F04%2F26%2F%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%2F</url>
     <content type="text"><![CDATA[第一篇文章记录下，嘻嘻三级标题 列表一 列表二 a 子列表a b 子列表2 c 子列表3 列表三 链接测试-优秀博客 下面是关于字体斜体字字体加粗代码块引用&lt;html&gt; &lt;head&gt; &lt;title&gt;标题&lt;/title&gt; &lt;/head&gt; &lt;/html&gt; 这里是引用 hexo clean &amp;&amp; hexo ghexo s]]></content>
       <categories>
         <category>前端</category>
