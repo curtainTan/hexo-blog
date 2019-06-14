@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[加载本地图片测试]]></title>
-    <url>%2Fhexo-blog%2F2019%2F06%2F13%2F%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[加载本地图片：]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[flutter配置web]]></title>
     <url>%2Fhexo-blog%2F2019%2F06%2F13%2Fflutter%E9%85%8D%E7%BD%AEweb%2F</url>
-    <content type="text"><![CDATA[flutter配置web今天配置了web端，记一下配置过程，配置还是蛮复杂的 第一步：下载web包 下载整个项目到本地， 运行：flutter pub global activate webdev 此时会提示：将.pub-cache/bin加入电脑的环境变量，他会把完整的路径给你，如果没有，你可以去自己flutterSDK的安装目录下找到]]></content>
+    <content type="text"><![CDATA[flutter配置web今天配置了web端，记一下配置过程，配置还是蛮复杂的 第一步：下载web包 下载整个项目到本地， 运行：flutter pub global activate webdev 此时会提示：将.pub-cache/bin加入电脑的环境变量，他会把完整的路径给你，如果没有，你可以去自己flutterSDK的安装目录下找到，如下图： 找到一篇文章，看这篇文章吧—-点击跳转 写后感：写文章，还是要脑子的，但是我没有----]]></content>
       <categories>
         <category>flutter</category>
       </categories>
