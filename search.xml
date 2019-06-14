@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[配置Next主题]]></title>
+    <url>%2Fhexo-blog%2F2019%2F06%2F14%2F%E9%85%8D%E7%BD%AENext%E4%B8%BB%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[记录一下配置过程配置背景图片修改文件：themes\next\source\css_custom\custom.styl，增加下面的代码： body{ background:url(http://curtaintan.club/hexo-bg.jpg); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: 50% 50%; } // 修改主体透明度 .main-inner { background: #fff; opacity: 0.8; } // 修改菜单栏透明度 .header-inner { opacity: 0.8; } 修改背景动画粒子颜色修改文件：next\layout_scripts\vendors.swig，搜索找到：canvas_nest修改为： {% if theme.canvas_nest %} {% endif %} 修改后为：]]></content>
+      <categories>
+        <category>flutter</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[flutter配置web]]></title>
     <url>%2Fhexo-blog%2F2019%2F06%2F13%2Fflutter%E9%85%8D%E7%BD%AEweb%2F</url>
     <content type="text"><![CDATA[flutter配置web今天配置了web端，记一下配置过程，配置还是蛮复杂的 第一步：下载web包 下载整个项目到本地， 运行：flutter pub global activate webdev 此时会提示：将.pub-cache/bin加入电脑的环境变量，他会把完整的路径给你，如果没有，你可以去自己flutterSDK的安装目录下找到，如下图： 找到一篇文章，看这篇文章吧—-点击跳转 写后感：写文章，还是要脑子的，但是我没有----]]></content>
