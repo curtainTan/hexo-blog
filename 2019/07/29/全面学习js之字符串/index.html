@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexo-blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/hexo-blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/hexo-blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-blog/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-blog/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-blog/images/head.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/hexo-blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="String构造器方法 raw(ES6)定义：raw() 方法基于ECMAScript 2015（ES6）规范，它是一个模板字符串的标签函数，防止转义 如下是python的字符串前缀r： 1234# 防止特殊字符串被转义print r&apos;a\nb\tc&apos; # 打印出来依然是 &quot;a\nb\tc&quot;# python中常用于正则表达式regExp = r&apos;(?&amp;lt;=123)[a-z]+&apos; 如下是Stri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全面学习js之字符串">
+<meta property="og:url" content="https://curtaintan.github.io/hexo-blog/2019/07/29/全面学习js之字符串/index.html">
+<meta property="og:site_name" content="curTain">
+<meta property="og:description" content="String构造器方法 raw(ES6)定义：raw() 方法基于ECMAScript 2015（ES6）规范，它是一个模板字符串的标签函数，防止转义 如下是python的字符串前缀r： 1234# 防止特殊字符串被转义print r&apos;a\nb\tc&apos; # 打印出来依然是 &quot;a\nb\tc&quot;# python中常用于正则表达式regExp = r&apos;(?&amp;lt;=123)[a-z]+&apos; 如下是Stri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-29T05:41:19.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="全面学习js之字符串">
+<meta name="twitter:description" content="String构造器方法 raw(ES6)定义：raw() 方法基于ECMAScript 2015（ES6）规范，它是一个模板字符串的标签函数，防止转义 如下是python的字符串前缀r： 1234# 防止特殊字符串被转义print r&apos;a\nb\tc&apos; # 打印出来依然是 &quot;a\nb\tc&quot;# python中常用于正则表达式regExp = r&apos;(?&amp;lt;=123)[a-z]+&apos; 如下是Stri">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexo-blog/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://curtaintan.github.io/hexo-blog/2019/07/29/全面学习js之字符串/">
+
+
+
+
+
+  <title>全面学习js之字符串 | curTain</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexo-blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">curTain</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">curtainTan的小站</p>
+      
+  </div>
+  
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexo-blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexo-blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/hexo-blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexo-blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://curtaintan.github.io/hexo-blog/hexo-blog/2019/07/29/全面学习js之字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="curTain">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://curtaintan.club/headImg/1549358122065.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="curTain">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">全面学习js之字符串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T12:56:24+08:00">
+                2019-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/hexo-blog/2019/07/29/全面学习js之字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-blog/2019/07/29/全面学习js之字符串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="String构造器方法"><a href="#String构造器方法" class="headerlink" title="String构造器方法"></a>String构造器方法</h2><hr>
+<h3 id="raw-ES6"><a href="#raw-ES6" class="headerlink" title="raw(ES6)"></a>raw(ES6)</h3><p>定义：raw() 方法基于ECMAScript 2015（ES6）规范，它是一个模板字符串的标签函数，防止转义</p>
+<p>如下是python的字符串前缀r：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 防止特殊字符串被转义</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">r'a\nb\tc'</span> <span class="comment"># 打印出来依然是 "a\nb\tc"</span></span><br><span class="line"><span class="comment"># python中常用于正则表达式</span></span><br><span class="line">regExp = <span class="string">r'(?&lt;=123)[a-z]+'</span></span><br></pre></td></tr></table></figure>
+<p>如下是String.raw作为前缀的用法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 防止特殊字符串被转义</span></span><br><span class="line"><span class="built_in">String</span>.raw<span class="string">`a\nb\tc`</span>; <span class="comment">// 输出为 "a\nb\tc"</span></span><br><span class="line"><span class="comment">// 支持内插表达式</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">"louis"</span>;</span><br><span class="line"><span class="built_in">String</span>.raw<span class="string">`Hello \n <span class="subst">$&#123;name&#125;</span>`</span>;  <span class="comment">// "Hello \n louis"</span></span><br><span class="line"><span class="comment">// 内插表达式还可以运算</span></span><br><span class="line"><span class="built_in">String</span>.raw<span class="string">`1+2=<span class="subst">$&#123;<span class="number">1</span>+<span class="number">2</span>&#125;</span>,2*3=<span class="subst">$&#123;<span class="number">2</span>*<span class="number">3</span>&#125;</span>`</span>; <span class="comment">// "1+2=3,2*3=6"</span></span><br></pre></td></tr></table></figure>
+<p>String.raw作为函数来调用的场景不太多，如下是用法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象的raw属性值为字符串时，从第二个参数起，它们分别被插入到下标为0，1，2，...n的元素后面</span></span><br><span class="line"><span class="built_in">String</span>.raw(&#123;<span class="attr">raw</span>: <span class="string">'abcd'</span>&#125;, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// "a1b2c3d"</span></span><br><span class="line"><span class="comment">// 对象的raw属性值为数组时，从第二个参数起，它们分别被插入到数组下标为0，1，2，...n的元素后面</span></span><br><span class="line"><span class="built_in">String</span>.raw(&#123;<span class="attr">raw</span>: [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>]&#125;, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// "a1b2c3d"</span></span><br></pre></td></tr></table></figure>
+<h3 id="String-prototype"><a href="#String-prototype" class="headerlink" title="String.prototype"></a>String.prototype</h3><p>和其他所有对象一样，字符串实例的所有方法均来自String.prototype。以下是它的属性特性：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th style="text-align:center">属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>writable</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td>enumerable</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td>configurable</td>
+<td style="text-align:center">false</td>
+</tr>
+</tbody>
+</table>
+<p>可见，字符串属性不可编辑，任何试图改变它属性的行为都将抛出错误</p>
+<h2 id="与html无关的字符串方法"><a href="#与html无关的字符串方法" class="headerlink" title="与html无关的字符串方法"></a>与html无关的字符串方法</h2><p>常用的方法有：<br>    charAt、charCodeAt、concat、indexOf、lastIndexOf、localeCompare</p>
+<pre><code>match、replace、search、slice、split、substr
+
+substring、toLocaleLowerCase、toLocaleUpperCase、toLowerCase、toString、toUpperCase
+
+trim、valueof 等ES5支持的，
+
+以及 codePointAt、contains、endsWith、normalize、repeat、startsWith 等ES6支持的，
+
+还包括 quote、toSource、trimLeft、trimRight 等非标准的。
+</code></pre><h3 id="charAt"><a href="#charAt" class="headerlink" title="charAt"></a>charAt</h3><hr>
+<p>定义：charAt() 方法返回字符串中指定位置的字符。<br>语法：str.charAt(index)</p>
+<h3 id="charCodeAt"><a href="#charCodeAt" class="headerlink" title="charCodeAt"></a>charCodeAt</h3><hr>
+<p>定义：charCodeAt() 返回指定索引处字符的 Unicode 数值。</p>
+<p>语法：str.charCodeAt(index)</p>
+<p>index 为一个从0至length-1的整数。如果不是一个数值，则默认为 0，如果小于0或者大于字符串长度，则返回 NaN。</p>
+<p>Unicode 编码单元（code points）的范围从 0 到 1,114,111。开头的 128 个 Unicode 编码单元和 ASCII 字符编码一样.</p>
+<h3 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h3><hr>
+<p>定义：concat() 方法将一个或多个字符串拼接在一起，组成新的字符串并返回。</p>
+<p>语法：str.concat(string2, string3, …)</p>
+<p>但是 concat 的性能表现不佳，强烈推荐使用赋值操作符（+或+=）代替 concat。”+” 操作符大概快了 concat 几十倍。</p>
+<h3 id="indexOf-amp-amp-lastIndexOf"><a href="#indexOf-amp-amp-lastIndexOf" class="headerlink" title="indexOf &amp;&amp; lastIndexOf"></a>indexOf &amp;&amp; lastIndexOf</h3><hr>
+<p>定义：indexOf() 方法用于查找子字符串在字符串中首次出现的位置，没有则返回 -1。</p>
+<p>语法：str.indexOf(searchValue [, fromIndex=0])，str.lastIndexOf(searchValue [, fromIndex=0])</p>
+<h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><hr>
+<p>定义：match() 方法用于测试字符串是否支持指定正则表达式的规则，即使传入的是非正则表达式对象，它也会隐式地使用new RegExp(obj)将其转换为正则表达式对象。</p>
+<p>语法：str.match(regexp)</p>
+<p>描述：</p>
+<ul>
+<li>若正则表达式没有 g 标志，则返回同 RegExp.exec(str) 相同的结果。而且返回的数组拥有一个额外的 input 属性，该属性包含原始字符串，另外该数组还拥有一个 index 属性，该属性表示匹配字符串在原字符串中索引（从0开始）。</li>
+<li>若正则表达式包含 g 标志，则该方法返回一个包含所有匹配结果的数组，没有匹配到则返回 null。</li>
+</ul>
+<p><strong>相关 RegExp 方法</strong></p>
+<ul>
+<li>若需测试字符串是否匹配正则，请参考 RegExp.test(str)。</li>
+<li>若只需第一个匹配结果，请参考 RegExp.exec(str)。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"World Internet Conference"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(<span class="regexp">/[a-d]/i</span>)); <span class="comment">// ["d", index: 4, input: "World Internet Conference"]</span></span><br><span class="line"><span class="built_in">console</span>.log(str.match(<span class="regexp">/[a-d]/gi</span>)); <span class="comment">// ["d", "C", "c"]</span></span><br><span class="line"><span class="comment">// RegExp 方法如下</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/[a-d]/gi</span>.test(str)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="regexp">/[a-d]/gi</span>.exec(str)); <span class="comment">// ["d", index: 4, input: "World Internet Conference"]</span></span><br></pre></td></tr></table></figure>
+<h3 id="search"><a href="#search" class="headerlink" title="search"></a>search</h3><hr>
+<p>定义：search() 方法用于测试字符串对象是否包含某个正则匹配，相当于正则表达式的 test 方法，且该方法比 match() 方法更快。如果匹配成功，search() 返回正则表达式在字符串中首次匹配项的索引，否则返回-1。</p>
+<p>语法：str.search(regexp)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"abcdefg"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(<span class="regexp">/[d-g]/</span>)); <span class="comment">// 3, 匹配到子串"defg",而d在原字符串中的索引为3</span></span><br></pre></td></tr></table></figure>
+<p>search() 方法不支持全局匹配（正则中包含g参数），如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(str.search(<span class="regexp">/[d-g]/g</span>)); <span class="comment">// 3, 与无g参数时,返回相同</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h3><hr>
+<p>定义：slice() 方法提取字符串的一部分，并返回新的字符串。该方法有些类似 Array.prototype.slice 方法。</p>
+<p>语法：str.slice(start, end)</p>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><hr>
+<p>定义：split() 方法把原字符串分割成子字符串组成数组，并返回该数组。</p>
+<p>语法：str.split(separator, limit)</p>
+<p>两个参数均是可选的</p>
+<ul>
+<li>其中 separator 表示分隔符，它可以是字符串也可以是正则表达式。</li>
+<li>如果忽略 separator，则返回的数组包含一个由原字符串组成的元素</li>
+<li>如果 separator 是一个空串，则 str 将会被分割成一个由原字符串中字符组成的数组</li>
+<li>limit 表示从返回的数组中截取前 limit 个元素，从而限定返回的数组长度。</li>
+</ul>
+<p>eg:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"today is a sunny day"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.split()); <span class="comment">// ["today is a sunny day"]</span></span><br><span class="line"><span class="built_in">console</span>.log(str.split(<span class="string">""</span>)); </span><br><span class="line"><span class="comment">// ["t", "o", "d", "a", "y", " ", "i", "s", " ", "a", " ", "s", "u", "n", "n", "y", " ", "d", "a", "y"]</span></span><br><span class="line"><span class="built_in">console</span>.log(str.split(<span class="string">" "</span>)); <span class="comment">// ["today", "is", "a", "sunny", "day"]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.split(<span class="regexp">/\s*is\s*/</span>)); <span class="comment">// ["today", "a sunny day"]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.split(<span class="regexp">/(\s*is\s*)/</span>)); <span class="comment">// ["today", " is ", "a sunny day"]</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h3><hr>
+<p>定义：substr() 方法返回字符串指定位置开始的指定数量的字符。</p>
+<p>语法：str.substr(start[, length])</p>
+<p>参数：</p>
+<ul>
+<li>start 表示开始截取字符的位置，可取正值或负值。取正值时表示start位置的索引，取负值时表示 length+start位置的索引。</li>
+<li>length 表示截取的字符长度。</li>
+</ul>
+<p>eg:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Yesterday is history. Tomorrow is mystery. But today is a gift."</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.substr(<span class="number">47</span>)); <span class="comment">// today is a gift.</span></span><br><span class="line"><span class="built_in">console</span>.log(str.substr(<span class="number">-16</span>)); <span class="comment">// today is a gift.</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="substring"><a href="#substring" class="headerlink" title="substring"></a>substring</h3><hr>
+<p>定义：substring() 方法返回字符串两个索引之间的子串。</p>
+<p>语法：str.substring(indexA[, indexB])</p>
+<p>indexA、indexB 表示字符串索引，其中 indexB 可选，如果省略，则表示返回从 indexA 到字符串末尾的子串。</p>
+<p><strong>描述:</strong></p>
+<p>substring 要截取的是从 indexA 到 indexB（不包含）之间的字符，符合以下规律：</p>
+<ul>
+<li>若 indexA == indexB，则返回一个空字符串；</li>
+<li>若 省略 indexB，则提取字符一直到字符串末尾；</li>
+<li>若 任一参数小于 0 或 NaN，则被当作 0；</li>
+<li>若 任一参数大于 length，则被当作 length。</li>
+</ul>
+<p>而 如果 indexA &gt; indexB，则 substring 的执行效果就像是两个参数调换一般。比如：str.substring(0, 1) == str.substring(1, 0)<br>eg:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Get outside every day. Miracles are waiting everywhere."</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">1</span>,<span class="number">1</span>)); <span class="comment">// ""</span></span><br><span class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">0</span>)); <span class="comment">// Get outside every day. Miracles are waiting everywhere.</span></span><br><span class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">-1</span>)); <span class="comment">// Get outside every day. Miracles are waiting everywhere.</span></span><br><span class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">0</span>,<span class="number">100</span>)); <span class="comment">// Get outside every day. Miracles are waiting everywhere.</span></span><br><span class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">22</span>,<span class="literal">NaN</span>)); <span class="comment">// Get outside every day.</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="toLocaleLowerCase-amp-toLocaleUpperCase-amp-toLowerCase-amp-toUpperCase"><a href="#toLocaleLowerCase-amp-toLocaleUpperCase-amp-toLowerCase-amp-toUpperCase" class="headerlink" title="toLocaleLowerCase &amp; toLocaleUpperCase &amp; toLowerCase &amp; toUpperCase"></a>toLocaleLowerCase &amp; toLocaleUpperCase &amp; toLowerCase &amp; toUpperCase</h3><hr>
+<p>定义：转换成大小写</p>
+<p>语法：str.toLocaleLowerCase(), str.toLocaleUpperCase()</p>
+<h3 id="toString-amp-valueOf"><a href="#toString-amp-valueOf" class="headerlink" title="toString &amp; valueOf"></a>toString &amp; valueOf</h3><hr>
+<p>定义：这两个方法都是返回字符串本身。</p>
+<p>语法：str.toString(), str.valueOf()</p>
+<h3 id="trim"><a href="#trim" class="headerlink" title="trim"></a>trim</h3><hr>
+<p>定义：trim() 方法清除字符串首尾的空白并返回。</p>
+<p>语法：str.trim()</p>
+<h3 id="includes-ES6"><a href="#includes-ES6" class="headerlink" title="includes(ES6)"></a>includes(ES6)</h3><hr>
+<p>定义：includes() 方法基于ECMAScript 2015（ES6）规范，它用来判断一个字符串是否属于另一个字符。如果是，则返回true，否则返回false。</p>
+<p>语法：str.includes(subString [, position])</p>
+<p>eg:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Practice makes perfect."</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.includes(<span class="string">"perfect"</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.includes(<span class="string">"perfect"</span>,<span class="number">100</span>)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="endsWith-ES6"><a href="#endsWith-ES6" class="headerlink" title="endsWith(ES6)"></a>endsWith(ES6)</h3><hr>
+<p>定义：endsWith() 方法基于ECMAScript 2015（ES6）规范，它基本与 contains() 功能相同，不同的是，它用来判断一个字符串是否是原字符串的结尾。若是则返回true，否则返回false。</p>
+<p>语法：str.endsWith(substring [, position])</p>
+<p>与contains 方法不同，position 参数的默认值为字符串长度。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"Learn and live."</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.endsWith(<span class="string">"live."</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.endsWith(<span class="string">"Learn"</span>,<span class="number">5</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="normalize-ES6"><a href="#normalize-ES6" class="headerlink" title="normalize(ES6)"></a>normalize(ES6)</h3><hr>
+<p>定义：normalize() 方法基于ECMAScript 2015（ES6）规范，它会按照指定的 Unicode 正规形式将原字符串正规化。</p>
+<p>语法：str.normalize([form])</p>
+<p>form 参数可省略，目前有四种 Unicode 正规形式，即 “NFC”、”NFD”、”NFKC” 以及 “NFKD”，form的默认值为 “NFC”。如果form 传入了非法的参数值，则会抛出 RangeError 错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"\u4f60\u597d"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.normalize()); <span class="comment">// 你好</span></span><br><span class="line"><span class="built_in">console</span>.log(str.normalize(<span class="string">"NFC"</span>)); <span class="comment">// 你好</span></span><br><span class="line"><span class="built_in">console</span>.log(str.normalize(<span class="string">"NFD"</span>)); <span class="comment">// 你好</span></span><br><span class="line"><span class="built_in">console</span>.log(str.normalize(<span class="string">"NFKC"</span>)); <span class="comment">// 你好</span></span><br><span class="line"><span class="built_in">console</span>.log(str.normalize(<span class="string">"NFKD"</span>)); <span class="comment">// 你好</span></span><br></pre></td></tr></table></figure>
+<h3 id="repeat-ES6"><a href="#repeat-ES6" class="headerlink" title="repeat(ES6)"></a>repeat(ES6)</h3><hr>
+<p>定义：repeat() 方法基于ECMAScript 2015（ES6）规范，它返回重复原字符串多次的新字符串。</p>
+<p>语法：str.repeat(count)</p>
+<p>count 参数只能取大于等于0 的数字。若该数字不为整数，将自动转换为整数形式，若为负数或者其他值将报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"A still tongue makes a wise head."</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.repeat(<span class="number">0</span>)); <span class="comment">// ""</span></span><br><span class="line"><span class="built_in">console</span>.log(str.repeat(<span class="number">1</span>)); <span class="comment">// A still tongue makes a wise head.</span></span><br><span class="line"><span class="built_in">console</span>.log(str.repeat(<span class="number">1.5</span>)); <span class="comment">// A still tongue makes a wise head.</span></span><br><span class="line"><span class="built_in">console</span>.log(str.repeat(<span class="number">-1</span>)); <span class="comment">// RangeError:Invalid count value</span></span><br></pre></td></tr></table></figure>
+<h3 id="startsWith-ES6"><a href="#startsWith-ES6" class="headerlink" title="startsWith(ES6)"></a>startsWith(ES6)</h3><hr>
+<p>定义：startsWith() 方法基于ECMAScript 2015（ES6）规范，它用来判断当前字符串是否是以给定字符串开始的，若是则返回true，否则返回false</p>
+<p>语法：str.startsWith(subString [, position])</p>
+<h2 id="与html相关的方法"><a href="#与html相关的方法" class="headerlink" title="与html相关的方法"></a>与html相关的方法</h2><p>anchor &amp;&amp; link</p>
+<h3 id="anchor"><a href="#anchor" class="headerlink" title="anchor"></a>anchor</h3><hr>
+<p>定义：anchor() 方法创建一个锚标签。</p>
+<p>语法：str.anchor(name)</p>
+<p><strong>参数：</strong><br>name 指定被创建的a标签的name属性，使用该方法创建的锚点，将会成为 document.anchors 数组的元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"this is a anchor tag"</span>;</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = <span class="built_in">document</span>.body.innerHTML + str.anchor(<span class="string">"anchor1"</span>); </span><br><span class="line"><span class="comment">// body末尾将会追加这些内容 &lt;a name="anchor1"&gt;this is a anchor tag&lt;/a&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="link"><a href="#link" class="headerlink" title="link"></a>link</h3><hr>
+<p>定义：link() 方法同样创建一个a标签。</p>
+<p>语法：str.link(url)</p>
+<p><strong>参数：</strong><br>url 指定被创建的a标签的href属性，</p>
+<p>如果url中包含特殊字符，将自动进行编码。</p>
+<p>例如 “ 会被转义为 &amp;\quot。 使用该方法创建的a标签，将会成为 document.links 数组中的元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"百度"</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.link(<span class="string">"https://www.baidu.com"</span>)); </span><br><span class="line"><span class="comment">// &lt;a href="https://www.baidu.com"&gt;百度&lt;/a&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h2><hr>
+<p>没错，这篇文章也是抄的，但是作者真的写得好啊！</p>
+<p>我想把他记录到我的博客里面，这样我想看的时候好找些。</p>
+<p>加油！！！</p>
+<p>部分字符串方法之间存在很大的相似性，要注意区分他们的功能和使用场景。如：</p>
+<ul>
+<li><p>substr 和 substring，都是两个参数，作用基本相同，两者第一个参数含义相同，但用法不同，前者可为负数，后者值为负数或者非整数时将隐式转换为0。前者第二个参数表示截取字符串的长度，后者第二个参数表示截取字符串的下标；同时substring第一个参数大于第二个参数时，执行结果同位置调换后的结果。</p>
+</li>
+<li><p>search方法与indexOf方法作用基本一致，都是查询到了就返回子串第一次出现的下标，否则返回-1，唯一的区别就在于search默认会将子串转化为正则表达式形式，而indexOf不做此处理，也不能处理正则。</p>
+</li>
+<li><p>另外，还记得吗？concat方法由于效率问题，不推荐使用。</p>
+</li>
+<li><p>常用的方法就charAt、indexOf、lastIndexOf、match、replace、search、slice、split、substr、substring、toLowerCase、toUpperCase、trim、valueof 等这些。</p>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://louiszhai.github.io/2016/01/12/js.String/" target="_blank" rel="noopener">JavaScript字符串所有API全解密</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://curtaintan.club/headImg/1549358122065.jpg" alt="curTain wechat" style="width: 200px; max-width: 100%;">
+    <div>扫一扫上面的二维码</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>觉得文章写的不错，可以打赏我哦....</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://curtaintan.club/wechat.JPG" alt="curTain 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://curtaintan.club/ali.JPG" alt="curTain 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexo-blog/2019/07/29/全面学习js之数组/" rel="next" title="全面学习js之数组">
+                <i class="fa fa-chevron-left"></i> 全面学习js之数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://curtaintan.club/headImg/1549358122065.jpg" alt="curTain">
+            
+              <p class="site-author-name" itemprop="name">curTain</p>
+              <p class="site-description motion-element" itemprop="description">云淡风轻、</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/hexo-blog/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/hexo-blog/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/hexo-blog/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/curtainTan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1948750473@qq.com" target="_blank" title="qq">
+                      
+                        <i class="fa fa-fw fa-qq"></i>qq</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wclimb.site" title="woclimb" target="_blank">woclimb</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.curtaintan.club/dist1/index.html" title="curTain" target="_blank">curTain</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String构造器方法"><span class="nav-number">1.</span> <span class="nav-text">String构造器方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#raw-ES6"><span class="nav-number">1.1.</span> <span class="nav-text">raw(ES6)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-prototype"><span class="nav-number">1.2.</span> <span class="nav-text">String.prototype</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与html无关的字符串方法"><span class="nav-number">2.</span> <span class="nav-text">与html无关的字符串方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#charAt"><span class="nav-number">2.1.</span> <span class="nav-text">charAt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#charCodeAt"><span class="nav-number">2.2.</span> <span class="nav-text">charCodeAt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concat"><span class="nav-number">2.3.</span> <span class="nav-text">concat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf-amp-amp-lastIndexOf"><span class="nav-number">2.4.</span> <span class="nav-text">indexOf &amp;&amp; lastIndexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#match"><span class="nav-number">2.5.</span> <span class="nav-text">match</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#search"><span class="nav-number">2.6.</span> <span class="nav-text">search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">2.7.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split"><span class="nav-number">2.8.</span> <span class="nav-text">split</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#substr"><span class="nav-number">2.9.</span> <span class="nav-text">substr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#substring"><span class="nav-number">2.10.</span> <span class="nav-text">substring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toLocaleLowerCase-amp-toLocaleUpperCase-amp-toLowerCase-amp-toUpperCase"><span class="nav-number">2.11.</span> <span class="nav-text">toLocaleLowerCase &amp; toLocaleUpperCase &amp; toLowerCase &amp; toUpperCase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-amp-valueOf"><span class="nav-number">2.12.</span> <span class="nav-text">toString &amp; valueOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trim"><span class="nav-number">2.13.</span> <span class="nav-text">trim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#includes-ES6"><span class="nav-number">2.14.</span> <span class="nav-text">includes(ES6)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#endsWith-ES6"><span class="nav-number">2.15.</span> <span class="nav-text">endsWith(ES6)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#normalize-ES6"><span class="nav-number">2.16.</span> <span class="nav-text">normalize(ES6)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeat-ES6"><span class="nav-number">2.17.</span> <span class="nav-text">repeat(ES6)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#startsWith-ES6"><span class="nav-number">2.18.</span> <span class="nav-text">startsWith(ES6)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与html相关的方法"><span class="nav-number">3.</span> <span class="nav-text">与html相关的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#anchor"><span class="nav-number">3.1.</span> <span class="nav-text">anchor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#link"><span class="nav-number">3.2.</span> <span class="nav-text">link</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.1.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">curTain</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+ -->
+
+
+
+<script>!function(e,t,a){function n(){c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),o(),r()}function r(){for(var e=0;e<d.length;e++)d[e].alpha<=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText="left:"+d[e].x+"px;top:"+d[e].y+"px;opacity:"+d[e].alpha+";transform:scale("+d[e].scale+","+d[e].scale+") rotate(45deg);background:"+d[e].color+";z-index:99999");requestAnimationFrame(r)}function o(){var t="function"==typeof e.onclick&&e.onclick;e.onclick=function(e){t&&t(),i(e)}}function i(e){var a=t.createElement("div");a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";try{a.appendChild(t.createTextNode(e))}catch(t){a.styleSheet.cssText=e}t.getElementsByTagName("head")[0].appendChild(a)}function s(){return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}var d=[];e.requestAnimationFrame=function(){return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)}}(),n()}(window,document);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      人次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  <script type="text/javascript" color="245,245,245" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/hexo-blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hexo-blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/hexo-blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hexo-blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/hexo-blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/hexo-blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexo-blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz',
+        appKey: 'ULa1eyYDGzPyNX0rW3lfCYj0',
+        placeholder: '说点什么吧...',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/hexo-blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/hexo-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"scale":1.1,"jsonPath":"/hexo-blog/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":250,"height":600,"hOffset":40,"vOffset":30},"mobile":{"show":false}});</script></body>
+</html>
