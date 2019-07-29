@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexo-blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/hexo-blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/hexo-blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-blog/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-blog/images/head.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-blog/images/head.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/hexo-blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js原生,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言学习一门语言，遍历是少不了的！！ gogogo,开始吧 标准操作 for循环 就是正常的for循环， 123456789var arr = [&apos;element1&apos;, &apos;element2&apos;, &apos;element3&apos;];for (var i = 0, len = arr.length; i &amp;lt; len; i++) &amp;#123;    console.log(arr[i]);&amp;#125;// e">
+<meta name="keywords" content="js原生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js遍历方法总结">
+<meta property="og:url" content="https://curtaintan.github.io/hexo-blog/2019/07/29/js遍历方法总结/index.html">
+<meta property="og:site_name" content="curTain">
+<meta property="og:description" content="前言学习一门语言，遍历是少不了的！！ gogogo,开始吧 标准操作 for循环 就是正常的for循环， 123456789var arr = [&apos;element1&apos;, &apos;element2&apos;, &apos;element3&apos;];for (var i = 0, len = arr.length; i &amp;lt; len; i++) &amp;#123;    console.log(arr[i]);&amp;#125;// e">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-29T13:04:31.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js遍历方法总结">
+<meta name="twitter:description" content="前言学习一门语言，遍历是少不了的！！ gogogo,开始吧 标准操作 for循环 就是正常的for循环， 123456789var arr = [&apos;element1&apos;, &apos;element2&apos;, &apos;element3&apos;];for (var i = 0, len = arr.length; i &amp;lt; len; i++) &amp;#123;    console.log(arr[i]);&amp;#125;// e">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexo-blog/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://curtaintan.github.io/hexo-blog/2019/07/29/js遍历方法总结/">
+
+
+
+
+
+  <title>js遍历方法总结 | curTain</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexo-blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">curTain</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">curtainTan的小站</p>
+      
+  </div>
+  
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexo-blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexo-blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/hexo-blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexo-blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://curtaintan.github.io/hexo-blog/hexo-blog/2019/07/29/js遍历方法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="curTain">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://curtaintan.club/headImg/1549358122065.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="curTain">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js遍历方法总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T17:36:36+08:00">
+                2019-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexo-blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/hexo-blog/2019/07/29/js遍历方法总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-blog/2019/07/29/js遍历方法总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>学习一门语言，遍历是少不了的！！
+gogogo,开始吧
+</code></pre><h2 id="标准操作-for循环"><a href="#标准操作-for循环" class="headerlink" title="标准操作 for循环"></a>标准操作 for循环</h2><hr>
+<p>就是正常的for循环，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'element1'</span>, <span class="string">'element2'</span>, <span class="string">'element3'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// element1</span></span><br><span class="line"><span class="comment">// element2</span></span><br><span class="line"><span class="comment">// element3</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组自带方法forEach"><a href="#数组自带方法forEach" class="headerlink" title="数组自带方法forEach"></a>数组自带方法forEach</h2><hr>
+<ul>
+<li>无法中途退出循环，只能用return退出本次回调，进行下一次回调。</li>
+<li>它总是返回 undefined值,即使你return了一个值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'element1'</span>, <span class="string">'element2'</span>, <span class="string">'element3'</span>];</span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// element1</span></span><br><span class="line"><span class="comment">// element2</span></span><br><span class="line"><span class="comment">// element3</span></span><br></pre></td></tr></table></figure>
+<p><strong>说明：</strong><br>比较遗憾的是以上的代码未能按照我们的预期运行（break、continue等语句跨越了函数边界），所以这个看似完美的办法实际上只能一条道走到黑，像吃了炫迈一样根本停不下来。当数组很大，没办法通过提前终止遍历来节省资源。</p>
+<h2 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for in循环"></a>for in循环</h2><hr>
+<p>很强大！！<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'element1'</span>, <span class="string">'element2'</span>, <span class="string">'element3'</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// element1</span></span><br><span class="line"><span class="comment">// element2</span></span><br><span class="line"><span class="comment">// element3</span></span><br></pre></td></tr></table></figure></p>
+<p>for in语句是一种精准的迭代语句，可以枚举对象的所有可枚举属性(可以使用Object.getOwnPropertyDescriptor(targetObj, attrName)方法来查看对象的某个属性是否可枚举)。It means that，可以用它来遍历对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">1</span>,</span><br><span class="line">    c: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(attr, obj[attr]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a 1</span></span><br><span class="line"><span class="comment">// b 1</span></span><br><span class="line"><span class="comment">// c 1</span></span><br></pre></td></tr></table></figure>
+<p>除了遍历对象、数组之外，for in循环还可兼职遍历字符串：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'I am a handsome boy!'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> str) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(str[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 太帅(chang)了，结果就不打印了</span></span><br></pre></td></tr></table></figure></p>
+<p>当然，也支持break、continue的操作，例子我就不写了。</p>
+<p>缺点：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> father = &#123;</span><br><span class="line">    fatherAttr: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以father为原型创建对象实例instance</span></span><br><span class="line"><span class="keyword">var</span> instance = <span class="built_in">Object</span>.create(father);</span><br><span class="line"></span><br><span class="line">instance.a = <span class="number">1</span>;</span><br><span class="line">instance.b = <span class="number">1</span>;</span><br><span class="line">instance.c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> instance) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(attr, instance[attr]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a 1</span></span><br><span class="line"><span class="comment">// b 1</span></span><br><span class="line"><span class="comment">// c 1</span></span><br><span class="line"><span class="comment">// fatherAttr 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取instance实例的自有属性名</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(instance));</span><br><span class="line"></span><br><span class="line"><span class="comment">// ["a", "b", "c"]</span></span><br></pre></td></tr></table></figure></p>
+<p>上面这个例子中，首先以father对象为原型创建了一个对象实例instance，然后为这个实例instance添加了a、b、c三个属性，接着使用for in循环遍历这个对象。通过查看instance的自有属性可以发现，fatherAttr并不是instance的属性，而是其原型father的属性，for in循环会将对象的原型属性也一并列举出来。故使用此方法去遍历对象属性的时候，需要加多一层判断：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.hasOwnProperty(attr)) &#123;</span><br><span class="line">        <span class="comment">// 是对象的自有属性，可以尽情的玩耍了</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for-of循环"><a href="#for-of循环" class="headerlink" title="for of循环"></a>for of循环</h2><hr>
+<p>通过for in循环可以解决传统for循环需要维护边界的问题，但也引入了一些新问题，跟搬砖工作者的日常操作“解决3个bug，引入8个新bug”场景极度相似。</p>
+<p>所以换个es6定义的for of循环操作试试：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'a 𠮷 c'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">of</span> str) &#123;</span><br><span class="line">    <span class="keyword">if</span> (char === <span class="string">' '</span>) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(char);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// 𠮷</span></span><br><span class="line"><span class="comment">// c</span></span><br></pre></td></tr></table></figure></p>
+<p>从上面的例子来看，效果简直是perfect：索引去掉了，边界去掉了，想继续就继续，想退出就退出，还能顺便解决一下字符串的编码问题。</p>
+<p>缺点：</p>
+<ul>
+<li><p>运行环境为ES6及以上版本，所以兼容性没有for in循环以及传统的操作好，如果需要考虑兼容上世纪的浏览器，就不能使用这个东西</p>
+</li>
+<li><p>只能用于遍历可迭代对象，即存在生成器方法（用于产生迭代器）的对象，如果用于遍历不可迭代对象，分分钟报错没商量。可以通过检测对象的Symbol.iterator方法（相关内容将放在下一篇）是否为函数来判断对象是否可迭代。</p>
+</li>
+</ul>
+<p>实际上，大多数JavaScript的内置对象都支持迭代，例如：Array、Set、Map、String等，当使用for of循环遍历上述对象时，就会使用其默认的生成器生成的迭代器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'a'</span>, <span class="number">1</span>], [<span class="string">'b'</span>, <span class="number">1</span>], [<span class="string">'c'</span>, <span class="number">1</span>], [<span class="string">'d'</span>, <span class="number">1</span>]]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正经操作</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ["a", 1]</span></span><br><span class="line"><span class="comment">// ["b", 1]</span></span><br><span class="line"><span class="comment">// ["c", 1]</span></span><br><span class="line"><span class="comment">// ["d", 1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用解构，方便读取值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a 1</span></span><br><span class="line"><span class="comment">// b 1</span></span><br><span class="line"><span class="comment">// c 1</span></span><br><span class="line"><span class="comment">// d 1</span></span><br></pre></td></tr></table></figure>
+<p>上面的例子使用了for of遍历了Map类型实例map，迭代对象为Map类型的默认生成器生成的迭代器。当然，像Array、Set、Map类型还提供了一些特殊的生成器，可以让搬砖工作者更方便的去处理其想关注的内容：</p>
+<ul>
+<li><p>entries() 返回一个迭代器，其返回值为键值对数组（Map集合的默认迭代器；对于Set集合，返回值数组的元素相同，即value）</p>
+</li>
+<li><p>keys() 返回一个迭代器，其返回值为集合的键名（对于Set集合，此迭代器跟values迭代器返回值相同;对于数组，此迭代器返回值为索引）</p>
+</li>
+<li><p>values() 返回一个迭代器，其返回值为集合的值（Array、Set集合的默认迭代器）</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>]</span><br><span class="line"><span class="keyword">let</span> <span class="keyword">set</span> = new Set(arr);</span><br><span class="line"></span><br><span class="line">for (let item of <span class="keyword">set</span>.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> arr.entries()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ["a", "a"]</span></span><br><span class="line"><span class="comment">// ["b", "b"]</span></span><br><span class="line"><span class="comment">// ["c", "c"]</span></span><br><span class="line"><span class="comment">// ["d", "d"]</span></span><br><span class="line"><span class="comment">// [0, "a"]</span></span><br><span class="line"><span class="comment">// [1, "b"]</span></span><br><span class="line"><span class="comment">// [2, "c"]</span></span><br><span class="line"><span class="comment">// [3, "d"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> <span class="keyword">set</span>.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> arr.keys()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> <span class="keyword">set</span>.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> arr.values()) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br></pre></td></tr></table></figure>
+<p>除了JavaScript的内置对象，一些DOM标准的类型如NodeList也可以使用for of循环进行遍历：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> containers = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.container'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> node <span class="keyword">of</span> containers) &#123;</span><br><span class="line">    <span class="comment">// 搞事情专用注释</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很遗憾的是，for of循环居然不支持自定义对象的遍历（心中一万匹***奔腾而过……），所以如果不想使用for in循环遍历对象，只能转个弯了。</p>
+<h2 id="遍历对象的转弯操作"><a href="#遍历对象的转弯操作" class="headerlink" title="遍历对象的转弯操作"></a>遍历对象的转弯操作</h2><hr>
+<h3 id="Object-keys-获取键名数组"><a href="#Object-keys-获取键名数组" class="headerlink" title="Object.keys()获取键名数组"></a>Object.keys()获取键名数组</h3><hr>
+<p>使用Object.keys()可以获取到对象实例的所有可枚举属性，其返回值为一个数组，数组元素为对象的键名：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> father = &#123;</span><br><span class="line">    fatherAttr: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以father为原型创建对象实例instance</span></span><br><span class="line"><span class="keyword">let</span> instance = <span class="built_in">Object</span>.create(father);</span><br><span class="line"></span><br><span class="line">instance.a = <span class="number">1</span>;</span><br><span class="line">instance.b = <span class="number">1</span>;</span><br><span class="line">instance.c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(instance, <span class="string">'d'</span>, &#123;</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    value: <span class="number">1</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span>,</span><br><span class="line">    configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(instance)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br></pre></td></tr></table></figure>
+<p>不了解Object.defineProperty，可以参考:</p>
+<p> <strong><a href="https://www.jianshu.com/p/8fe1382ba135" target="_blank" rel="noopener">深入浅出Object.defineProperty()</a></strong>,文章写得同属易懂，每个api都有案例。</p>
+<p>Object.defineProperty( obj, prop, desc )</p>
+<p>desc主要有四个 属性（value,writable, enumerable, configurable）</p>
+<h3 id="Object-getOwnPropertyNames-获取键名数组"><a href="#Object-getOwnPropertyNames-获取键名数组" class="headerlink" title="Object.getOwnPropertyNames()获取键名数组"></a>Object.getOwnPropertyNames()获取键名数组</h3><hr>
+<p>此方法跟keys方法表现一样，所不同的是，其返回的数组包含了对象的不可枚举属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> father = &#123;</span><br><span class="line">    fatherAttr: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="built_in">Object</span>.create(father);</span><br><span class="line"></span><br><span class="line">instance.a = <span class="number">1</span>;</span><br><span class="line">instance.b = <span class="number">1</span>;</span><br><span class="line">instance.c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(instance, <span class="string">'d'</span>, &#123;</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    value: <span class="number">1</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span>,</span><br><span class="line">    configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.getOwnPropertyNames(instance)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// d</span></span><br></pre></td></tr></table></figure>
+<h3 id="Object-entries-获取键值对数组"><a href="#Object-entries-获取键值对数组" class="headerlink" title="Object.entries()获取键值对数组"></a>Object.entries()获取键值对数组</h3><hr>
+<p>这个方法返回什么东西就无需多言了吧，看例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> father = &#123;</span><br><span class="line">    fatherAttr: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="built_in">Object</span>.create(father);</span><br><span class="line"></span><br><span class="line">instance.a = <span class="number">1</span>;</span><br><span class="line">instance.b = <span class="number">1</span>;</span><br><span class="line">instance.c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(instance, <span class="string">'d'</span>, &#123;</span><br><span class="line">    writable: <span class="literal">true</span>,</span><br><span class="line">    value: <span class="number">1</span>,</span><br><span class="line">    enumerable: <span class="literal">false</span>,</span><br><span class="line">    configurable: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.entries(instance)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ["a", 1]</span></span><br><span class="line"><span class="comment">// ["b", 1]</span></span><br><span class="line"><span class="comment">// ["c", 1]</span></span><br></pre></td></tr></table></figure>
+<h3 id="Object-values-获取对象的属性值数组"><a href="#Object-values-获取对象的属性值数组" class="headerlink" title="Object.values()获取对象的属性值数组"></a>Object.values()获取对象的属性值数组</h3><hr>
+<p>获取对象的值。</p>
+<h3 id="Object-getOwnPropertySymbols-获取Symbol属性名"><a href="#Object-getOwnPropertySymbols-获取Symbol属性名" class="headerlink" title="Object.getOwnPropertySymbols()获取Symbol属性名"></a>Object.getOwnPropertySymbols()获取Symbol属性名</h3><p>上面提到的几个方法都无法获取到对象实例的Symbol类型的属性名，如果需要遍历这个玩意，需要使用Object.getOwnPropertySymbols()方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> father = &#123;</span><br><span class="line">    fatherAttr: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="built_in">Object</span>.create(father);</span><br><span class="line"></span><br><span class="line">instance.a = <span class="number">1</span>;</span><br><span class="line">instance.b = <span class="number">1</span>;</span><br><span class="line">instance.c = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">instance[<span class="built_in">Symbol</span>(<span class="string">'I am a handsome boy!'</span>)] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys(instance)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.getOwnPropertySymbols(instance)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Symbol(I am a handsome boy!)</span></span><br></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ok！这篇文章也是抄的:</p>
+<p><strong><a href="https://juejin.im/post/5bfbbe2df265da61407e95a3#heading-3" target="_blank" rel="noopener">avaScript骚操作之遍历、枚举与迭代（上篇）</a></strong></p>
+<p>觉得总结的蛮好的。</p>
+<p>当然，还有部分遍历是数组特有的方法。</p>
+<p>比如：map，reduce， filter, every, some等，都可以遍历数组</p>
+<p>好了，文章写完了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://curtaintan.club/headImg/1549358122065.jpg" alt="curTain wechat" style="width: 200px; max-width: 100%;">
+    <div>扫一扫上面的二维码</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>觉得文章写的不错，可以打赏我哦....</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://curtaintan.club/wechat.JPG" alt="curTain 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://curtaintan.club/ali.JPG" alt="curTain 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexo-blog/tags/js原生/" rel="tag"><i class="fa fa-anchor"></i> js原生</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexo-blog/2019/07/29/全面学习js之字符串/" rel="next" title="全面学习js之字符串">
+                <i class="fa fa-chevron-left"></i> 全面学习js之字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://curtaintan.club/headImg/1549358122065.jpg" alt="curTain">
+            
+              <p class="site-author-name" itemprop="name">curTain</p>
+              <p class="site-description motion-element" itemprop="description">云淡风轻、</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/hexo-blog/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/hexo-blog/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/hexo-blog/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/curtainTan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1948750473@qq.com" target="_blank" title="qq">
+                      
+                        <i class="fa fa-fw fa-qq"></i>qq</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wclimb.site" title="woclimb" target="_blank">woclimb</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.curtaintan.club/dist1/index.html" title="curTain" target="_blank">curTain</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准操作-for循环"><span class="nav-number">2.</span> <span class="nav-text">标准操作 for循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组自带方法forEach"><span class="nav-number">3.</span> <span class="nav-text">数组自带方法forEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-in循环"><span class="nav-number">4.</span> <span class="nav-text">for in循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-of循环"><span class="nav-number">5.</span> <span class="nav-text">for of循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历对象的转弯操作"><span class="nav-number">6.</span> <span class="nav-text">遍历对象的转弯操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-keys-获取键名数组"><span class="nav-number">6.1.</span> <span class="nav-text">Object.keys()获取键名数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-getOwnPropertyNames-获取键名数组"><span class="nav-number">6.2.</span> <span class="nav-text">Object.getOwnPropertyNames()获取键名数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-entries-获取键值对数组"><span class="nav-number">6.3.</span> <span class="nav-text">Object.entries()获取键值对数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-values-获取对象的属性值数组"><span class="nav-number">6.4.</span> <span class="nav-text">Object.values()获取对象的属性值数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-getOwnPropertySymbols-获取Symbol属性名"><span class="nav-number">6.5.</span> <span class="nav-text">Object.getOwnPropertySymbols()获取Symbol属性名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">curTain</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+ -->
+
+
+
+<script>!function(e,t,a){function n(){c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),o(),r()}function r(){for(var e=0;e<d.length;e++)d[e].alpha<=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText="left:"+d[e].x+"px;top:"+d[e].y+"px;opacity:"+d[e].alpha+";transform:scale("+d[e].scale+","+d[e].scale+") rotate(45deg);background:"+d[e].color+";z-index:99999");requestAnimationFrame(r)}function o(){var t="function"==typeof e.onclick&&e.onclick;e.onclick=function(e){t&&t(),i(e)}}function i(e){var a=t.createElement("div");a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";try{a.appendChild(t.createTextNode(e))}catch(t){a.styleSheet.cssText=e}t.getElementsByTagName("head")[0].appendChild(a)}function s(){return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}var d=[];e.requestAnimationFrame=function(){return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)}}(),n()}(window,document);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      人次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  <script type="text/javascript" color="245,245,245" opacity="0.7" zindex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/hexo-blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/hexo-blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hexo-blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/hexo-blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/hexo-blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/hexo-blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/hexo-blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexo-blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz',
+        appKey: 'ULa1eyYDGzPyNX0rW3lfCYj0',
+        placeholder: '说点什么吧...',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/hexo-blog/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/hexo-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"scale":1.1,"jsonPath":"/hexo-blog/live2dw/assets/hibiki.model.json"},"display":{"position":"right","width":250,"height":600,"hOffset":40,"vOffset":30},"mobile":{"show":false}});</script></body>
+</html>
