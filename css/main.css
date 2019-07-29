@@ -1959,7 +1959,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a6ff96;
+  background: #daac29;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3136,7 +3136,7 @@ body {
 }
 .main-inner {
   background: #fff;
-  opacity: 0.8;
+  opacity: 1;
 }
 .header-inner {
   opacity: 0.8;
