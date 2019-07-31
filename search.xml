@@ -14,7 +14,13 @@
   <entry>
     <title><![CDATA[防抖与节流]]></title>
     <url>%2Fhexo-blog%2F2019%2F07%2F30%2F%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[防抖 123456789101112131415161718192021222324function debounce(fn,interval)&#123; var timer, isFirst = true, can = false; return function()&#123; var args = arguments, that = this; if(timer)&#123; clearTimeout(timer) timer = null &#125; if(isFirst)&#123; fn.apply(that,args) isFirst = false setTimeout(() =&gt; &#123; can = true &#125;, interval || 1000); &#125;else if(can)&#123; timer = setTimeout(() =&gt; &#123; fn.apply(null,args) &#125;, interval || 1000); &#125; &#125;&#125; 节流 1234567891011121314151617181920function throttle(fn,interval)&#123; var timer, isFirst = true; return function()&#123; var args = arguments, that = this; if(isFirst)&#123; fn.apply(that,args) return isFirst = false &#125; if(timer)&#123; return &#125; timer = setTimeout(() =&gt; &#123; clearTimeout(timer) timer = null fn.apply(that,args) &#125;, interval || 1000); &#125; &#125; 结语 个人防抖用得较多，曾经写防抖和节流都是在全局上做标记。 参考wclimb的防抖与节流，我会了闭包节流与防抖。感觉不错 参考资料JavaScript之节流与防抖]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>js原生</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[全面学习js之关键字与保留字]]></title>
