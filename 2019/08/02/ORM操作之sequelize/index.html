@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
+<meta name="description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，还是遇到了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
 <meta name="keywords" content="sequelize,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ORM操作之sequelize">
 <meta property="og:url" content="https://curtaintan.github.io/hexo-blog/2019/08/02/ORM操作之sequelize/index.html">
 <meta property="og:site_name" content="curTain">
-<meta property="og:description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
+<meta property="og:description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，还是遇到了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T09:13:55.873Z">
+<meta property="og:updated_time" content="2019-08-02T14:14:43.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ORM操作之sequelize">
-<meta name="twitter:description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
+<meta name="twitter:description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，还是遇到了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
 
 
 
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  328
+                  1.4k
                 </span>
               
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -431,12 +431,215 @@
 
       
         <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
-<p>说实话，这篇文章本想自己写的，因为一开始就是研究 <strong><a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank" rel="noopener">官方文档</a></strong> 和 <strong><a href="https://github.com/demopark/sequelize-docs-Zh-CN" target="_blank" rel="noopener">github上翻译的文章</a></strong>，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。</p>
+<p>说实话，这篇文章本想自己写的，因为一开始就是研究 <strong><a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank" rel="noopener">官方文档</a></strong> 和 <strong><a href="https://github.com/demopark/sequelize-docs-Zh-CN" target="_blank" rel="noopener">github上翻译的文章</a></strong>，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，还是遇到了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。</p>
 <h2 id="总结难点："><a href="#总结难点：" class="headerlink" title="总结难点："></a>总结难点：</h2><hr>
 <p><del> 我来说说我遇到的难点：</del></p>
 <p><del>1. 关联，在create时，如何添加外键：</del></p>
 <p><del> 这里我确实没理解到 <strong><a href="https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/associations.md" target="_blank" rel="noopener">文档</a></strong> 的意思，而且文档给的伪代码有点难懂。</del></p>
 <p>算了，我就不说难点了，我感觉主要还是我的问题，没理解到文档的要义（但是感觉文档的案例确实有点抽象）。</p>
+<h3 id="来一点配置总结吧"><a href="#来一点配置总结吧" class="headerlink" title="来一点配置总结吧"></a>来一点配置总结吧</h3><hr>
+<h4 id="async同步表参数"><a href="#async同步表参数" class="headerlink" title="async同步表参数"></a>async同步表参数</h4><hr>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th style="text-align:center">type</th>
+<th style="text-align:center">default</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>force</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">强制同步,会删除表中数据</td>
+</tr>
+<tr>
+<td>match</td>
+<td style="text-align:center">RegExp</td>
+<td style="text-align:center">null</td>
+<td style="text-align:left">在同步之前将正则表达式与数据库名称匹配，对在测试中使用force：true而不是实时代码的情况进行安全检查</td>
+</tr>
+<tr>
+<td>logging</td>
+<td style="text-align:center">bool/功能函数</td>
+<td style="text-align:center">console.log</td>
+<td style="text-align:left">记录sql查询的函数</td>
+</tr>
+<tr>
+<td>schema</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">—</td>
+<td style="text-align:left">应该在其中创建表的模式。可以为sequelize.define中的每个表覆盖此模式</td>
+</tr>
+<tr>
+<td>hooks</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">true</td>
+<td style="text-align:left">如果hooks为true，则在BeforeSync之前，afterSync，beforeBulkSync之后，将调用afterBulkSync钩子</td>
+</tr>
+<tr>
+<td>alter</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">改变表格以适合模型。不建议用于生产用途。删除已删除的列中的数据或在模型中更改其类型的数据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>说明：</strong>如果想要增加字段，就设置alter为true，但是当你更改表结构的时候，没有的字段就会被删除，那个字段的数据也会被删除</p>
+<h4 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h4><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Sequelize.STRING                      <span class="comment">// VARCHAR(255)</span></span><br><span class="line">Sequelize.STRING(<span class="number">1234</span>)                <span class="comment">// VARCHAR(1234)</span></span><br><span class="line">Sequelize.TEXT                        <span class="comment">// TEXT</span></span><br><span class="line">Sequelize.TEXT(<span class="string">'tiny'</span>)                <span class="comment">// TINYTEXT</span></span><br><span class="line"></span><br><span class="line">Sequelize.INTEGER                     <span class="comment">// INTEGER</span></span><br><span class="line">Sequelize.FLOAT                       <span class="comment">// FLOAT</span></span><br><span class="line">Sequelize.DOUBLE                      <span class="comment">// DOUBLE</span></span><br><span class="line"></span><br><span class="line">Sequelize.DATEONLY                    <span class="comment">// DATE 不带时间.</span></span><br><span class="line">Sequelize.DATE                        <span class="comment">// mysql / sqlite 为 DATETIME, postgres 为带时区的 TIMESTAMP</span></span><br><span class="line"></span><br><span class="line">Sequelize.UUID                        <span class="comment">// PostgreSQL 和 SQLite 的 UUID 数据类型,MySQL 的 CHAR(36) BINARY(使用defaultValue:Sequelize.UUIDV1 或 Sequelize.UUIDV4 来让 sequelize 自动生成 id).</span></span><br><span class="line"></span><br><span class="line">Sequelize.JSON                        <span class="comment">// JSON 列. 仅 PostgreSQL, SQLite 和 MySQL.</span></span><br><span class="line">Sequelize.JSONB                       <span class="comment">// JSONB 列. 仅 PostgreSQL.</span></span><br><span class="line"></span><br><span class="line">Sequelize.BLOB                        <span class="comment">// BLOB (PostgreSQL 为 bytea)</span></span><br></pre></td></tr></table></figure>
+<h4 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a>模型定义</h4><hr>
+<h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><p>有两种定义方式，我喜欢最新的这种，<a href="https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/models-definition.md" target="_blank" rel="noopener">参考这里</a>，</p>
+<p>下面我只列出我觉得比较常用的，需要查看全部字段的请点击 <strong><a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-init" target="_blank" rel="noopener">这里直达</a></strong></p>
+<p>init( attributes：Object，options：Object )</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段参数</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">属性/默认值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:center">数据类型</td>
+<td style="text-align:center">必填</td>
+<td style="text-align:left">数据类型</td>
+</tr>
+<tr>
+<td style="text-align:left">allowNull</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">true</td>
+<td style="text-align:left">如果为false，则列将具有NOT NULL约束，并且在保存实例之前将运行非null验证。</td>
+</tr>
+<tr>
+<td style="text-align:left">defaultValue</td>
+<td style="text-align:center">any</td>
+<td style="text-align:center">null</td>
+<td style="text-align:left">默认值、可以是sql语句和fn函数，（fn函数我没用过）</td>
+</tr>
+<tr>
+<td style="text-align:left">unique</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">如果为true，则列将获得唯一约束。如果提供了字符串，则该列将成为复合唯一索引的一部分。如果多个列具有相同的字符串，则它们将是同一个唯一索引的一部分</td>
+</tr>
+<tr>
+<td style="text-align:left">primaryKey</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">主键</td>
+</tr>
+<tr>
+<td style="text-align:left">field</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">null</td>
+<td style="text-align:left">如果设置，则sequelize会将属性名称映射到数据库中的其他名称,就是在数据库中这个字段的名称设置为这个string</td>
+</tr>
+<tr>
+<td style="text-align:left">autoIncrement</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">自增</td>
+</tr>
+<tr>
+<td style="text-align:left">comment</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">null</td>
+<td style="text-align:left">字段的说明</td>
+</tr>
+<tr>
+<td style="text-align:left">references</td>
+<td style="text-align:center">Model</td>
+<td style="text-align:center">null/obj</td>
+<td style="text-align:left">具有参考配置的对象</td>
+</tr>
+<tr>
+<td style="text-align:left">references.model</td>
+<td style="text-align:center">model</td>
+<td style="text-align:center">可选</td>
+<td style="text-align:left">如果此列引用另一个表，请在此处将其作为模型或字符串提供</td>
+</tr>
+<tr>
+<td style="text-align:left">references.key</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">默认id</td>
+<td style="text-align:left">此列引用的外表的列</td>
+</tr>
+<tr>
+<td style="text-align:left">validate</td>
+<td style="text-align:center">obj</td>
+<td style="text-align:center">选择</td>
+<td style="text-align:left">字段验证，详情请参考<a href="https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/models-definition.md" target="_blank" rel="noopener">这里</a></td>
+</tr>
+<tr>
+<td style="text-align:left">options</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:left">第二个参数，对象</td>
+</tr>
+<tr>
+<td style="text-align:left">sequelize</td>
+<td style="text-align:center">obj</td>
+<td style="text-align:center">必填</td>
+<td style="text-align:left">db实例对象</td>
+</tr>
+<tr>
+<td style="text-align:left">modelName</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">op</td>
+<td style="text-align:left">设置模型的名称。默认情况下与类名相同</td>
+</tr>
+<tr>
+<td style="text-align:left">timestamps</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">true</td>
+<td style="text-align:left">将createdAt和updatedAt时间戳添加到模型中</td>
+</tr>
+<tr>
+<td style="text-align:left">paranoid</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">调用destroy不会删除模型，而是设置deletedAt时间戳，如果这是真的。需要timestamps=true工作</td>
+</tr>
+<tr>
+<td style="text-align:left">underscored</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">false</td>
+<td style="text-align:left">将下划线字段添加到所有属性，这包括用户定义的属性，时间戳和外键。不会使用显式设置field选项影响属性</td>
+</tr>
+<tr>
+<td style="text-align:left">createdAt</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">op</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">updatedAt</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">op</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">deletedAt</td>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">op</td>
+<td style="text-align:left">—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>example:</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Project.init(&#123;</span><br><span class="line">  columnA: &#123;</span><br><span class="line">    type: Sequelize.BOOLEAN,</span><br><span class="line">    validate: &#123;</span><br><span class="line">      is: [<span class="string">'[a-z]'</span>,<span class="string">'i'</span>],        <span class="comment">// will only allow letters</span></span><br><span class="line">      max: <span class="number">23</span>,                  <span class="comment">// only allow values &lt;= 23</span></span><br><span class="line">      isIn: &#123;</span><br><span class="line">        args: [[<span class="string">'en'</span>, <span class="string">'zh'</span>]],</span><br><span class="line">        msg: <span class="string">"Must be English or Chinese"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    field: <span class="string">'column_a'</span></span><br><span class="line">    <span class="comment">// Other attributes here</span></span><br><span class="line">  &#125;,</span><br><span class="line">  columnB: Sequelize.STRING,</span><br><span class="line">  columnC: <span class="string">'MY VERY OWN COLUMN TYPE'</span></span><br><span class="line">&#125;, &#123;sequelize&#125;)</span><br><span class="line"></span><br><span class="line">sequelize.models.modelName <span class="comment">// The model will now be available in models under the class name</span></span><br></pre></td></tr></table></figure>
+<h5 id="定义模型的方法"><a href="#定义模型的方法" class="headerlink" title="定义模型的方法"></a>定义模型的方法</h5><p>我们在定义模型时：定义在继承的Model中</p>
+<p>模型扩展语法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Model</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 添加一个类级别的方法</span></span><br><span class="line">  <span class="keyword">static</span> classLevelMethod() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'foo'</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加实例级别方法</span></span><br><span class="line">  instanceLevelMethod() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'bar'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">User.init(&#123; <span class="attr">firstname</span>: Sequelize.STRING &#125;, &#123; sequelize &#125;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>example:</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 继承Model定义方式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">extends</span> <span class="title">Model</span> </span>&#123;</span><br><span class="line">  <span class="keyword">get</span> fullName() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">' '</span> + <span class="keyword">this</span>.lastname;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> fullName(value) &#123;</span><br><span class="line">    <span class="keyword">const</span> names = value.split(<span class="string">' '</span>);</span><br><span class="line">    <span class="keyword">this</span>.setDataValue(<span class="string">'firstname'</span>, names.slice(<span class="number">0</span>, <span class="number">-1</span>).join(<span class="string">' '</span>));</span><br><span class="line">    <span class="keyword">this</span>.setDataValue(<span class="string">'lastname'</span>, names.slice(<span class="number">-1</span>).join(<span class="string">' '</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Foo.init(&#123;</span><br><span class="line">  firstname: Sequelize.STRING,</span><br><span class="line">  lastname: Sequelize.STRING</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  sequelize,</span><br><span class="line">  modelName: <span class="string">'foo'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或使用 `sequelize.define`</span></span><br><span class="line">sequelize.define(<span class="string">'Foo'</span>, &#123;</span><br><span class="line">  firstname: Sequelize.STRING,</span><br><span class="line">  lastname: Sequelize.STRING</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  getterMethods: &#123;</span><br><span class="line">    fullName() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">' '</span> + <span class="keyword">this</span>.lastname;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  setterMethods: &#123;</span><br><span class="line">    fullName(value) &#123;</span><br><span class="line">      <span class="keyword">const</span> names = value.split(<span class="string">' '</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">this</span>.setDataValue(<span class="string">'firstname'</span>, names.slice(<span class="number">0</span>, <span class="number">-1</span>).join(<span class="string">' '</span>));</span><br><span class="line">      <span class="keyword">this</span>.setDataValue(<span class="string">'lastname'</span>, names.slice(<span class="number">-1</span>).join(<span class="string">' '</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="模型引入"><a href="#模型引入" class="headerlink" title="模型引入"></a>模型引入</h5><p>都使用db实例import()引入：</p>
+<p><strong>example：</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sequelize = <span class="built_in">require</span>(<span class="string">"../config/db"</span>);  <span class="comment">// db的导出实例</span></span><br><span class="line"><span class="keyword">var</span> User = sequelize.import(<span class="string">"./user"</span>);</span><br></pre></td></tr></table></figure></p>
 <h2 id="推荐的文章"><a href="#推荐的文章" class="headerlink" title="推荐的文章"></a>推荐的文章</h2><hr>
 <p><strong>这是一个系列文章，强烈推荐</strong></p>
 <ul>
@@ -707,7 +910,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结难点："><span class="nav-number">2.</span> <span class="nav-text">总结难点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐的文章"><span class="nav-number">3.</span> <span class="nav-text">推荐的文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结难点："><span class="nav-number">2.</span> <span class="nav-text">总结难点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#来一点配置总结吧"><span class="nav-number">2.1.</span> <span class="nav-text">来一点配置总结吧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#async同步表参数"><span class="nav-number">2.1.1.</span> <span class="nav-text">async同步表参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用数据类型"><span class="nav-number">2.1.2.</span> <span class="nav-text">常用数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型定义"><span class="nav-number">2.1.3.</span> <span class="nav-text">模型定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义模型的方法"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">定义模型的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模型引入"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">模型引入</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐的文章"><span class="nav-number">3.</span> <span class="nav-text">推荐的文章</span></a></li></ol></div>
             
 
           </div>
