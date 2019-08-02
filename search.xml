@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ORM操作之sequelize]]></title>
+    <url>%2Fhexo-blog%2F2019%2F08%2F02%2FORM%E6%93%8D%E4%BD%9C%E4%B9%8Bsequelize%2F</url>
+    <content type="text"><![CDATA[前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点： 我来说说我遇到的难点： 1. 关联，在create时，如何添加外键： 这里我确实没理解到 文档 的意思，而且文档给的伪代码有点难懂。 算了，我就不说难点了，我感觉主要还是我的问题，没理解到文档的要义（但是感觉文档的案例确实有点抽象）。 推荐的文章 这是一个系列文章，强烈推荐 Sequelize 快速入门 Sequelize 系列教程之一对一模型关系 Sequelize 系列教程之一对多模型关系 Sequelize 系列教程之多对多模型关系 基本的操作都有详细的案例，很赞！ 官方文档： 官方文章 github翻译文档 中文api文章]]></content>
+      <categories>
+        <category>nodejs</category>
+      </categories>
+      <tags>
+        <tag>sequelize</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[随笔：一路烟霞]]></title>
+    <url>%2Fhexo-blog%2F2019%2F08%2F02%2F%E9%9A%8F%E7%AC%94%EF%BC%9A%E4%B8%80%E8%B7%AF%E7%83%9F%E9%9C%9E%2F</url>
+    <content type="text"><![CDATA[前言： 现在是下午三点五十四分，午睡两小时刚醒。 心心念念的随笔终于要开始写了，曾多次在睡前构思，下笔时，却又毫无头绪了。 时光如梭，大学两年了，]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[全面学习js之apply-call-bind]]></title>
     <url>%2Fhexo-blog%2F2019%2F07%2F30%2F%E5%85%A8%E9%9D%A2%E5%AD%A6%E4%B9%A0js%E4%B9%8Bapply-call-bind%2F</url>
     <content type="text"><![CDATA[前言： 在学习js的过程中，看到不少方法中有使用call、apply、bind方法，特别react中，经常使用bind方法，如果理解得好，你可以非常灵活的使用他们….. 比如： 怎么利用call、apply来求一个数组中最大或者最小值 如何利用call、apply来做继承 apply、call、bind的区别和主要应用场景 虽然网上有很多关于这方面的博客和文章，但还是决定写一篇自己对这方面知识的理解。 GO!!! 首先问个问题，这三个函数的存在意义是什么？答案是改变函数执行时的上下文，再具体一点就是改变函数运行时的this指向。有了这个认识，接下来我们来看一下,怎么使用这三个函数。 举个栗子 1234567891011function Person(name)&#123; this.name = name;&#125;Person.prototype = &#123; constructor: Person, showName: function()&#123; console.log(this.name); &#125;&#125;var person = new Person('curtainTan');person.showName(); // curtainTan 接下来 123var animal = &#123; name: 'cat'&#125; 上面代码中有一个对象字面量，他没有所谓的showName方法，但是我还是想用？怎么办？(坑爹了，这好像在让巧媳妇去做无米之炊)，不过没关系，call、apply、bind可以帮我们干这件事。 123456// 1 callperson.showName.call(animal); // cat// 2 applyperson.showName.apply(animal); // cat// 3 bindperson.showName.bind(animal)(); // cat 啦啦啦，有木有很神奇，控制台输出了三次cat 我们拿别人的showName方法，并动态改变其上下文帮自己输出了信息，说到底就是实现了复用 区别 上面看起来三个函数的作用差不多，干的事几乎是一样的，那为什么要存在3个家伙呢，留一个不就可以。所以其实他们干的事从本质上讲都是一样的动态的改变this上下文,但是多少还是有一些差别的.. call、apply与bind的差别 call和apply改变了函数的this上下文后便执行该函数. bind则是返回改变了上下文后的一个函数. call、apply的区别 call(): 语法：fn.call(obj, arg1, arg2, arg3…); 参数： obj ：可选的。在 func 函数运行时使用的 this 值。请注意，this可能不是该方法看到的实际值：如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动替换为指向全局对象，原始值会被包装。 arg1, arg2, … : 指定的参数列表。 apply(): 语法：fn.call(obj, [argsArray] ); 参数： obj ：可选的, 同上。 argsArray : 可选的。一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 func 函数。 应用 知道了怎么使用和他们之间的区别，接下来我们来了解一下通过call、apply、bind的常见应用场景。 求数组中的最大和最小值 12345var arr = [34,5,3,6,54,6,-67,5,7,6,-8,687];Math.max.apply(Math, arr);Math.max.call(Math, 34,5,3,6,54,6,-67,5,7,6,-8,687);Math.min.apply(Math, arr);Math.min.call(Math, 34,5,3,6,54,6,-67,5,7,6,-8,687); 利用call和apply做继承 123456789101112var Person = function (name, age) &#123; this.name = name; this.age = age;&#125;;var Girl = function (name) &#123; Person.call(this, name);&#125;;var Boy = function (name, age) &#123; Person.apply(this, arguments);&#125;var g1 = new Girl ('qing');var b1 = new Boy('qianlong', 100); 将伪数组转化为数组 js中的伪数组(例如通过document.getElementsByTagName获取的元素)具有length属性，并且可以通过0、1、2…下标来访问其中的元素，但是没有Array中的push、pop等方法。我们可以利用call、apply来将其转化为真正的数组这样便可以方便地使用数组方法了。 12345678var arrayLike = &#123; 0: '11111', 1: '22222', 2: '33333', length: 3&#125;var arr = Array.prototype.slice.call(arrayLike); 上面arr便是一个包含arrayLike元素的真正的数组啦( 注意数据结构必须是以数字为下标而且一定要有length属性 ) 数组追加 在js中要往数组中添加元素，可以直接用push方法， 12345var arr1 = [1,2,3];var arr2 = [4,5,6];[].push.apply(arr1, arr2);// arr1 [1, 2, 3, 4, 5, 6]// arr2 [4,5,6] 结语：总的来说三个方法都是改变this指向。 区别有二： apply()和call()会立即执行，bind()不会立即执行 apply()的第二个参数是一个数组或类数组，call()的参数是参数列表 不知道会不会有人看，就假装有人看吧！！！ 哈哈哈，共勉 参考资料： js中call、apply、bind那些事 写给新人的call、apply、bind]]></content>
@@ -14,7 +31,7 @@
   <entry>
     <title><![CDATA[防抖与节流]]></title>
     <url>%2Fhexo-blog%2F2019%2F07%2F30%2F%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81%2F</url>
-    <content type="text"><![CDATA[防抖 123456789101112131415161718192021222324function debounce(fn,interval)&#123; var timer, isFirst = true, can = false; return function()&#123; var args = arguments, that = this; if(timer)&#123; clearTimeout(timer) timer = null &#125; if(isFirst)&#123; fn.apply(that,args) isFirst = false setTimeout(() =&gt; &#123; can = true &#125;, interval || 1000); &#125;else if(can)&#123; timer = setTimeout(() =&gt; &#123; fn.apply(null,args) &#125;, interval || 1000); &#125; &#125;&#125; 节流 1234567891011121314151617181920function throttle(fn,interval)&#123; var timer, isFirst = true; return function()&#123; var args = arguments, that = this; if(isFirst)&#123; fn.apply(that,args) return isFirst = false &#125; if(timer)&#123; return &#125; timer = setTimeout(() =&gt; &#123; clearTimeout(timer) timer = null fn.apply(that,args) &#125;, interval || 1000); &#125; &#125; 结语 个人防抖用得较多，曾经写防抖和节流都是在全局上做标记。 参考wclimb的防抖与节流，我会了闭包节流与防抖。感觉不错 参考资料JavaScript之节流与防抖]]></content>
+    <content type="text"><![CDATA[防抖 123456789101112131415161718192021222324function debounce(fn,interval)&#123; var timer, isFirst = true, can = false; return function()&#123; var args = arguments, that = this; if(timer)&#123; clearTimeout(timer) timer = null &#125; if(isFirst)&#123; fn.apply(that,args) isFirst = false setTimeout(() =&gt; &#123; can = true &#125;, interval || 1000); &#125;else if(can)&#123; timer = setTimeout(() =&gt; &#123; fn.apply(null,args) &#125;, interval || 1000); &#125; &#125;&#125; 节流 1234567891011121314151617181920function throttle(fn,interval)&#123; var timer, isFirst = true; return function()&#123; var args = arguments, that = this; if(isFirst)&#123; fn.apply(that,args) return isFirst = false &#125; if(timer)&#123; return &#125; timer = setTimeout(() =&gt; &#123; clearTimeout(timer) timer = null fn.apply(that,args) &#125;, interval || 1000); &#125; &#125; 结语 个人防抖用得较多，曾经写防抖和节流都是在全局上做标记。 参考wclimb的防抖与节流，我会了闭包节流与防抖。感觉不错 关于使用apply的解释：参考资料JavaScript之节流与防抖]]></content>
       <categories>
         <category>前端</category>
       </categories>

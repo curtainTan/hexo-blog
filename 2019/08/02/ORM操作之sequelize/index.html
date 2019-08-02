@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="sequelize,mysql,">
 
 
 
@@ -90,16 +90,18 @@
 
 
 
-<meta name="description" content="云淡风轻、">
-<meta property="og:type" content="website">
-<meta property="og:title" content="curTain">
-<meta property="og:url" content="https://curtaintan.github.io/hexo-blog/tags/hexo/index.html">
+<meta name="description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
+<meta name="keywords" content="sequelize,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ORM操作之sequelize">
+<meta property="og:url" content="https://curtaintan.github.io/hexo-blog/2019/08/02/ORM操作之sequelize/index.html">
 <meta property="og:site_name" content="curTain">
-<meta property="og:description" content="云淡风轻、">
+<meta property="og:description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-02T09:13:55.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="curTain">
-<meta name="twitter:description" content="云淡风轻、">
+<meta name="twitter:title" content="ORM操作之sequelize">
+<meta name="twitter:description" content="前言： 说实话，这篇文章本想自己写的，因为一开始就是研究 官方文档 和 github上翻译的文章，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。 总结难点：  我来说说我遇到的难点： 1. 关联，在c">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://curtaintan.github.io/hexo-blog/tags/hexo/">
+  <link rel="canonical" href="https://curtaintan.github.io/hexo-blog/2019/08/02/ORM操作之sequelize/">
 
 
 
 
 
-  <title>标签: hexo | curTain</title>
+  <title>ORM操作之sequelize | curTain</title>
   
 
 
@@ -154,7 +156,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,52 +281,282 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://curtaintan.github.io/hexo-blog/hexo-blog/2019/08/02/ORM操作之sequelize/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="curTain">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://curtaintan.club/headImg/1549358122065.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="curTain">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/hexo-blog/2019/06/14/配置Next主题/" itemprop="url">
-              
-                <span itemprop="name">配置Next主题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ORM操作之sequelize</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-14T13:19:50+08:00" content="2019-06-14">
-          06-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T16:40:10+08:00">
+                2019-08-02
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexo-blog/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/hexo-blog/2019/08/02/ORM操作之sequelize/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-blog/2019/08/02/ORM操作之sequelize/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  328
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><hr>
+<p>说实话，这篇文章本想自己写的，因为一开始就是研究 <strong><a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank" rel="noopener">官方文档</a></strong> 和 <strong><a href="https://github.com/demopark/sequelize-docs-Zh-CN" target="_blank" rel="noopener">github上翻译的文章</a></strong>，奈何，还是被官方文档所折服，其实觉得官方文档写得还是不错的，只是缺少案例，我在做demo的时候，遇到还是了一些疑惑，故google了一下，结果发现了下面这三篇文章，文章架构合理，条条是道，非常适合学习，也是我想要的总结的文章，帮我解决了很多疑惑。</p>
+<h2 id="总结难点："><a href="#总结难点：" class="headerlink" title="总结难点："></a>总结难点：</h2><hr>
+<p><del> 我来说说我遇到的难点：</del></p>
+<p><del>1. 关联，在create时，如何添加外键：</del></p>
+<p><del> 这里我确实没理解到 <strong><a href="https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/associations.md" target="_blank" rel="noopener">文档</a></strong> 的意思，而且文档给的伪代码有点难懂。</del></p>
+<p>算了，我就不说难点了，我感觉主要还是我的问题，没理解到文档的要义（但是感觉文档的案例确实有点抽象）。</p>
+<h2 id="推荐的文章"><a href="#推荐的文章" class="headerlink" title="推荐的文章"></a>推荐的文章</h2><hr>
+<p><strong>这是一个系列文章，强烈推荐</strong></p>
+<ul>
+<li><p><a href="https://semlinker.com/node-sequelize-quickstart/" target="_blank" rel="noopener">Sequelize 快速入门</a></p>
+</li>
+<li><p><a href="https://semlinker.com/node-sequelize-1v1/" target="_blank" rel="noopener">Sequelize 系列教程之一对一模型关系</a></p>
+</li>
+<li><p><a href="https://semlinker.com/node-sequelize-1vm/" target="_blank" rel="noopener">Sequelize 系列教程之一对多模型关系</a></p>
+</li>
+<li><p><a href="https://semlinker.com/node-sequelize-nvm/" target="_blank" rel="noopener">Sequelize 系列教程之多对多模型关系</a></p>
+</li>
+</ul>
+<p>基本的操作都有详细的案例，很赞！</p>
+<p><strong>官方文档：</strong></p>
+<ul>
+<li><p><a href="https://sequelize.org/master/class/lib/model.js~Model.html#static-method-findAll" target="_blank" rel="noopener">官方文章</a></p>
+</li>
+<li><p><a href="https://github.com/demopark/sequelize-docs-Zh-CN/tree/master" target="_blank" rel="noopener">github翻译文档</a></p>
+</li>
+<li><p><a href="https://itbilu.com/nodejs/npm/VkYIaRPz-.html" target="_blank" rel="noopener">中文api文章</a></p>
+</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://curtaintan.club/headImg/1549358122065.jpg" alt="curTain wechat" style="width: 200px; max-width: 100%;">
+    <div>扫一扫上面的二维码</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>觉得文章写的不错，可以打赏我哦....</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://curtaintan.club/wechat.JPG" alt="curTain 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://curtaintan.club/ali.JPG" alt="curTain 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexo-blog/tags/sequelize/" rel="tag"><i class="fa fa-anchor"></i> sequelize</a>
+          
+            <a href="/hexo-blog/tags/mysql/" rel="tag"><i class="fa fa-anchor"></i> mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexo-blog/2019/08/02/随笔：一路烟霞/" rel="next" title="随笔：一路烟霞">
+                <i class="fa fa-chevron-left"></i> 随笔：一路烟霞
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -332,6 +564,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -352,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -449,6 +697,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结难点："><span class="nav-number">2.</span> <span class="nav-text">总结难点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐的文章"><span class="nav-number">3.</span> <span class="nav-text">推荐的文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -613,6 +877,10 @@
 
 
   
+  <script type="text/javascript" src="/hexo-blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/hexo-blog/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
