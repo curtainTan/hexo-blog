@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[正则小记之匹配规则]]></title>
+    <url>%2Fhexo-blog%2F2019%2F08%2F15%2F%E6%AD%A3%E5%88%99%E5%B0%8F%E8%AE%B0%E4%B9%8B%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99%2F</url>
+    <content type="text"><![CDATA[前言前面看了正则的相关方法，现在看下如何书写正则语句吧。 创建一个正则表达式 字面量方法const reg =/\bis\b/g 构造函数方法const reg = new RegExp(‘\bis\b’, ‘g’) 注意：第一个参数为正则表达式字符串（注意转译），第二个参数为修饰符。 模式标识符 常用的模式标识符有三个： g: global，执行一个全局匹配 i: ignore case执行一个不区分大小写的匹配 m: multiple lines多行匹配]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>正则</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[全面学习js之replace]]></title>
     <url>%2Fhexo-blog%2F2019%2F08%2F15%2F%E5%85%A8%E9%9D%A2%E5%AD%A6%E4%B9%A0js%E4%B9%8Breplace%2F</url>
     <content type="text"><![CDATA[语法：str.replace( regexp | substr, newSubStr | function ) 参数 regexp: 一个 RegExp 对象. 该正则所匹配的内容会被第二个参数的返回值替换掉。 substr: 一个要被 newSubStr 替换的字符串. newSubStr: 替换掉第一个参数在原字符串中的匹配部分. 该字符串中可以内插一些特殊的变量名. function: 一个用来创建新子字符串的函数, 该函数的返回值将替换掉第一个参数匹配到的结果. 该函数的参数描述请参考 指定一个函数作为参数 小节. 说明该方法并不改变调用它的字符串本身，而只是返回替换后的字符串. 搭配与demo可见，replace有两个参数，4种搭配。 1. replace( substr, newSubStr )123var a = "what is this? before";var b = a.replace("before","after");console.log(b); // "what is this? after" 说明，此方法可以链式调用，但是一次执行只替换第一次匹配的值。 2. replace( Regexp, newSubStr )123var a = "what is this? before";var b = a.replace(/(^\w+).*?(\w+)$/,"$2 $1");//括号分割的部分依次为子串1....nconsole.log(b); // "before what" 注意： 当第二个参数是字符串时，如下的字符有特殊的含义： $1,$2,...,$99 匹配第1~99个分组里捕获的文本 $&amp; 匹配到的子串文本 $` 匹配到的子串的左边文本 $&apos; 匹配到的子串的右边文本 $$ 美元符号 例如，把”2,3,5”，变成”5=2+3”： 123var result = "2,3,5".replace(/(\d+),(\d+),(\d+)/, "$3=$1+$2");console.log(result);// =&gt; "5=2+3" 又例如，把”2,3,5”，变成”222,333,555”: 123var result = "2,3,5".replace(/(\d+)/g, "$&amp;$&amp;$&amp;");console.log(result);// =&gt; "222,333,555" 再例如，把”2+3=5”，变成”2+3=2+3=5=5”: 123var result = "2+3=5".replace(/=/, "$&amp;$`$&amp;$'$&amp;");console.log(result);// =&gt; "2+3=2+3=5=5" 3. replace( Regexp, function )function(match,p1…,offset,string),可见至少包含三个形参(即arguments.length&gt;=3) 函数参数说明： match表示第一个参数(整个正则表达式)匹配的字符串 p1至pn表示第1..n个括号匹配的字符串,如果没有括号则不存在该项 offset表示匹配的起点在原字符串中的偏移 string表示原字符串 123456"1234 2345 3456".replace(/(\d)\d&#123;2&#125;(\d)/g, function(match, $1, $2, index, input) &#123; console.log([match, $1, $2, index, input]);&#125;);// =&gt; ["1234", "1", "4", 0, "1234 2345 3456"]// =&gt; ["2345", "2", "5", 5, "1234 2345 3456"]// =&gt; ["3456", "3", "6", 10, "1234 2345 3456"] 4. replace( substr, function )1234567function replacer(match,offset,string)&#123; //由于字符串中不会有括号进行分组,此时没有子串 return offset+" that";//偏移为4&#125;var a = "what is this? before";var b = a.replace(" is this",replacer);console.log(b); // "what4 that? before" 结语这下可以说是真真正正的理解replace的用法了。 写下这篇文章，希望对你有帮助。 加油哦，与君共勉！！ 参考材料： String.prototype.replace高阶技能 我的文章借鉴与此片文章，对文章没补充到的进行了补充和说明。 JS正则表达式完整教程（略长） 补充的内容来自这篇文章。 MDN-replace MDN-repalce说明]]></content>
@@ -37,7 +48,7 @@
   <entry>
     <title><![CDATA[随笔：一路烟霞]]></title>
     <url>%2Fhexo-blog%2F2019%2F08%2F02%2F%E9%9A%8F%E7%AC%94%EF%BC%9A%E4%B8%80%E8%B7%AF%E7%83%9F%E9%9C%9E%2F</url>
-    <content type="text"><![CDATA[前言： 现在是下午三点五十四分，午睡两小时刚醒。 心心念念的随笔终于要开始写了，曾多次在睡前构思，下笔时，却又毫无头绪了。 时光如梭，大学两年了，]]></content>
+    <content type="text"><![CDATA[前言： 现在是下午三点五十四分，午睡两小时刚醒。 心心念念的随笔终于要开始写了，曾多次在睡前构思，下笔时，却又毫无头绪了。 时光如梭，大学两年了， 这一路走来，真的感悟良多呢----]]></content>
   </entry>
   <entry>
     <title><![CDATA[全面学习js之apply-call-bind]]></title>
