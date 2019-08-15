@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="curTain">
 <meta property="og:description" content="语法：str.replace( regexp | substr, newSubStr | function ) 参数 regexp: 一个 RegExp 对象. 该正则所匹配的内容会被第二个参数的返回值替换掉。 substr: 一个要被 newSubStr 替换的字符串. newSubStr: 替换掉第一个参数在原字符串中的匹配部分. 该字符串中可以内插一些特殊的变量名. function: 一个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-15T13:43:08.642Z">
+<meta property="og:updated_time" content="2019-08-15T13:49:44.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="全面学习js之replace">
 <meta name="twitter:description" content="语法：str.replace( regexp | substr, newSubStr | function ) 参数 regexp: 一个 RegExp 对象. 该正则所匹配的内容会被第二个参数的返回值替换掉。 substr: 一个要被 newSubStr 替换的字符串. newSubStr: 替换掉第一个参数在原字符串中的匹配部分. 该字符串中可以内插一些特殊的变量名. function: 一个">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  765
+                  769
                 </span>
               
 
@@ -439,15 +439,9 @@
 </ul>
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>该方法并不改变调用它的字符串本身，而只是返回替换后的字符串.</p>
 <h2 id="搭配与demo"><a href="#搭配与demo" class="headerlink" title="搭配与demo"></a>搭配与demo</h2><pre><code>可见，replace有两个参数，4种搭配。
-</code></pre><ol>
-<li>replace( substr, newSubStr )</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"what is this? before"</span>;</span><br><span class="line"><span class="keyword">var</span> b = a.replace(<span class="string">"before"</span>,<span class="string">"after"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(b);    <span class="comment">// "what is this? after"</span></span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="1-replace-substr-newSubStr"><a href="#1-replace-substr-newSubStr" class="headerlink" title="1. replace( substr, newSubStr )"></a>1. replace( substr, newSubStr )</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"what is this? before"</span>;</span><br><span class="line"><span class="keyword">var</span> b = a.replace(<span class="string">"before"</span>,<span class="string">"after"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(b);    <span class="comment">// "what is this? after"</span></span><br></pre></td></tr></table></figure>
 <p>说明，此方法可以链式调用，但是一次执行只替换第一次匹配的值。</p>
-<ol start="2">
-<li>replace( Regexp, newSubStr )</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"what is this? before"</span>;</span><br><span class="line"><span class="keyword">var</span> b = a.replace(<span class="regexp">/(^\w+).*?(\w+)$/</span>,<span class="string">"$2 $1"</span>);<span class="comment">//括号分割的部分依次为子串1....n</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// "before what"</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-replace-Regexp-newSubStr"><a href="#2-replace-Regexp-newSubStr" class="headerlink" title="2. replace( Regexp, newSubStr )"></a>2. replace( Regexp, newSubStr )</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"what is this? before"</span>;</span><br><span class="line"><span class="keyword">var</span> b = a.replace(<span class="regexp">/(^\w+).*?(\w+)$/</span>,<span class="string">"$2 $1"</span>);<span class="comment">//括号分割的部分依次为子串1....n</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// "before what"</span></span><br></pre></td></tr></table></figure>
 <p><strong>注意：</strong></p>
 <p>当第二个参数是字符串时，如下的字符有特殊的含义：</p>
 <pre><code>$1,$2,...,$99 匹配第1~99个分组里捕获的文本
@@ -461,20 +455,14 @@ $$ 美元符号
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"2,3,5"</span>.replace(<span class="regexp">/(\d+)/g</span>, <span class="string">"$&amp;$&amp;$&amp;"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br><span class="line"><span class="comment">// =&gt; "222,333,555"</span></span><br></pre></td></tr></table></figure>
 <p>再例如，把”2+3=5”，变成”2+3=2+3=5=5”:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"2+3=5"</span>.replace(<span class="regexp">/=/</span>, <span class="string">"$&amp;$`$&amp;$'$&amp;"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br><span class="line"><span class="comment">// =&gt; "2+3=2+3=5=5"</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>replace( Regexp, function )</li>
-</ol>
-<p>function(match,p1…,offset,string),可见至少包含三个形参(即arguments.length&gt;=3)</p>
+<h3 id="3-replace-Regexp-function"><a href="#3-replace-Regexp-function" class="headerlink" title="3. replace( Regexp, function )"></a>3. replace( Regexp, function )</h3><p>function(match,p1…,offset,string),可见至少包含三个形参(即arguments.length&gt;=3)</p>
 <p><strong>函数参数说明：</strong></p>
 <pre><code>match表示第一个参数(整个正则表达式)匹配的字符串
 p1至pn表示第1..n个括号匹配的字符串,如果没有括号则不存在该项
 offset表示匹配的起点在原字符串中的偏移
 string表示原字符串
 </code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"1234 2345 3456"</span>.replace(<span class="regexp">/(\d)\d&#123;2&#125;(\d)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, $<span class="number">1</span>, $<span class="number">2</span>, index, input</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log([match, $<span class="number">1</span>, $<span class="number">2</span>, index, input]);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// =&gt; ["1234", "1", "4", 0, "1234 2345 3456"]</span></span><br><span class="line"><span class="comment">// =&gt; ["2345", "2", "5", 5, "1234 2345 3456"]</span></span><br><span class="line"><span class="comment">// =&gt; ["3456", "3", "6", 10, "1234 2345 3456"]</span></span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>replace( substr, function )</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">match,offset,string</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//由于字符串中不会有括号进行分组,此时没有子串</span></span><br><span class="line">    <span class="keyword">return</span> offset+<span class="string">" that"</span>;<span class="comment">//偏移为4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="string">"what is this? before"</span>;</span><br><span class="line"><span class="keyword">var</span> b = a.replace(<span class="string">" is this"</span>,replacer);</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// "what4 that? before"</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-replace-substr-function"><a href="#4-replace-substr-function" class="headerlink" title="4. replace( substr, function )"></a>4. replace( substr, function )</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">match,offset,string</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//由于字符串中不会有括号进行分组,此时没有子串</span></span><br><span class="line">    <span class="keyword">return</span> offset+<span class="string">" that"</span>;<span class="comment">//偏移为4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="string">"what is this? before"</span>;</span><br><span class="line"><span class="keyword">var</span> b = a.replace(<span class="string">" is this"</span>,replacer);</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// "what4 that? before"</span></span><br></pre></td></tr></table></figure>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这下可以说是真真正正的理解replace的用法了。</p>
 <p>写下这篇文章，希望对你有帮助。</p>
 <p>加油哦，与君共勉！！</p>
@@ -736,7 +724,7 @@ string表示原字符串
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法："><span class="nav-number">1.</span> <span class="nav-text">语法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">3.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭配与demo"><span class="nav-number">4.</span> <span class="nav-text">搭配与demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考材料："><span class="nav-number">6.</span> <span class="nav-text">参考材料：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法："><span class="nav-number">1.</span> <span class="nav-text">语法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">2.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">3.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭配与demo"><span class="nav-number">4.</span> <span class="nav-text">搭配与demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-replace-substr-newSubStr"><span class="nav-number">4.1.</span> <span class="nav-text">1. replace( substr, newSubStr )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-replace-Regexp-newSubStr"><span class="nav-number">4.2.</span> <span class="nav-text">2. replace( Regexp, newSubStr )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-replace-Regexp-function"><span class="nav-number">4.3.</span> <span class="nav-text">3. replace( Regexp, function )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-replace-substr-function"><span class="nav-number">4.4.</span> <span class="nav-text">4. replace( substr, function )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考材料："><span class="nav-number">6.</span> <span class="nav-text">参考材料：</span></a></li></ol></div>
             
 
           </div>
