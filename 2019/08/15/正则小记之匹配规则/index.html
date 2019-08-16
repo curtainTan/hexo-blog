@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="curTain">
 <meta property="og:description" content="前言前面看了正则的相关方法，现在看下如何书写正则语句吧。 创建一个正则表达式 字面量方法const reg =/\bis\b/g 构造函数方法const reg = new RegExp(‘\bis\b’, ‘g’) 注意：第一个参数为正则表达式字符串（注意转译），第二个参数为修饰符。 模式标识符 常用的模式标识符有三个：  g: global，执行一个全局匹配 i: ignore case执行一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-15T15:12:24.660Z">
+<meta property="og:updated_time" content="2019-08-16T05:48:29.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则小记之匹配规则">
 <meta name="twitter:description" content="前言前面看了正则的相关方法，现在看下如何书写正则语句吧。 创建一个正则表达式 字面量方法const reg =/\bis\b/g 构造函数方法const reg = new RegExp(‘\bis\b’, ‘g’) 注意：第一个参数为正则表达式字符串（注意转译），第二个参数为修饰符。 模式标识符 常用的模式标识符有三个：  g: global，执行一个全局匹配 i: ignore case执行一">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  136
+                  1.5k
                 </span>
               
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -442,6 +442,117 @@
 <li>i: ignore case执行一个不区分大小写的匹配</li>
 <li>m: multiple lines多行匹配</li>
 </ul>
+<p>这里解释下m</p>
+<p>当字符串存在\n换行的情况下使用，可以连续匹配。</p>
+<p>案例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"abcggab\nabcoab"</span>;</span><br><span class="line"><span class="keyword">var</span> preg1 = <span class="regexp">/^abc/gm</span>;  str.match(preg1)  <span class="comment">// 结果为：["abc", "abc"]</span></span><br><span class="line"><span class="keyword">var</span> preg2 = <span class="regexp">/ab$/gm</span>;   str.match(preg2)  <span class="comment">// 结果为：["ab", "ab"]</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="位置边界"><a href="#位置边界" class="headerlink" title="位置边界"></a>位置边界</h2><hr>
+<h3 id="单词边界"><a href="#单词边界" class="headerlink" title="单词边界"></a>单词边界</h3><p>\b boundary 可匹配的位置：行首，行位，单词边界（空格）</p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"The cat scattered his food"</span></span><br><span class="line"><span class="keyword">var</span> yu = str.replace( <span class="regexp">/cat/g</span>, <span class="string">"dog"</span> )</span><br><span class="line"><span class="built_in">console</span>.log( yu )  <span class="comment">// The dog sdogtered his food</span></span><br><span class="line">yu = str.replace( <span class="regexp">/\bcat\b/g</span>, <span class="string">"dog"</span> )</span><br><span class="line"><span class="built_in">console</span>.log( yu )  <span class="comment">// The dog scattered his food</span></span><br></pre></td></tr></table></figure>
+<p>我只想换cat这个单词，不想换scattered中的cat，就要用到\b划分单词边界，</p>
+<p>当然你也可以用\s，\s匹配的位置必须由空格，不能匹配行首和行尾，除非行首和行尾有空格。</p>
+<p>案例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"cat scattered his food"</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="regexp">/\scat/</span>.test( str ) )  <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="regexp">/\bcat/</span>.test( str ) )  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="字符串边界"><a href="#字符串边界" class="headerlink" title="字符串边界"></a>字符串边界</h3><pre><code>元字符^用来匹配字符串的开头
+
+元字符$用来匹配字符串的末尾
+</code></pre><h3 id="其他边界-p-和-p"><a href="#其他边界-p-和-p" class="headerlink" title="其他边界  (?=p)和(?!p)"></a>其他边界  (?=p)和(?!p)</h3><p>(?=p)，其中p是一个子模式，即p前面的位置。</p>
+<p>比如(?=l)，表示’l’字符前面的位置，例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello"</span>.replace(<span class="regexp">/(?=l)/g</span>, <span class="string">'#'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result); </span><br><span class="line"><span class="comment">// =&gt; "he#l#lo"</span></span><br></pre></td></tr></table></figure></p>
+<p>而(?!p)就是(?=p)的反面意思，就是匹配到的字符串后面一个位置。比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello"</span>.replace(<span class="regexp">/(?!l)/g</span>, <span class="string">'#'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(result); </span><br><span class="line"><span class="comment">// =&gt; "#h#ell#o#"</span></span><br></pre></td></tr></table></figure>
+<h2 id="单个符号字符"><a href="#单个符号字符" class="headerlink" title="单个符号字符"></a>单个符号字符</h2><hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特殊字符</th>
+<th style="text-align:left">正则表达式</th>
+<th style="text-align:left">记忆方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">换行符</td>
+<td style="text-align:left">\n</td>
+<td style="text-align:left"><strong>n</strong>ew line</td>
+</tr>
+<tr>
+<td style="text-align:left">换页符</td>
+<td style="text-align:left">\f</td>
+<td style="text-align:left"><strong>f</strong>orm feed</td>
+</tr>
+<tr>
+<td style="text-align:left">回车符</td>
+<td style="text-align:left">\r</td>
+<td style="text-align:left"><strong>r</strong>eturn</td>
+</tr>
+<tr>
+<td style="text-align:left">空白符</td>
+<td style="text-align:left">\s</td>
+<td style="text-align:left"><strong>s</strong>pace</td>
+</tr>
+<tr>
+<td style="text-align:left">制表符</td>
+<td style="text-align:left">\t</td>
+<td style="text-align:left"><strong>t</strong>ab</td>
+</tr>
+<tr>
+<td style="text-align:left">垂直制表符</td>
+<td style="text-align:left">\v</td>
+<td style="text-align:left"><strong>ve</strong>rtical tab</td>
+</tr>
+<tr>
+<td style="text-align:left">回退符</td>
+<td style="text-align:left">[\b]</td>
+<td style="text-align:left"><strong>b</strong>ackspace,之所以使用[]符号是避免和\b重复</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符组"><a href="#字符组" class="headerlink" title="字符组"></a>字符组</h2><hr>
+<p>说明：需要强调的是，虽叫字符组（字符类），但只是其中一个字符。例如[abc]，表示匹配一个字符，它可以是“a”、“b”、“c”之一。如果想要表示一类的字符怎么办呢？？这里就出现了字符组。</p>
+<p>简写形式：</p>
+<pre><code>\d就是[0-9]。表示是一位数字。记忆方式：其英文是digit（数字）。
+
+\D就是[^0-9]。表示除数字外的任意字符。
+
+\w就是[0-9a-zA-Z_]。表示数字、大小写字母和下划线。记忆方式：w是word的简写，也称单词字符。\W是[^0-9a-zA-Z_]。非单词字符。
+
+\s是[ \t\v\n\r\f]。表示空白符，包括空格、水平制表符、垂直制表符、换行符、回车符、换页符。记忆方式：s是space character的首字母。
+
+\S是[^ \t\v\n\r\f]。 非空白符。.就是[^\n\r\u2028\u2029]。
+
+通配符.  表示几乎任意字符。换行符、回车符、行分隔符和段分隔符除外。记忆方式：想想省略号...中的每个点，都可以理解成占位符，表示任何类似的东西。
+</code></pre><p>如果要匹配任意字符怎么办？可以使用[\d\D]、[\w\W]、[\s\S]和[^]中任何的一个。</p>
+<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><hr>
+<p>说明：量词也称重复。掌握{m,n}的准确含义后，只需要记住一些简写形式。</p>
+<pre><code>{ m, } 表示至少初选m次，注意后面的逗号哦。
+{ m } 表示出现m次们不能多，也不能少。
+? 等价于{ 0， 1 }, 表示出现或者不出现， 记忆方式：问号的意思表示，有吗？
++ 等价于{ 1, },表示至少出现一次，记忆方式，表示追加，得先有一个。
+* 等价于{ 0, }，表示出现任意次，可以出现也可以不出现。
+</code></pre><p>使用量词需知道贪婪匹配和惰性匹配：</p>
+<ul>
+<li><p>贪婪模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d&#123;2,5&#125;/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"123 1234 12345 123456"</span>;</span><br><span class="line"><span class="built_in">console</span>.log( string.match(regex) ); </span><br><span class="line"><span class="comment">// =&gt; ["123", "1234", "12345", "12345"]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>惰性模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d&#123;2,5&#125;?/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"123 1234 12345 123456"</span>;</span><br><span class="line"><span class="built_in">console</span>.log( string.match(regex) ); </span><br><span class="line"><span class="comment">// =&gt; ["12", "12", "34", "12", "34", "12", "34", "56"]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>案例：</p>
+<p>要求从</p>
+<pre><code>&lt;div id=&quot;container&quot; class=&quot;main&quot;&gt;&lt;/div&gt;
+</code></pre><p>提取出id=”container”。</p>
+<p>可能最开始想到的正则是：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/id=".*"/</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">'&lt;div id="container" class="main"&gt;&lt;/div&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(string.match(regex)[<span class="number">0</span>]); </span><br><span class="line"><span class="comment">// =&gt; id="container" class="main"</span></span><br></pre></td></tr></table></figure></p>
+<p>因为.是通配符，本身就匹配双引号的，而量词*又是贪婪的，当遇到container后面双引号时，不会停下来，会继续匹配，直到遇到最后一个双引号为止。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/id=".*?"/</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">'&lt;div id="container" class="main"&gt;&lt;/div&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(string.match(regex)[<span class="number">0</span>]); </span><br><span class="line"><span class="comment">// =&gt; id="container"</span></span><br></pre></td></tr></table></figure>
+<p>当然，这样也会有个问题。效率比较低，因为其匹配原理会涉及到“回溯”这个概念（这里也只是顺便提一下，第四章会详细说明）。可以优化如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/id="[^"]*"/</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">'&lt;div id="container" class="main"&gt;&lt;/div&gt;'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(string.match(regex)[<span class="number">0</span>]); </span><br><span class="line"><span class="comment">// =&gt; id="container"</span></span><br></pre></td></tr></table></figure></p>
+<p>因为[^”]匹配的是非”符号，所以匹配到后面的第一个引号的时候就停止了。</p>
+<h2 id="多选分支"><a href="#多选分支" class="headerlink" title="多选分支"></a>多选分支</h2><hr>
+<p>一个模式可以实现横向和纵向模糊匹配。而多选分支可以支持多个子模式任选其一。</p>
+<p>具体形式如下：(p1|p2|p3)，其中p1、p2和p3是子模式，用|（管道符）分隔，表示其中任何之一。</p>
+<p>例如要匹配”good”和”nice”可以使用/good|nice/。测试如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/good|nice/g</span>;</span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"good idea, nice try."</span>;</span><br><span class="line"><span class="built_in">console</span>.log( string.match(regex) ); </span><br><span class="line"><span class="comment">// =&gt; ["good", "nice"]</span></span><br></pre></td></tr></table></figure>
+<h2 id="括号（分组）"><a href="#括号（分组）" class="headerlink" title="括号（分组）"></a>括号（分组）</h2><hr>
+<p>其中分组体现在：所有以(和)元字符所包含的正则表达式被分为一组，每一个分组都是一个子表达式，它也是构成高级正则表达式的基础。如果只是使用简单的(regex)匹配语法本质上和不分组是一样的，如果要发挥它强大的作用，往往要结合回溯引用的方式。</p>
 
       
     </div>
@@ -666,6 +777,10 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
+                    <a href="http://cnine.me/" title="竹薯" target="_blank">竹薯</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
                     <a href="http://www.curtaintan.club/dist1/index.html" title="curTain" target="_blank">curTain</a>
                   </li>
                 
@@ -688,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个正则表达式"><span class="nav-number">2.</span> <span class="nav-text">创建一个正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字面量方法"><span class="nav-number">2.1.</span> <span class="nav-text">字面量方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数方法"><span class="nav-number">2.2.</span> <span class="nav-text">构造函数方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式标识符"><span class="nav-number">3.</span> <span class="nav-text">模式标识符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个正则表达式"><span class="nav-number">2.</span> <span class="nav-text">创建一个正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字面量方法"><span class="nav-number">2.1.</span> <span class="nav-text">字面量方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数方法"><span class="nav-number">2.2.</span> <span class="nav-text">构造函数方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模式标识符"><span class="nav-number">3.</span> <span class="nav-text">模式标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置边界"><span class="nav-number">4.</span> <span class="nav-text">位置边界</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单词边界"><span class="nav-number">4.1.</span> <span class="nav-text">单词边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串边界"><span class="nav-number">4.2.</span> <span class="nav-text">字符串边界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他边界-p-和-p"><span class="nav-number">4.3.</span> <span class="nav-text">其他边界  (?=p)和(?!p)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单个符号字符"><span class="nav-number">5.</span> <span class="nav-text">单个符号字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符组"><span class="nav-number">6.</span> <span class="nav-text">字符组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#量词"><span class="nav-number">7.</span> <span class="nav-text">量词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多选分支"><span class="nav-number">8.</span> <span class="nav-text">多选分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#括号（分组）"><span class="nav-number">9.</span> <span class="nav-text">括号（分组）</span></a></li></ol></div>
             
 
           </div>
