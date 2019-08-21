@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="前言学es6的时候是大一下的时候了，那时候学es6主要是为了写nodejs的，那时候只是粗略的学，只是看了自己想看部分，知识吸收的部分也是用得最多的部分，现在再学一遍，把重点的点记下来。  这里我只是记下我之前没注意到的点和部分重点，需要全部查看的同学请看阮一峰老师的文章。 startlet和const  let重点  let不存在变量提升，如果在声明前使用，效果就如同没有定义变量，而直接使用变量">
+<meta name="description" content="前言学es6的时候是大一下的时候了，那时候学es6主要是为了写nodejs的，那时候只是粗略的学，只是看了自己想看部分，知识吸收的部分也是用得最多的部分，现在再学一遍，把重点的点记下来。  这里我只是记下我之前没注意到的点和部分重点，需要全部查看的同学请看阮一峰老师的文章。  读书百遍其义自见。  今天看的是前6章，解构赋值忽略啦-- startlet和const  let重点  let不存在变量">
 <meta name="keywords" content="js,es6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="再学es6">
-<meta property="og:url" content="https://curtaintan.github.io/hexo-blog/2019/08/20/再学es6/index.html">
+<meta property="og:url" content="https://curtaintan.github.io/hexo-blog/2019/08/20/再学es6（一）/index.html">
 <meta property="og:site_name" content="curTain">
-<meta property="og:description" content="前言学es6的时候是大一下的时候了，那时候学es6主要是为了写nodejs的，那时候只是粗略的学，只是看了自己想看部分，知识吸收的部分也是用得最多的部分，现在再学一遍，把重点的点记下来。  这里我只是记下我之前没注意到的点和部分重点，需要全部查看的同学请看阮一峰老师的文章。 startlet和const  let重点  let不存在变量提升，如果在声明前使用，效果就如同没有定义变量，而直接使用变量">
+<meta property="og:description" content="前言学es6的时候是大一下的时候了，那时候学es6主要是为了写nodejs的，那时候只是粗略的学，只是看了自己想看部分，知识吸收的部分也是用得最多的部分，现在再学一遍，把重点的点记下来。  这里我只是记下我之前没注意到的点和部分重点，需要全部查看的同学请看阮一峰老师的文章。  读书百遍其义自见。  今天看的是前6章，解构赋值忽略啦-- startlet和const  let重点  let不存在变量">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-20T12:23:56.794Z">
+<meta property="og:updated_time" content="2019-08-21T08:47:15.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="再学es6">
-<meta name="twitter:description" content="前言学es6的时候是大一下的时候了，那时候学es6主要是为了写nodejs的，那时候只是粗略的学，只是看了自己想看部分，知识吸收的部分也是用得最多的部分，现在再学一遍，把重点的点记下来。  这里我只是记下我之前没注意到的点和部分重点，需要全部查看的同学请看阮一峰老师的文章。 startlet和const  let重点  let不存在变量提升，如果在声明前使用，效果就如同没有定义变量，而直接使用变量">
+<meta name="twitter:description" content="前言学es6的时候是大一下的时候了，那时候学es6主要是为了写nodejs的，那时候只是粗略的学，只是看了自己想看部分，知识吸收的部分也是用得最多的部分，现在再学一遍，把重点的点记下来。  这里我只是记下我之前没注意到的点和部分重点，需要全部查看的同学请看阮一峰老师的文章。  读书百遍其义自见。  今天看的是前6章，解构赋值忽略啦-- startlet和const  let重点  let不存在变量">
 
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="https://curtaintan.github.io/hexo-blog/2019/08/20/再学es6/">
+  <link rel="canonical" href="https://curtaintan.github.io/hexo-blog/2019/08/20/再学es6（一）/">
 
 
 
@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://curtaintan.github.io/hexo-blog/hexo-blog/2019/08/20/再学es6/">
+    <link itemprop="mainEntityOfPage" href="https://curtaintan.github.io/hexo-blog/hexo-blog/2019/08/20/再学es6（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="curTain">
@@ -365,8 +365,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/hexo-blog/2019/08/20/再学es6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-blog/2019/08/20/再学es6/" itemprop="commentCount"></span>
+                <a href="/hexo-blog/2019/08/20/再学es6（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/hexo-blog/2019/08/20/再学es6（一）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -433,6 +433,10 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>学es6的时候是大一下的时候了，那时候学es6主要是为了写nodejs的，那时候只是粗略的学，只是看了自己想看部分，知识吸收的部分也是用得最多的部分，现在再学一遍，把重点的点记下来。
 
 这里我只是记下我之前没注意到的点和部分重点，需要全部查看的同学请看阮一峰老师的文章。
+
+读书百遍其义自见。
+
+今天看的是前6章，解构赋值忽略啦--
 </code></pre><h2 id="start"><a href="#start" class="headerlink" title="start"></a>start</h2><h3 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h3><hr>
 <ol>
 <li><p>let重点</p>
@@ -693,7 +697,7 @@ U+2029 段分隔符（paragraph separator）
               
                 <a href="/hexo-blog/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
