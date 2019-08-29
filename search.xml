@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[XHR、fetch和axios取消请求与运用]]></title>
+    <title><![CDATA[XHR、fetch和axios取消请求]]></title>
     <url>%2Fhexo-blog%2F2019%2F08%2F21%2FXHR%E3%80%81fetch%E5%92%8Caxios%E5%8F%96%E6%B6%88%E8%AF%B7%E6%B1%82%E4%B8%8E%E8%BF%90%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[前言之前在写防抖操作的时候没有注意到呢， 在做即时搜索提示的时候，要做防抖，最好的取消方式的是在还未请求到数据时取消请求，而不是置空请求对象。 所以，让我们开始看看这三个请求是如何取消请求的操作吧。 XHR]]></content>
+    <content type="text"><![CDATA[前言之前在写防抖操作的时候没有注意到呢， 在做即时搜索提示的时候，要做防抖， //--最好的取消方式的是在还未请求到数据时取消请求，而不是置空请求对象。 我之前偶然间看到关于上面这个的文章，找不到了----哭 所以，让我们开始看看这三个请求是如何取消请求的操作吧。 XHR对于原生XHR对象来说，取消的ajax的关键是调用XHR对象的.abort()方法 1234567891011121314var xhr = new XMLHttpRequest()xhr.open( "GET", "https://curtaintan.github.io/hexo-blog/" )xhr.send()xhr.onreadystatechange = function()&#123; if( xhr.readyState == 4 &amp;&amp; xhr.status == 200 )&#123; var res = xhr.response &#125; else &#123; console.log( xhr.status ) &#125;&#125;// 取消请求setTimeout( () =&gt; &#123; xhr.abort()&#125;, 100 ) fetchFetch API已经成为现在浏览器异步网络请求的标准方法，但Fetch也是有弊端的 Fetch还没有方法终止一个请求（外部有 AbortController()） Fetch无法检测上传进度 1234567891011121314151617const controller = new AbortController()const mySignal = controller.signalfetch( "https://curtaintan.github.io/hexo-blog/", &#123; method: "GET", mode: "cors", signal: mySignal&#125; ).then( res =&gt; &#123; console.log( "请求成功--" ) console.log( res )&#125; ).catch( err =&gt; &#123; console.log( "请求失败了--" )&#125; )// 取消请求setTimeout( () =&gt; &#123; controller.abort()&#125;, 100 ) axios在axios中，通过axios.CancelToken.source()方法取消请求。 1234567891011121314151617var CancelToken = axios.CancelTokenvar source = CancelToken.source()axios(&#123; method: "GET", url: "https://curtaintan.github.io/hexo-blog/", cancelToken: source.token() //cancelToken的值起标识作用，标识由source控制的、将要被取消的ajax操作&#125;).then( res =&gt; &#123; console.log( "请求成功--" )&#125; ).catch( err =&gt; &#123; console.log( "请求取消--",err ) // 请求取消--&#123; message: "手动请求取消，这里是信息提示--"&#125;&#125; )// 取消请求setTimeout( () =&gt; &#123; source.cancel( "手动请求取消，这里是信息提示--" )&#125;, 100 ) axios执行并发请求1234567891011function getUserAccount() &#123; return axios.get('/user/12345');&#125; function getUserPermissions() &#123; return axios.get('/user/12345/permissions');&#125;axios.all([getUserAccount(), getUserPermissions()]) .then(axios.spread(function (acct, perms) &#123; // 两个请求现在都执行完成 &#125;)); 防抖操作1234567891011121314151617181920function ajax( content )&#123; console.log( "ajax request " + content )&#125;function debounce(fun, delay) &#123; return function (args) &#123; let that = this let _args = args clearTimeout(fun.id) fun.id = setTimeout(function () &#123; fun.call(that, _args) &#125;, delay) &#125;&#125;let inputb = document.getElementById('debounce')let debounceAjax = debounce(ajax, 500)inputb.addEventListener('keyup', function (e) &#123; debounceAjax(e.target.value)&#125;) 结语之前偶然间看到的一篇文章，他的内容是在上次的内容还未到来的时候，取消请求，我觉得那个做法不错，但是我已经找不到那篇文章了– 写下这篇文章，希望对你有帮助。 加油哦、、与君共勉！ 参考资料如何取消ajax请求 MDN-fecth axios官方文档]]></content>
       <categories>
         <category>前端</category>
       </categories>
@@ -95,7 +95,7 @@
   <entry>
     <title><![CDATA[随笔：一路烟霞]]></title>
     <url>%2Fhexo-blog%2F2019%2F08%2F02%2F%E9%9A%8F%E7%AC%94%EF%BC%9A%E4%B8%80%E8%B7%AF%E7%83%9F%E9%9C%9E%2F</url>
-    <content type="text"><![CDATA[前言： 现在是下午三点五十四分，午睡两小时刚醒。 心心念念的随笔终于要开始写了，曾多次在睡前构思，下笔时，却又毫无头绪了。 时光如梭，大学两年了， 这一路走来，真的感悟良多呢----]]></content>
+    <content type="text"><![CDATA[前言： 现在是下午三点五十四分，午睡两小时刚醒。 心心念念的随笔终于要开始写了，曾多次在睡前构思，下笔时，却又毫无头绪了。 时光如梭，大学两年了， 这一路走来，真的感悟良多呢---- 真的很幸运，能遇到那么多志同道合的小伙伴。 后面再写吧....]]></content>
   </entry>
   <entry>
     <title><![CDATA[全面学习js之apply-call-bind]]></title>
