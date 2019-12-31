@@ -11,6 +11,8 @@
   
 
   
+  <link rel="alternate" href="/atom.xml" title="curTain">
+  
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,6 +44,7 @@
 
   
   
+<link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
 </head>
 
 <body>
@@ -375,17 +378,13 @@
 
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>正则，用简短的一句话概括，正则表达式是匹配模式，要么匹配字符，要么匹配位置。</p>
 <h2 id="正则的方法和与正则有关的方法"><a href="#正则的方法和与正则有关的方法" class="headerlink" title="正则的方法和与正则有关的方法"></a>正则的方法和与正则有关的方法</h2><p>共有6个，字符串实例4个，正则实例2个：</p>
-<pre><code>String#search
-
-String#split
-
-String#match
-
-String#replace
-
-RegExp#test
-
-RegExp#exec</code></pre><h3 id="1-search"><a href="#1-search" class="headerlink" title="1.search()"></a>1.search()</h3><p>定义：正则去匹配字符串，如果匹配成功，就返回匹配成功的位置，匹配失败就返回-1.</p>
+<p>String#search</p>
+<p>String#split</p>
+<p>String#match</p>
+<p>String#replace</p>
+<p>RegExp#test</p>
+<p>RegExp#exec</p>
+<h3 id="1-search"><a href="#1-search" class="headerlink" title="1.search()"></a>1.search()</h3><p>定义：正则去匹配字符串，如果匹配成功，就返回匹配成功的位置，匹配失败就返回-1.</p>
 <p>例子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d/</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> string = <span class="string">"abc123"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log( string.search(regex) );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// =&gt; 3</span></span></pre></td></tr></table></figure>
 
@@ -542,10 +541,10 @@ RegExp.rightContext 目标字符串中lastMatch之后的文本，简写成RegExp
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-03T17:44:21+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-12-31T14:52:50+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2019年12月3日</p>
+    <p>更新于 2019年12月31日</p>
   </a>
 </div>
 
@@ -611,30 +610,10 @@ RegExp.rightContext 目标字符串中lastMatch之后的文本，简写成RegExp
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2019/12/02/%E5%8D%9A%E5%AE%A2%E5%86%8D%E6%AC%A1%E5%90%AF%E7%A8%8B/" rel="prev" title="博客再次启程">
-                                
-                                    博客再次启程
-                                
-                              </a>
-                          </h4>
-                          
-                              
-                              <h6 class="tags">
-                                  <a class="tag" href="/tags/%E7%94%9F%E6%B4%BB/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 生活</a>
-                              </h6>
-                          
-                      </span>
-                  </section>
-              
-              
-                  <section class="next">
-                      <span class="art-item-right" aria-hidden="true">
-                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                          <h4>
                               <a href="/2019/08/14/drawing-board%E7%94%BB%E6%9D%BF/" rel="prev" title="drawing-board画板">
-                                  
-                                      drawing-board画板
-                                  
+                                
+                                    drawing-board画板
+                                
                               </a>
                           </h4>
                           
@@ -645,6 +624,7 @@ RegExp.rightContext 目标字符串中lastMatch之后的文本，简写成RegExp
                           
                       </span>
                   </section>
+              
               
           </div>
       
