@@ -377,7 +377,11 @@
 <p>想学习正则的操作吗？？那就进来吧…</p>
 <a id="more"></a>
 
-<h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><blockquote><p>正则表达式是匹配模式，要么匹配字符，要么匹配位置。请记住这句话。</p>
+<h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><p>嗨咯，亲爱的读者你好！既然你点进来了，那么想必你一定对正则感兴趣吧。</p>
+<p>如果你对正则充满畏惧心理，不懂也不理解正则，没关系，往下看，</p>
+<p>看完这篇文章，相信你一定会对正则充满兴趣，并且不再畏惧，消灭恐惧的最好办法，就是面对恐惧！！</p>
+<p>加油！！读完它，理解正则操作，然后爱上正则！</p>
+<blockquote><p>正则表达式是匹配模式，要么匹配字符，要么匹配位置。请记住这句话。</p>
 <footer><strong>@老姚</strong><cite><a href="https://juejin.im/post/5965943ff265da6c30653879" target="_blank" rel="noopener">JS正则表达式完整教程（略长）</a></cite></footer></blockquote>
 
 <p>老姚对正则的评价非常到位，我很赞同，希望你能记住，这篇文章就是在匹配的基础上做的相关的操作。</p>
@@ -386,12 +390,13 @@
 <p>如果你是正则高手，文中有写的不对的和写得不妥当的，也请指出错误。</p>
 <p>本文不涉及正则表达式的书写教学，但是并影响你对每个增删查改操作的理解。如果你想学习正则表达式的书写，在文章后面我有推荐学习正则的优秀文章。</p>
 <p>相信你看过这篇文章后，会提高你对正则的理解与学习正则的兴趣。加油！</p>
-<h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>在文章开始前，我们需要了解与正则相关的6个方法：如果你对下面六个方法非常熟悉了，你可以直接从前置知识的总结处开始看（￣︶￣）↗</p>
+<h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>既然是用正则对字符串的操作，那么，我们得需要了解相关的方法，对吧？？与正则相关的方法就6个（真的很少很容易理解！！）：如果你对下面六个方法非常熟悉了，你可以直接从前置知识的总结处开始看（￣︶￣）↗</p>
 <figure class="highlight"><figcaption><span>与正则相关的6个方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串四个</span></span><br><span class="line">String#search    // 查找匹配到字符串的位置，返回位置index</span><br><span class="line">String#split     // 以正则匹配到的字符串截断原字符串，返回数组</span><br><span class="line">String#match     // 匹配字符串并返回一些信息</span><br><span class="line">String#replace   // 对匹配到的字符串进行替换，返回修改后的字符串</span><br><span class="line"><span class="comment">// 正则两个</span></span><br><span class="line">RegExp#test      // 匹配字符串是否有符合正则的部分</span><br><span class="line">RegExp#exec      // 匹配字符串，并返回相关信息</span><br></pre></td></tr></table></figure>
 <h2 id="1-String-search"><a href="#1-String-search" class="headerlink" title="1.String#search"></a>1.String#search</h2><p>语法：str.search(regexp)</p>
 <p>定义：正则去匹配字符串，如果匹配成功，就返回匹配成功的位置，匹配失败就返回-1.</p>
 <figure class="highlight js"><figcaption><span>search</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d/</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"abc123"</span></span><br><span class="line"><span class="built_in">console</span>.log( string.search(regex) )</span><br><span class="line"><span class="comment">// =&gt; 3</span></span><br></pre></td></tr></table></figure>
 
+<p><strong>注意：</strong> 当传入的参数是字符串时，会把字符串转成正则表达式。</p>
 <h2 id="2-String-split"><a href="#2-String-split" class="headerlink" title="2.String#split"></a>2.String#split</h2><p>语法：str.split(separator, limit)</p>
 <p>定义：split()方法把原字符串分割成子字符串组成数组，并返回该数组。</p>
 <p>两个参数均是可选的，其中 separator 表示分隔符，它可以是字符串也可以是正则表达式。如果忽略 separator，则返回的数组包含一个由原字符串组成的元素。如果 separator 是一个空串，则 str 将会被分割成一个由原字符串中字符组成的数组。limit 表示从返回的数组中截取前 limit 个元素，从而限定返回的数组长度。</p>
@@ -404,7 +409,7 @@
 <li>正则的匹配模式不是为全局匹配：返回匹配到的项，groups：分组，index:找到结果的索引,input:原字符串</li>
 </ol>
 <figure class="highlight js"><figcaption><span>match</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aa22bb313cc444ff"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/(\d+)([a-z]+)(\d+)/</span></span><br><span class="line"><span class="built_in">console</span>.log( str.match( reg ) )</span><br><span class="line"><span class="built_in">console</span>.log( str.match( reg1 ) )</span><br><span class="line"><span class="comment">// =&gt; ["22", "313", "444"]</span></span><br><span class="line"><span class="comment">// =&gt; ["22bb313", "22", "bb", "313", index: 2, input: "aa22bb313cc444", groups: undefined]</span></span><br></pre></td></tr></table></figure>
-
+<p><strong>注意：</strong> 当传入的参数是字符串时，会把字符串转成正则表达式。</p>
 <h2 id="4-String-replace"><a href="#4-String-replace" class="headerlink" title="4.String#replace"></a>4.String#replace</h2><p>语法：str.replace( regexp | substr, newSubStr | function )</p>
 <p>参数说明：</p>
 <ol>
@@ -442,7 +447,9 @@
 </li>
 </ul>
 <p>好了，下面详细的介绍下各种操作的详细情况。</p>
-<h1 id="1-增"><a href="#1-增" class="headerlink" title="1.增"></a>1.增</h1><p>当向字符串中添加字符串时，有两种添加情况，一种：添加到匹配的字符串前，另一种是：添加到匹配的字符串后面。</p>
+<h1 id="1-增"><a href="#1-增" class="headerlink" title="1.增"></a>1.增</h1><p>相信你一定遇到过往字符串里面加字符串的情况，你一般是怎么操作的呢？我们来分析下：</p>
+<p>当向字符串中添加字符串时，有两种添加情况，一种：添加到匹配的字符串前，另一种是：添加到匹配的字符串后面。</p>
+<p>是吧？？好，开始操作吧！</p>
 <h2 id="添加到匹配字符串前："><a href="#添加到匹配字符串前：" class="headerlink" title="添加到匹配字符串前："></a>添加到匹配字符串前：</h2><p>我们可以使用正则位置匹配表达式：(?=p)，正向肯定预查，其中p是一个子模式，即p前面的位置。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello"</span>.replace(<span class="regexp">/(?=ll)/g</span>, <span class="string">'#'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">// =&gt; "he#llo"</span></span><br></pre></td></tr></table></figure>
 <p>也可以直接使用函数操作：</p>
@@ -509,7 +516,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-04T22:37:07+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-04T23:16:16+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年1月4日</p>
