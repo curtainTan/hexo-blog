@@ -33,7 +33,9 @@
   
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
   
 
   <script>
@@ -44,7 +46,7 @@
 
   
   
-<link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
 </head>
 
 <body>
@@ -195,18 +197,18 @@
 			
 			<ul class='switcher h-list'>
 				
-					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)' target="_blank" rel="noopener"></a></li>
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
 				
-				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)' target="_blank" rel="noopener"></a></li>
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
 			</ul>
 		</div>
 
 		<div class='nav-sub container container--flex'>
 			<a class="logo flat-box"></a>
 			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)' target="_blank" rel="noopener"></a></li>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
         
-          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)' target="_blank" rel="noopener"></a></li>
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
         
 			</ul>
 		</div>
@@ -305,7 +307,7 @@
             
   <div class='new-meta-item author'>
     
-      <a href="/http:/blog.curtaintan.club" rel="nofollow">
+      <a href="http://blog.curtaintan.club" rel="nofollow">
         
           <i class="fas fa-user" aria-hidden="true"></i>
         
@@ -402,7 +404,7 @@
 <li><strong>定义变量的顺序，以及作用：</strong></li>
 </ol>
 <p>所有功能变量：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isDown = <span class="literal">false</span>                  <span class="comment">// 标志鼠标是否按下      绘图三步和剪切三步走时，后面两个事件触发的标志</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> points = []                     <span class="comment">// 滑动时收集的点       绘画三步走时，为了时画的线光滑，记录点，减短画线的距离</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> beginPoint = <span class="literal">null</span>               <span class="comment">// 开始的点            绘画三步走时使用</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">----这三个为一组，画线三人组，为了让画的线更为光滑</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentMenu = <span class="string">"icon-pen"</span>        <span class="comment">// 初始按钮            底部按钮选中的按钮</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentColor = <span class="number">0</span>                <span class="comment">// 初始颜色的index     颜色选择，默认第一个</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> paintingModal = <span class="string">"pen"</span>           <span class="comment">// 画笔模式   line||pen||cut</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">----按钮功能三人组，按钮选中标记，颜色选中，画画的模式，切换前面画笔和画直线的模式</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> lookModal = <span class="literal">false</span>               <span class="comment">// 鼠标模式             按钮第一个功能，此模式不能绘画，只能看</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cuted = <span class="literal">false</span>                   <span class="comment">// 标记裁剪时，是否已经裁剪       裁剪后，防止后续的操作再次触发裁剪操作 </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">----鼠标模式和剪切模式的定义</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animationTimer = <span class="literal">null</span>           <span class="comment">// 弹幕动画的timer               动画的timer</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> barrageArray = []               <span class="comment">// 保存弹幕的数组</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> globalPoint = &#123; <span class="attr">x</span> : <span class="number">0</span>, <span class="attr">y</span> : <span class="number">0</span> &#125;  <span class="comment">// canvas上鼠标的点        ---弹幕时使用</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">----弹幕三人组  globalPoint用来标记鼠标在canvas中的坐标，用于判断鼠标是否触碰到弹幕上</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现撤销和重做的功能</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> canvasHistory = []                    <span class="comment">// canvas数据，在每次画线和橡皮檫使用后保存数据</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> step = <span class="number">0</span>                              <span class="comment">// 画笔抬起的步数，清空时，步数也清空</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">----撤销/前进二人组，画笔抬起时，把画布信息用getImageData存入canvasHistory，用step完成前进和撤销的功能</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> penAttibutes = &#123;                       <span class="comment">// 画笔数据，</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">    width : <span class="number">2</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    lineCap : <span class="string">"round"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">    lineJoin : <span class="string">"round"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">    strokeStyle: <span class="string">"#000"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">    fillStyle: <span class="string">"#000"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">    globalCompositeOperation: <span class="string">"source-over"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">    globalAlpha : <span class="number">1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isDown = <span class="literal">false</span>                  <span class="comment">// 标志鼠标是否按下      绘图三步和剪切三步走时，后面两个事件触发的标志</span></span><br><span class="line"><span class="keyword">var</span> points = []                     <span class="comment">// 滑动时收集的点       绘画三步走时，为了时画的线光滑，记录点，减短画线的距离</span></span><br><span class="line"><span class="keyword">var</span> beginPoint = <span class="literal">null</span>               <span class="comment">// 开始的点            绘画三步走时使用</span></span><br><span class="line"></span><br><span class="line">----这三个为一组，画线三人组，为了让画的线更为光滑</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> currentMenu = <span class="string">"icon-pen"</span>        <span class="comment">// 初始按钮            底部按钮选中的按钮</span></span><br><span class="line"><span class="keyword">var</span> currentColor = <span class="number">0</span>                <span class="comment">// 初始颜色的index     颜色选择，默认第一个</span></span><br><span class="line"><span class="keyword">var</span> paintingModal = <span class="string">"pen"</span>           <span class="comment">// 画笔模式   line||pen||cut</span></span><br><span class="line"></span><br><span class="line">----按钮功能三人组，按钮选中标记，颜色选中，画画的模式，切换前面画笔和画直线的模式</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> lookModal = <span class="literal">false</span>               <span class="comment">// 鼠标模式             按钮第一个功能，此模式不能绘画，只能看</span></span><br><span class="line"><span class="keyword">var</span> cuted = <span class="literal">false</span>                   <span class="comment">// 标记裁剪时，是否已经裁剪       裁剪后，防止后续的操作再次触发裁剪操作 </span></span><br><span class="line"></span><br><span class="line">----鼠标模式和剪切模式的定义</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> animationTimer = <span class="literal">null</span>           <span class="comment">// 弹幕动画的timer               动画的timer</span></span><br><span class="line"><span class="keyword">var</span> barrageArray = []               <span class="comment">// 保存弹幕的数组</span></span><br><span class="line"><span class="keyword">var</span> globalPoint = &#123; <span class="attr">x</span> : <span class="number">0</span>, <span class="attr">y</span> : <span class="number">0</span> &#125;  <span class="comment">// canvas上鼠标的点        ---弹幕时使用</span></span><br><span class="line"></span><br><span class="line">----弹幕三人组  globalPoint用来标记鼠标在canvas中的坐标，用于判断鼠标是否触碰到弹幕上</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现撤销和重做的功能</span></span><br><span class="line"><span class="keyword">let</span> canvasHistory = []                    <span class="comment">// canvas数据，在每次画线和橡皮檫使用后保存数据</span></span><br><span class="line"><span class="keyword">let</span> step = <span class="number">0</span>                              <span class="comment">// 画笔抬起的步数，清空时，步数也清空</span></span><br><span class="line"></span><br><span class="line">----撤销/前进二人组，画笔抬起时，把画布信息用getImageData存入canvasHistory，用step完成前进和撤销的功能</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> penAttibutes = &#123;                       <span class="comment">// 画笔数据，</span></span><br><span class="line">    width : <span class="number">2</span>,</span><br><span class="line">    lineCap : <span class="string">"round"</span>,</span><br><span class="line">    lineJoin : <span class="string">"round"</span>,</span><br><span class="line">    strokeStyle: <span class="string">"#000"</span>,</span><br><span class="line">    fillStyle: <span class="string">"#000"</span>,</span><br><span class="line">    globalCompositeOperation: <span class="string">"source-over"</span>,</span><br><span class="line">    globalAlpha : <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="开发中遇到的难点与重点与解决方案："><a href="#开发中遇到的难点与重点与解决方案：" class="headerlink" title="开发中遇到的难点与重点与解决方案："></a>开发中遇到的难点与重点与解决方案：</h2><ol>
 <li>保存历史记录使用api对比</li>
@@ -552,30 +554,10 @@
                       <span class="art-item-left">
                           <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                           <h4>
-                              <a href="/2019/12/02/%E5%8D%9A%E5%AE%A2%E5%86%8D%E6%AC%A1%E5%90%AF%E7%A8%8B/" rel="prev" title="博客再次启程">
+                              <a href="/2019/08/14/%E6%AD%A3%E5%88%99%E5%B0%8F%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bapi%E9%80%9F%E5%AD%A6/" rel="prev" title="正则小记（一）之api速学">
                                 
-                                    博客再次启程
+                                    正则小记（一）之api速学
                                 
-                              </a>
-                          </h4>
-                          
-                              
-                              <h6 class="tags">
-                                  <a class="tag" href="/tags/%E7%94%9F%E6%B4%BB/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 生活</a>
-                              </h6>
-                          
-                      </span>
-                  </section>
-              
-              
-                  <section class="next">
-                      <span class="art-item-right" aria-hidden="true">
-                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                          <h4>
-                              <a href="/2019/08/14/%E6%AD%A3%E5%88%99%E5%B0%8F%E8%AE%B0%E4%B9%8Bapi%E9%80%9F%E5%AD%A6/" rel="prev" title="正则小记之api速学">
-                                  
-                                      正则小记之api速学
-                                  
                               </a>
                           </h4>
                           
@@ -586,6 +568,7 @@
                           
                       </span>
                   </section>
+              
               
           </div>
       
@@ -731,7 +714,7 @@
 <header class='pure'>
   <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
   
-    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer noopener" href="javascript:void(0)" target="_blank"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
   
 </header>
 
@@ -825,7 +808,7 @@
 
       <script>setLoadingBarProgress(60);</script>
     </div>
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)' target="_blank" rel="noopener"></a>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
 
@@ -888,7 +871,9 @@
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   
     
-      <script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
     
   
   <script>
@@ -917,10 +902,14 @@
 
 
 
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
 
 
 

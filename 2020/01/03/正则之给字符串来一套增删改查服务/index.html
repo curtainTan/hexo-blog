@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>正则之给字符串来一套增删改查服务 | curTain</title>
+  
+  <meta name="keywords" content="curtain的小站">
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="curTain">
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://518test.curtaintan.club/blog.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>curTain</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/"
+            
+              rel="nofollow"
+            
+            
+            id="archives">
+            <i class='fas fa-archive fa-fw'></i>&nbsp;归档
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          curTain
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;首页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/projects/"
+                  
+                  
+                  id="projects">
+									<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/01/03/%E6%AD%A3%E5%88%99%E4%B9%8B%E7%BB%99%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%A5%E4%B8%80%E5%A5%97%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%9C%8D%E5%8A%A1/">
+        正则之给字符串来一套增删改查服务
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://blog.curtaintan.club" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>tanTantan</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-01-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>前端</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="https://image.gslb.dawnlab.me/2fb5e7025b9b0664bf98f9007c370b19.jpg" alt=""></p>
+<p>想学习正则的操作吗？？那就进来吧…</p>
+<a id="more"></a>
+
+<h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><blockquote><p>正则表达式是匹配模式，要么匹配字符，要么匹配位置。请记住这句话。</p>
+<footer><strong>@老姚</strong><cite><a href="https://juejin.im/post/5965943ff265da6c30653879" target="_blank" rel="noopener">JS正则表达式完整教程（略长）</a></cite></footer></blockquote>
+
+<p>老姚对正则的评价非常到位，我很赞同，希望你能记住，这篇文章就是在匹配的基础上做的相关的操作。</p>
+<p>如果你没有正则的基础，请不要害怕，这篇文章会一步一步的带你了解正则相关的操作，每个操作的案例相对简单易理解，但是展示出了每个操作的作用。在阅读文章前，请仔细的阅读前置知识，了解相关api的作用。</p>
+<p>如果你学习过正则，对正则有一定了解，那么这篇文章非常适合你，这篇文章可以加深你对正则用法的理解。</p>
+<p>如果你是正则高手，文中有写的不对的和写得不妥当的，也请指出错误。</p>
+<p>本文不涉及正则表达式的书写教学，但是并影响你对每个增删查改操作的理解。如果你想学习正则表达式的书写，在文章后面我有推荐学习正则的优秀文章。</p>
+<p>相信你看过这篇文章后，会提高你对正则的理解与学习正则的兴趣。加油！</p>
+<h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>在文章开始前，我们需要了解与正则相关的6个方法：如果你对下面六个方法非常熟悉了，你可以直接从前置知识的总结处开始看（￣︶￣）↗</p>
+<figure class="highlight"><figcaption><span>与正则相关的6个方法</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串四个</span></span><br><span class="line">String#search    // 查找匹配到字符串的位置，返回位置index</span><br><span class="line">String#split     // 以正则匹配到的字符串截断原字符串，返回数组</span><br><span class="line">String#match     // 匹配字符串并返回一些信息</span><br><span class="line">String#replace   // 对匹配到的字符串进行替换，返回修改后的字符串</span><br><span class="line"><span class="comment">// 正则两个</span></span><br><span class="line">RegExp#test      // 匹配字符串是否有符合正则的部分</span><br><span class="line">RegExp#exec      // 匹配字符串，并返回相关信息</span><br></pre></td></tr></table></figure>
+<h2 id="1-String-search"><a href="#1-String-search" class="headerlink" title="1.String#search"></a>1.String#search</h2><p>语法：str.search(regexp)</p>
+<p>定义：正则去匹配字符串，如果匹配成功，就返回匹配成功的位置，匹配失败就返回-1.</p>
+<figure class="highlight js"><figcaption><span>search</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d/</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"abc123"</span></span><br><span class="line"><span class="built_in">console</span>.log( string.search(regex) )</span><br><span class="line"><span class="comment">// =&gt; 3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-String-split"><a href="#2-String-split" class="headerlink" title="2.String#split"></a>2.String#split</h2><p>语法：str.split(separator, limit)</p>
+<p>定义：split()方法把原字符串分割成子字符串组成数组，并返回该数组。</p>
+<p>两个参数均是可选的，其中 separator 表示分隔符，它可以是字符串也可以是正则表达式。如果忽略 separator，则返回的数组包含一个由原字符串组成的元素。如果 separator 是一个空串，则 str 将会被分割成一个由原字符串中字符组成的数组。limit 表示从返回的数组中截取前 limit 个元素，从而限定返回的数组长度。</p>
+<figure class="highlight js"><figcaption><span>split</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\D/</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"2017/06/26"</span>.split(regex) )</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"2017.06.26"</span>.split(regex, <span class="number">2</span>) )</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"2017-06-26"</span>.split(regex) )</span><br><span class="line"><span class="comment">// =&gt; ["2017", "06", "26"]</span></span><br><span class="line"><span class="comment">// =&gt; ["2017", "06"]</span></span><br><span class="line"><span class="comment">// =&gt; ["2017", "06", "26"]</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-String-match"><a href="#3-String-match" class="headerlink" title="3.String#match"></a>3.String#match</h2><p>语法：str.match(regexp)</p>
+<p>定义：查找出与正则相匹配的项。</p>
+<p>返回值：</p>
+<ol>
+<li>正则的匹配模式为全局匹配：返回匹配的数组或则null</li>
+<li>正则的匹配模式不是为全局匹配：返回匹配到的项，groups：分组，index:找到结果的索引,input:原字符串</li>
+</ol>
+<figure class="highlight js"><figcaption><span>match</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aa22bb313cc444ff"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/(\d+)([a-z]+)(\d+)/</span></span><br><span class="line"><span class="built_in">console</span>.log( str.match( reg ) )</span><br><span class="line"><span class="built_in">console</span>.log( str.match( reg1 ) )</span><br><span class="line"><span class="comment">// =&gt; ["22", "313", "444"]</span></span><br><span class="line"><span class="comment">// =&gt; ["22bb313", "22", "bb", "313", index: 2, input: "aa22bb313cc444", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-String-replace"><a href="#4-String-replace" class="headerlink" title="4.String#replace"></a>4.String#replace</h2><p>语法：str.replace( regexp | substr, newSubStr | function )</p>
+<p>参数说明：</p>
+<ol>
+<li>regexp: 一个 RegExp 对象. 该正则所匹配的内容会被第二个参数的返回值替换掉。</li>
+<li>substr: 一个要被 newSubStr 替换的字符串.</li>
+<li>newSubStr: 替换掉第一个参数在原字符串中的匹配部分. 该字符串中可以内插一些特殊的变量名.</li>
+<li>function: 用来创建新子字符串的函数，该子字符串用于替换与给定regexp或的匹配项substr。</li>
+</ol>
+<p>参数function的参数说明：</p>
+<ul>
+<li>第一个参数：整个正则或者字符串匹配到的字符串，</li>
+<li>中间的参数：依次为正则中分组匹配到的字符串，</li>
+<li>倒数第二个参数：找到结果的索引</li>
+<li>倒数第一个参数：原字符串</li>
+</ul>
+<figure class="highlight js"><figcaption><span>str.replace( regexp, function )</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aa22bb313cc444ff"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\d+)(\w&#123;1&#125;)/g</span></span><br><span class="line">str = str.replace( reg, <span class="function"><span class="keyword">function</span>(<span class="params"> str, s1, s2, index, sour </span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"参数列表："</span>, str, s1, s2, index, sour )</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="built_in">arguments</span> )</span><br><span class="line">    <span class="keyword">return</span> s1 + <span class="string">"---"</span> + s2</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log( str )</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.gslb.dawnlab.me/1ece30eabe0919fd6e5b157856349d48.png" alt=""></p>
+<h2 id="5-RegExp-test"><a href="#5-RegExp-test" class="headerlink" title="5.RegExp#test"></a>5.RegExp#test</h2><p>语法：reg.test( str )</p>
+<p>说明：正则去匹配字符串，匹配成功，返回true，匹配失败，返回false</p>
+<figure class="highlight js"><figcaption><span>reg.test()</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/\d/</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">"abc123"</span></span><br><span class="line"><span class="built_in">console</span>.log( regex.test(string) )</span><br><span class="line"><span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-RegExp-exec"><a href="#6-RegExp-exec" class="headerlink" title="6.RegExp#exec"></a>6.RegExp#exec</h2><p>语法：reg.exec( str )</p>
+<p>说明：exec() 方法在一个指定字符串中执行一个搜索匹配。返回一个结果数组或 null。</p>
+<figure class="highlight js"><figcaption><span>reg.exec( str )</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aa22bb313cc444ff"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\d+)(\w&#123;1&#125;)/g</span></span><br><span class="line"><span class="built_in">console</span>.log( reg.exec( str ))</span><br><span class="line"><span class="built_in">console</span>.log( reg.exec( str ))</span><br><span class="line"><span class="built_in">console</span>.log( reg.exec( str ))</span><br></pre></td></tr></table></figure>
+<p><img src="https://image.gslb.dawnlab.me/50cc8a9a0d72e4a3c988a16f9cfd5b9b.png" alt=""></p>
+<p><strong>注意</strong><br>当使用全局模式时，exec函数会把这次匹配到的位置存放在当前正则reg的lastIndex里面，下次调用时，会从这次的最后位置开始查找。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上面简单的案例与说明，相信你已经可以看出我们要进行的增删改查操作应该用哪个方法了吧？我们来总结一下：</p>
+<ul>
+<li><p>增：6个方法中，只有replace可以对匹配到的字符串进行操作，所以当我们需要在字符串中增加内容时，我们就可以使用replace方法。</p>
+</li>
+<li><p>删：6个方法中，split方法以匹配到的字符串为断点截断字符串返回数组，replace也可以对匹配到的字符串进行操作，所以删除可以使用split和replace方法。</p>
+</li>
+<li><p>查：6个方法中，除了split方法，都或多或少可以得到一些匹配到字符串的信息。</p>
+</li>
+<li><p>改：6个方法中，只有replace方法可以操作匹配到的字符串，所以修改只有用replace方法。</p>
+</li>
+</ul>
+<p>好了，下面详细的介绍下各种操作的详细情况。</p>
+<h1 id="1-增"><a href="#1-增" class="headerlink" title="1.增"></a>1.增</h1><p>当向字符串中添加字符串时，有两种添加情况，一种：添加到匹配的字符串前，另一种是：添加到匹配的字符串后面。</p>
+<h2 id="添加到匹配字符串前："><a href="#添加到匹配字符串前：" class="headerlink" title="添加到匹配字符串前："></a>添加到匹配字符串前：</h2><p>我们可以使用正则位置匹配表达式：(?=p)，正向肯定预查，其中p是一个子模式，即p前面的位置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello"</span>.replace(<span class="regexp">/(?=ll)/g</span>, <span class="string">'#'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">// =&gt; "he#llo"</span></span><br></pre></td></tr></table></figure>
+<p>也可以直接使用函数操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello"</span>.replace(<span class="regexp">/(?=ll)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params"> str </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"#"</span> + str</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">// =&gt; "he#llo"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="添加到匹配字符串后："><a href="#添加到匹配字符串后：" class="headerlink" title="添加到匹配字符串后："></a>添加到匹配字符串后：</h2><p>我们可以使用正则位置匹配表达式：(?&lt;=p)，反向肯定预查，就是p后面的位置。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello"</span>.replace(<span class="regexp">/(?&lt;=ll)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params"> str </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"#"</span> + str</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">// =&gt; "hell#o"</span></span><br></pre></td></tr></table></figure>
+<p>当然，你也可以直接使用replace的函数操作完成。</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li><p>在整个字符串前和后面添加，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello"</span>.replace(<span class="regexp">/^|$/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params"> str </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"#"</span> + str</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">// =&gt; "#hello#"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在每个单词的前后面添加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="string">"hello world"</span>.replace(<span class="regexp">/^|$/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params"> str </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"#"</span> + str</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">// =&gt; "#hello# #world#"</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="2-删："><a href="#2-删：" class="headerlink" title="2.删："></a>2.删：</h1><p>经过我们前面的总结，删除可以使用String.split和String.replace完成。</p>
+<h2 id="String-splite"><a href="#String-splite" class="headerlink" title="String.splite"></a>String.splite</h2><p>可以知道，使用splite方法返回的是一个数组，操作后，我们可以使用join()函数，返回字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aa22bb313cc444ff"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/</span></span><br><span class="line"><span class="built_in">console</span>.log( str.split( reg ).join(<span class="string">""</span>) )</span><br><span class="line"><span class="comment">// =&gt; "aabbccff"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="String-replace"><a href="#String-replace" class="headerlink" title="String.replace"></a>String.replace</h2><p>使用replace就非常简单了，我们可以把第二个参数传 <code>&quot;&quot;</code> ,也可以用函数操作，返回 <code>&quot;&quot;</code>即可。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aa22bb313cc444ff"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span>       <span class="comment">// 全局模式，不加全局模式，只会替换一次</span></span><br><span class="line">str = str.replace( reg, <span class="string">""</span> )</span><br><span class="line"><span class="built_in">console</span>.log( str )</span><br><span class="line"><span class="comment">// =&gt; "aabbccff"</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-查"><a href="#3-查" class="headerlink" title="3.查"></a>3.查</h1><p>查找可以分为两类：一种是需要详细结果的，一种是不需要详细结果的。</p>
+<h2 id="不需要详细结果"><a href="#不需要详细结果" class="headerlink" title="不需要详细结果"></a>不需要详细结果</h2><p>不需要详细结果就是返回 <code>true</code> 和 <code>false</code> 就可以了。这里可以使用test</p>
+<figure class="highlight js"><figcaption><span>验证电话号码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^1[345789]\d&#123;9&#125;$/</span></span><br><span class="line"><span class="keyword">var</span> res = reg.test( <span class="string">"13882628333"</span> )</span><br><span class="line"><span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="需要详细结果"><a href="#需要详细结果" class="headerlink" title="需要详细结果"></a>需要详细结果</h2><h3 id="使用String-match"><a href="#使用String-match" class="headerlink" title="使用String.match()"></a>使用String.match()</h3><figure class="highlight js"><figcaption><span>获取时间</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^([0-9]&#123;4&#125;)-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"2017-06-10"</span>.match( reg ) )</span><br><span class="line"><span class="comment">// =&gt; ["2017-06-10", "2017", "06", "10", index: 0, input: "2017-06-10", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>获取类名</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/class=\"(.*)?"/</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="string">'&lt;div id="container" class="main box"&gt;&lt;/div&gt;'</span></span><br><span class="line"><span class="built_in">console</span>.log( string.match( reg ))</span><br><span class="line"><span class="comment">// =&gt; ["class="main box"", "main box", index: 20, input: "&lt;div id="container" class="main box"&gt;&lt;/div&gt;", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>match获取全部的颜色代码（正则使用g全局匹配模式）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/#([0-9a-fA-F]&#123;6&#125;|[0-9a-fA-F]&#123;3&#125;)/g</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"#ffbbad #Fc01DF #FFF #ffE"</span></span><br><span class="line"><span class="built_in">console</span>.log( str.match( reg ) )</span><br><span class="line"><span class="comment">// =&gt; ["#ffbbad", "#Fc01DF", "#FFF", "#ffE"]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用reg-exec"><a href="#使用reg-exec" class="headerlink" title="使用reg.exec()"></a>使用reg.exec()</h3><figure class="highlight js"><figcaption><span>获取时间</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/^([0-9]&#123;4&#125;)-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/</span></span><br><span class="line"><span class="built_in">console</span>.log( reg.exec( <span class="string">"2017-06-10"</span> ) )</span><br><span class="line"><span class="comment">// =&gt; ["2017-06-10", "2017", "06", "10", index: 0, input: "2017-06-10", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>获取类名</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/class=\"(.*)?"/</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'&lt;div id="container" class="main box"&gt;&lt;/div&gt;'</span></span><br><span class="line"><span class="built_in">console</span>.log( reg.exec( str ) )</span><br><span class="line"><span class="comment">// =&gt; ["class="main box"", "main box", index: 20, input: "&lt;div id="container" class="main box"&gt;&lt;/div&gt;", groups: undefined]</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>exec获取全部的颜色代码（正则使用g全局匹配模式）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/#([0-9a-fA-F]&#123;6&#125;|[0-9a-fA-F]&#123;3&#125;)/g</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"#ffbbad #Fc01DF #FFF #ffE"</span></span><br><span class="line"><span class="keyword">var</span> arr = []</span><br><span class="line"><span class="keyword">var</span> temp</span><br><span class="line"><span class="keyword">while</span>( temp = reg.exec( str ) )&#123;</span><br><span class="line">    arr.push( temp[<span class="number">0</span>] )</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( arr )</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-改"><a href="#4-改" class="headerlink" title="4.改"></a>4.改</h1><p>经过前面的终结，我们知道只有replace可以进行修改操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"aa22bb313cc444ff"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\d+)(\w&#123;1&#125;)/g</span></span><br><span class="line">str = str.replace( reg, <span class="function"><span class="keyword">function</span>(<span class="params"> str, s1, s2, index, sour </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s1 + <span class="string">"---"</span> + s2</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log( str )</span><br><span class="line"><span class="comment">// =&gt; "aa22---bb313---cc444---ff"</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>写下这篇文章，就是想让自己梳理下正则相关的api与用法，加强一下自己写正则的信心。</p>
+<p>看了这篇文章，你是否对正则又有了新的理解呢？对自己写正则是否又增加了几分信心呢？</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>本文主要讲述了正则的相关用法，考虑到正则新手，所以每个操作都只是做的很简单的案例，正则表达式大都很简单，但是，我相信，看了本文，你会更有信心去学习正则。</p>
+<h2 id="学习正则："><a href="#学习正则：" class="headerlink" title="学习正则："></a>学习正则：</h2><p>如果你想学习正则表达式的书写，我这里将推荐一些好的文章给你：</p>
+<p><a href="https://juejin.im/post/5965943ff265da6c30653879#heading-0" target="_blank" rel="noopener">老姚-JS正则表达式完整教程（略长）</a>     非常推荐的一篇文章，我就是看这篇文章学习的正则，适合有一点正则基础的同学</p>
+<p><a href="https://juejin.im/post/59b5e50f51882519777c4815" target="_blank" rel="noopener">考拉海前端团队—JS 的正则表达式</a>    条理清晰–适合初学者学习正则的书写</p>
+<p>文章在精不在多，这两篇文章对初学正则的同学非常友好，能引导你写出优秀的正则表达式，再结合这篇文章对正则表达式的运用，相信你会对正则的运用游刃有余。</p>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p><a href="https://juejin.im/post/5965943ff265da6c30653879#heading-0" target="_blank" rel="noopener">老姚-JS正则表达式完整教程（略长）</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match" target="_blank" rel="noopener">MDN-String.prototype.match()</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="noopener">MDN-String.prototype.replace()</a></p>
+<h2 id="共勉"><a href="#共勉" class="headerlink" title="共勉"></a>共勉</h2><p>写下这篇文章，希望对你有帮助，与君共勉！</p>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-04T22:37:07+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年1月4日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%AD%A3%E5%88%99/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>正则</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/01/03/%E6%AD%A3%E5%88%99%E4%B9%8B%E7%BB%99%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%A5%E4%B8%80%E5%A5%97%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%9C%8D%E5%8A%A1/&title=正则之给字符串来一套增删改查服务 | curTain&summary=
+想学习正则的操作吗？？那就进来吧…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/01/03/%E6%AD%A3%E5%88%99%E4%B9%8B%E7%BB%99%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%A5%E4%B8%80%E5%A5%97%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%9C%8D%E5%8A%A1/&title=正则之给字符串来一套增删改查服务 | curTain&summary=
+想学习正则的操作吗？？那就进来吧…"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/12/02/%E5%8D%9A%E5%AE%A2%E5%86%8D%E6%AC%A1%E5%90%AF%E7%A8%8B/" rel="prev" title="博客再次启程">
+                                  
+                                      博客再次启程
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E7%94%9F%E6%B4%BB/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 生活</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '正则之给字符串来一套增删改查服务',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://speed.moe/images/94023bd1a60711bea47670702ff87934.jpg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1948750473@qq.com"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/curtainTan"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=109496832"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#导读"><span class="toc-text">导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前置知识"><span class="toc-text">前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-String-search"><span class="toc-text">1.String#search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-String-split"><span class="toc-text">2.String#split</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-String-match"><span class="toc-text">3.String#match</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-String-replace"><span class="toc-text">4.String#replace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-RegExp-test"><span class="toc-text">5.RegExp#test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-RegExp-exec"><span class="toc-text">6.RegExp#exec</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-增"><span class="toc-text">1.增</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加到匹配字符串前："><span class="toc-text">添加到匹配字符串前：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加到匹配字符串后："><span class="toc-text">添加到匹配字符串后：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充"><span class="toc-text">补充</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-删："><span class="toc-text">2.删：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#String-splite"><span class="toc-text">String.splite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-replace"><span class="toc-text">String.replace</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-查"><span class="toc-text">3.查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不需要详细结果"><span class="toc-text">不需要详细结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#需要详细结果"><span class="toc-text">需要详细结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用String-match"><span class="toc-text">使用String.match()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用reg-exec"><span class="toc-text">使用reg.exec()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-改"><span class="toc-text">4.改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-text">后记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结-1"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习正则："><span class="toc-text">学习正则：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料："><span class="toc-text">参考资料：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#共勉"><span class="toc-text">共勉</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:1948750473@qq.com"
+            class="social fab fa-qq flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/curtainTan"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=109496832"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
