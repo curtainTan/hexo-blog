@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vscode相关配置</title>
+      <link href="/2020/01/06/vscode%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/"/>
+      <url>/2020/01/06/vscode%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<p>记录自己常用的一些配置…</p><a id="more"></a><h2 id="打开setting-json配置文件"><a href="#打开setting-json配置文件" class="headerlink" title="打开setting.json配置文件"></a>打开setting.json配置文件</h2><p><img src="https://image.gslb.dawnlab.me/c219e2ba7704d878cc8270f905269137.png" alt=""></p><h2 id="VSCode实现用Ctrl-滚轮实现代码的缩放"><a href="#VSCode实现用Ctrl-滚轮实现代码的缩放" class="headerlink" title="VSCode实现用Ctrl+滚轮实现代码的缩放"></a>VSCode实现用Ctrl+滚轮实现代码的缩放</h2><p>配置文件如下：</p><p>在文件–&gt;首选项–&gt;设置–&gt;用户设置中添加如下代码：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"editor.mouseWheelZoom": true</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vsCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一个小demo弄懂vue的$nextTick</title>
       <link href="/2020/01/06/%E4%B8%80%E4%B8%AA%E5%B0%8Fdemo%E5%BC%84%E6%87%82vue%E7%9A%84$nextTick/"/>
       <url>/2020/01/06/%E4%B8%80%E4%B8%AA%E5%B0%8Fdemo%E5%BC%84%E6%87%82vue%E7%9A%84$nextTick/</url>
