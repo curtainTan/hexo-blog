@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>思路清晰---写一个深拷贝 | curTain</title>
+  
+  <meta name="keywords" content="curtain的小站">
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="curTain">
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://518test.curtaintan.club/blog.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>curTain</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/"
+            
+              rel="nofollow"
+            
+            
+            id="archives">
+            <i class='fas fa-archive fa-fw'></i>&nbsp;归档
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          curTain
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;首页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/projects/"
+                  
+                  
+                  id="projects">
+									<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/01/31/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%86%99%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D/">
+        思路清晰---写一个深拷贝
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://blog.curtaintan.club" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>tanTantan</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-01-31</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>前端</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>写一个深拷贝，考虑数组、对象和循环引用。</p>
+<a id="more"></a>
+
+<h1 id="1-准备两个对象"><a href="#1-准备两个对象" class="headerlink" title="1.准备两个对象"></a>1.准备两个对象</h1><ul>
+<li>无循环引用的对象</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = &#123;</span><br><span class="line">    field1: <span class="string">"string"</span>,</span><br><span class="line">    field2: <span class="number">33</span>,</span><br><span class="line">    field3: <span class="literal">undefined</span>,</span><br><span class="line">    field4: <span class="literal">null</span>,</span><br><span class="line">    field5: &#123;</span><br><span class="line">        child: <span class="string">"child"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    field6: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ],</span><br><span class="line">    field7: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="keyword">this</span>.field1 )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>有循环引用的对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = &#123;</span><br><span class="line">    field1: <span class="string">"string"</span>,</span><br><span class="line">    field2: <span class="number">33</span>,</span><br><span class="line">    field3: <span class="literal">undefined</span>,</span><br><span class="line">    field4: <span class="literal">null</span>,</span><br><span class="line">    field5: &#123;</span><br><span class="line">        child: <span class="string">"child"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    field6: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ],</span><br><span class="line">    field7: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="keyword">this</span>.field1 )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">target.target = target</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="2-使用-JSON-parse-JSON-stringify"><a href="#2-使用-JSON-parse-JSON-stringify" class="headerlink" title="2.使用 JSON.parse(JSON.stringify())"></a>2.使用 JSON.parse(JSON.stringify())</h1><h2 id="2-1复制一个无循环引用的对象，代码如下："><a href="#2-1复制一个无循环引用的对象，代码如下：" class="headerlink" title="2.1复制一个无循环引用的对象，代码如下："></a>2.1复制一个无循环引用的对象，代码如下：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = &#123;</span><br><span class="line">    field1: <span class="string">"string"</span>,</span><br><span class="line">    field2: <span class="number">33</span>,</span><br><span class="line">    field3: <span class="literal">undefined</span>,</span><br><span class="line">    field4: <span class="literal">null</span>,</span><br><span class="line">    field5: &#123;</span><br><span class="line">        child: <span class="string">"child"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    field6: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ],</span><br><span class="line">    field7: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="keyword">this</span>.field1 )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> res = <span class="built_in">JSON</span>.parse( <span class="built_in">JSON</span>.stringify( target ) )</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"target: "</span>, target )</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"res: "</span>, res )</span><br></pre></td></tr></table></figure>
+
+<p>得到的结果是：</p>
+<p><fancybox><img src="https://s2.ax1x.com/2020/02/04/1DMAET.png" alt=""></fancybox></p>
+<p><strong>总结</strong>：可见，JSON.stringify() 不能处理undefined和function。</p>
+<h2 id="2-2复制一个循环应用的对象"><a href="#2-2复制一个循环应用的对象" class="headerlink" title="2.2复制一个循环应用的对象"></a>2.2复制一个循环应用的对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = &#123;</span><br><span class="line">    field1: <span class="string">"string"</span>,</span><br><span class="line">    field2: <span class="number">33</span>,</span><br><span class="line">    field3: <span class="literal">undefined</span>,</span><br><span class="line">    field4: <span class="literal">null</span>,</span><br><span class="line">    field5: &#123;</span><br><span class="line">        child: <span class="string">"child"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    field6: [ <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ],</span><br><span class="line">    field7: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="keyword">this</span>.field1 )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">target.target = target</span><br><span class="line"><span class="keyword">var</span> res = <span class="built_in">JSON</span>.parse( <span class="built_in">JSON</span>.stringify( target ) )</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"target: "</span>, target )</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"res: "</span>, res )</span><br></pre></td></tr></table></figure>
+
+<p>结果：<br><fancybox><img src="https://s2.ax1x.com/2020/02/04/1DMOMR.png" alt=""></fancybox></p>
+<p><strong>总结</strong>：可见，JSON.stringify() 不能处理处理循环引用的结构</p>
+<h1 id="3-手写一个深拷贝"><a href="#3-手写一个深拷贝" class="headerlink" title="3.手写一个深拷贝"></a>3.手写一个深拷贝</h1><h2 id="3-1浅拷贝"><a href="#3-1浅拷贝" class="headerlink" title="3.1浅拷贝"></a>3.1浅拷贝</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params"> target </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> cloneTarget = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> key <span class="keyword">in</span> target )&#123;</span><br><span class="line">        cloneTarget[key] = target[key]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cloneTarget</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是一个浅拷贝，没有考虑数组与对象。</p>
+<h2 id="3-2-考虑对象"><a href="#3-2-考虑对象" class="headerlink" title="3.2 考虑对象"></a>3.2 考虑对象</h2><p>我们可以使用 typeof 来判断数据类型：</p>
+<blockquote><p>typeof可以查看数据的类型有 7 种：<br>typeof 12345 === number<br>typeof “999” === string<br>typeof {} === object  null   []<br>typeof undefined === undefined<br>typeof true === boolean<br>typeof symbol(23) === symbol<br>typeof console.log === function</p>
+<footer><strong>typeof小提示</strong></footer></blockquote>
+
+<p>使用递归处理引用对象的拷贝：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params"> target </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="keyword">typeof</span> target === <span class="string">"object"</span> )&#123;</span><br><span class="line">        <span class="keyword">let</span> cloneTarget = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> key <span class="keyword">in</span> target )&#123;</span><br><span class="line">            cloneTarget[key] = clone( target[key] )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cloneTarget</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><fancybox><img src="https://s2.ax1x.com/2020/02/04/1DO80K.png" alt=""></fancybox></p>
+<p><strong>总结</strong></p>
+<p>因为typeof会把数组识别成object，所以，代码还需要再度改进。</p>
+<h2 id="3-3-考虑数组"><a href="#3-3-考虑数组" class="headerlink" title="3.3 考虑数组"></a>3.3 考虑数组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params"> target </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="keyword">typeof</span> target === <span class="string">"object"</span> )&#123;</span><br><span class="line">        <span class="keyword">let</span> cloneTarget = <span class="built_in">Array</span>.isArray( target ) ? [] : &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> key <span class="keyword">in</span> target )&#123;</span><br><span class="line">            cloneTarget[key] = clone( target[key] )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cloneTarget</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试结果：</strong></p>
+<p><fancybox><img src="https://s2.ax1x.com/2020/02/04/1DzROA.png" alt=""></fancybox></p>
+<p><strong>总结：</strong></p>
+<p>可见，数组也可以复制了，下面我们要解决循环引用。</p>
+<h2 id="3-4-考虑循环引用"><a href="#3-4-考虑循环引用" class="headerlink" title="3.4 考虑循环引用"></a>3.4 考虑循环引用</h2><p>当学习过设计模式后，我们会发现，有很多情况存在循环引用的问题，所以，在深拷贝时，循环引用的问题是必须要解决的。</p>
+<p>解决循环引用问题，我们可以额外开辟一个存储空间，来存储当前对象和拷贝对象的对应关系，当需要拷贝当前对象时，先去存储空间中找，有没有拷贝过这个对象，如果有的话直接返回，如果没有的话继续拷贝，这样就巧妙化解的循环引用的问题。</p>
+<p>—引用自：<a href="https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-5" target="_blank" rel="noopener">如何写出一个惊艳面试官的深拷贝?</a></p>
+<p>es6中，有这样一种数据结构叫 Map，他能将对象作为键，这样，我们就能很好的保存对象，并判断对象是否被拷贝过了。</p>
+<p>整体流程如下：</p>
+<ol>
+<li>是对象，检查map中是否存在此对象</li>
+<li>存在—-返回保存在map中的键</li>
+<li>不存在—将值存入map，键的值使用当前cloneTarget（这里其实用什么都行）</li>
+<li>继续递归拷贝，并传入此时的map</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params"> target, map = new Map(</span>) )</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="keyword">typeof</span> target === <span class="string">"object"</span> )&#123;</span><br><span class="line">        <span class="keyword">var</span> cloneTarget = <span class="built_in">Array</span>.isArray( target ) ? [] : &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span>( map.get( target ) )&#123;</span><br><span class="line">            <span class="keyword">return</span> map.get( target )</span><br><span class="line">        &#125;</span><br><span class="line">        map.set( target, cloneTarget )</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> key <span class="keyword">in</span> target )&#123;</span><br><span class="line">            cloneTarget[key] = clone( target[key], map )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cloneTarget</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试结果：<br><fancybox><img src="https://s2.ax1x.com/2020/02/05/1rJSNq.png" alt=""></fancybox></p>
+<p>可以看见，已经解决了循环引用的问题。</p>
+<h2 id="3-5-简单性能优化"><a href="#3-5-简单性能优化" class="headerlink" title="3.5 简单性能优化"></a>3.5 简单性能优化</h2><p>使用 WeakMap 数据结构，将复制对象属性的强引用变为弱引用。</p>
+<p>WeakMap的作用，请参考 <a href="http://es6.ruanyifeng.com/#docs/set-map#WeakMap" target="_blank" rel="noopener">es6 WeakMap</a>.</p>
+<p>修改后的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params"> target, map = new WeakMap(</span>) )</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="keyword">typeof</span> target === <span class="string">"object"</span> )&#123;</span><br><span class="line">        <span class="keyword">var</span> cloneTarget = <span class="built_in">Array</span>.isArray( target ) ? [] : &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span>( map.get( target ) )&#123;</span><br><span class="line">            <span class="keyword">return</span> map.get( target )</span><br><span class="line">        &#125;</span><br><span class="line">        map.set( target, cloneTarget )</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> key <span class="keyword">in</span> target )&#123;</span><br><span class="line">            cloneTarget[key] = clone( target[key], map )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cloneTarget</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，我们就完成了一个简单的深拷贝，解决了对象、数组、循环引用的问题。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>js中还有很多其他的数据结构，比如 Set 和 Map，这里就不做继续的深入了，</p>
+<p>如果你想继续深入深拷贝，你可以参考：<a href="https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-5" target="_blank" rel="noopener">如何写出一个惊艳面试官的深拷贝?</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-5" target="_blank" rel="noopener">如何写出一个惊艳面试官的深拷贝?</a></p>
+<p><a href="http://es6.ruanyifeng.com/#docs/set-map#WeakMap" target="_blank" rel="noopener">阮一峰 es6</a></p>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-05T11:01:52+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年2月5日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>js基础</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/01/31/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%86%99%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=思路清晰---写一个深拷贝 | curTain&summary=写一个深拷贝，考虑数组、对象和循环引用。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/01/31/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%86%99%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D/&title=思路清晰---写一个深拷贝 | curTain&summary=写一个深拷贝，考虑数组、对象和循环引用。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/01/30/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-socket-io%E7%9A%84%E6%80%BB%E7%BB%93/" rel="prev" title="思路清晰---socket.io的总结">
+                                  
+                                      思路清晰---socket.io的总结
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E5%85%A5%E9%97%A8/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 入门</a> <a class="tag" href="/tags/%E6%80%BB%E7%BB%93/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 总结</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '思路清晰---写一个深拷贝',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://speed.moe/images/94023bd1a60711bea47670702ff87934.jpg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1948750473@qq.com"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/curtainTan"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=109496832"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-准备两个对象"><span class="toc-text">1.准备两个对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-使用-JSON-parse-JSON-stringify"><span class="toc-text">2.使用 JSON.parse(JSON.stringify())</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1复制一个无循环引用的对象，代码如下："><span class="toc-text">2.1复制一个无循环引用的对象，代码如下：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2复制一个循环应用的对象"><span class="toc-text">2.2复制一个循环应用的对象</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-手写一个深拷贝"><span class="toc-text">3.手写一个深拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1浅拷贝"><span class="toc-text">3.1浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-考虑对象"><span class="toc-text">3.2 考虑对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-考虑数组"><span class="toc-text">3.3 考虑数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-考虑循环引用"><span class="toc-text">3.4 考虑循环引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-简单性能优化"><span class="toc-text">3.5 简单性能优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结语"><span class="toc-text">结语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:1948750473@qq.com"
+            class="social fab fa-qq flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/curtainTan"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=109496832"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
