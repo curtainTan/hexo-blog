@@ -436,7 +436,14 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params"> target, map = new WeakMap(</span>) )</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( <span class="keyword">typeof</span> target === <span class="string">"object"</span> )&#123;</span><br><span class="line">        <span class="keyword">var</span> cloneTarget = <span class="built_in">Array</span>.isArray( target ) ? [] : &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span>( map.get( target ) )&#123;</span><br><span class="line">            <span class="keyword">return</span> map.get( target )</span><br><span class="line">        &#125;</span><br><span class="line">        map.set( target, cloneTarget )</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> key <span class="keyword">in</span> target )&#123;</span><br><span class="line">            cloneTarget[key] = clone( target[key], map )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cloneTarget</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>最后，我们就完成了一个简单的深拷贝，解决了对象、数组、循环引用的问题。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>js中还有很多其他的数据结构，比如 Set 和 Map，这里就不做继续的深入了，</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>总结一下写出一个深拷贝的过程：</p>
+<ol>
+<li>需要传入两个参数，一个是拷贝目标，一个是作为拷贝过属性的容器 WeakMap </li>
+<li>判断拷贝目标是否一个对象 或是 数组</li>
+<li>是 使用 WeakMap 判断是否已经拷贝，并递归拷贝每个属性</li>
+<li>不是 直接返回此属性的值</li>
+</ol>
+<p>js中还有很多其他的数据结构，比如 Set 和 Map，这里就不做继续的深入了，</p>
 <p>如果你想继续深入深拷贝，你可以参考：<a href="https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-5" target="_blank" rel="noopener">如何写出一个惊艳面试官的深拷贝?</a></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1#heading-5" target="_blank" rel="noopener">如何写出一个惊艳面试官的深拷贝?</a></p>
 <p><a href="http://es6.ruanyifeng.com/#docs/set-map#WeakMap" target="_blank" rel="noopener">阮一峰 es6</a></p>
@@ -452,7 +459,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-06T13:22:09+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-06T23:05:37+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年2月6日</p>
