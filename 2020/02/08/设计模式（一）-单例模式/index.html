@@ -373,10 +373,11 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>写一个单例模式。</p>
+        <p><fancybox><img src="https://image.gslb.dawnlab.me/b9bb7ddf819be28cee3cbe3dfb440e9a.png" alt=""></fancybox></p>
+<p>写一个单例模式。</p>
 <a id="more"></a>
 
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>确保只有一个实例，使每次获取的实例都是同一个。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>确保一个类只有一个实例，使每次获取的实例都是同一个。</p>
 <h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>( name )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    getName()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">    setName( data )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = data</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取单例的方法   ---   使用闭包获取单例</span></span><br><span class="line">Store.getInstance = (</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> instance</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"> name </span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>( !instance )&#123;</span><br><span class="line">                instance = <span class="keyword">new</span> Store( name )</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store1 = Store.getInstance( <span class="string">"你好"</span> )</span><br><span class="line"><span class="keyword">let</span> store2 = Store.getInstance( <span class="string">"你好----"</span> )</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( store1 )</span><br><span class="line"><span class="built_in">console</span>.log( store2 )</span><br><span class="line"><span class="built_in">console</span>.log( store1 === store2 )</span><br></pre></td></tr></table></figure>
 
 <h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/a3f69ad1bf9019e1d04d1d15b54eea25.png" alt=""></fancybox></p>
@@ -403,7 +404,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-08T14:38:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-08T16:07:23+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年2月8日</p>
@@ -425,7 +426,8 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/&title=设计模式（一）--单例模式 | curTain&summary=写一个单例模式。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/&title=设计模式（一）--单例模式 | curTain&summary=
+写一个单例模式。"
           
           >
           
@@ -437,7 +439,8 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/&title=设计模式（一）--单例模式 | curTain&summary=写一个单例模式。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/&title=设计模式（一）--单例模式 | curTain&summary=
+写一个单例模式。"
           
           >
           
@@ -460,6 +463,20 @@
       
       
           <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式（二）--观察者模式">
+                                
+                                    设计模式（二）--观察者模式
+                                
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
               
               
                   <section class="next">

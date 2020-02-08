@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: socket.io | curTain</title>
+  <title>设计模式（二）--观察者模式 | curTain</title>
   
   <meta name="keywords" content="curtain的小站">
   
@@ -53,7 +53,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover  half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>curTain</h1>
@@ -274,25 +274,11 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class='l_main'>
+      <div class='l_main'>
   
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
 
 
   <section class='meta'>
@@ -301,11 +287,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2020/01/30/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-socket-io%E7%9A%84%E6%80%BB%E7%BB%93/">
-      思路清晰---socket.io的总结
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+        设计模式（二）--观察者模式
+      </a>
+    </h1>
+  
 
 
       
@@ -333,7 +321,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-01-30</p>
+    <p>2020-02-08</p>
   </a>
 </div>
 
@@ -343,11 +331,29 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/socket-io/' rel="nofollow">
+    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>socket.io</p>
+      <p>设计模式</p>
     </a>
   </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
 
 
           
@@ -365,47 +371,154 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p><fancybox><img src="https://s2.ax1x.com/2020/01/31/11oObQ.png" alt=""></fancybox></p>
-<p>思路清晰的使用socket.io…..</p>
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p><fancybox><img src="https://image.gslb.dawnlab.me/97ffbb5c36692b1f63a62b517db84ff8.png" alt=""></fancybox></p>
+<p>写一个观察者模式。</p>
+<a id="more"></a>
+
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><strong>意图：</strong> 定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
+<p><strong>主要解决：</strong> 一个对象状态改变给其他对象通知的问题，而且要考虑到易用和低耦合，保证高度的协作。</p>
+<p><strong>何时使用：</strong> 一个对象（目标对象）的状态发生改变，所有的依赖对象（观察者对象）都将得到通知，进行广播通知。</p>
+<p><strong>关键代码：</strong> 在抽象类里有一个 ArrayList&lt;\Observer&gt; 存放观察者们。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight js"><figcaption><span>观察者模式</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 观察者模式</span></span><br><span class="line"><span class="comment"> * state 状态</span></span><br><span class="line"><span class="comment"> * observers &#123; Observer &#125;  保存所有的观察者</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = <span class="number">0</span></span><br><span class="line">        <span class="keyword">this</span>.observers = []</span><br><span class="line">    &#125;</span><br><span class="line">    getState()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.state</span><br><span class="line">    &#125;</span><br><span class="line">    setState( state )&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state</span><br><span class="line">        <span class="keyword">this</span>.notifyAllObservers()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 通知所有的观察者</span></span><br><span class="line">    notifyAllObservers()&#123;</span><br><span class="line">        <span class="keyword">this</span>.observers.forEach( <span class="function"><span class="params">observer</span> =&gt;</span> &#123;</span><br><span class="line">            observer.update()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 添加观察者</span></span><br><span class="line">    attach( observer )&#123;</span><br><span class="line">        <span class="keyword">this</span>.observers.push( observer )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 观察者</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>( name, subject )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.subject = subject</span><br><span class="line">        <span class="keyword">this</span>.subject.attach( <span class="keyword">this</span> )</span><br><span class="line">    &#125;</span><br><span class="line">    update()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">`<span class="subst">$&#123; <span class="keyword">this</span>.name &#125;</span> -- update, state: <span class="subst">$&#123; <span class="keyword">this</span>.subject.getState() &#125;</span>`</span> )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> Subject()</span><br><span class="line"><span class="keyword">let</span> o1 = <span class="keyword">new</span> Observer( <span class="string">"o1"</span>, s )</span><br><span class="line"><span class="keyword">let</span> o2 = <span class="keyword">new</span> Observer( <span class="string">"o2"</span>, s )</span><br><span class="line"></span><br><span class="line">s.setState( <span class="number">11</span> )</span><br><span class="line">s.setState( <span class="number">12</span> )</span><br><span class="line"><span class="built_in">console</span>.log( s )</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试结果：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/a7763467be0e62af3e014f19169dbf1c.png" alt=""></fancybox></p>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>观察者模式的要点主要是将观察者放在被观察者里面，当状态变化后，就依次通知观察者。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://juejin.im/post/5cb534386fb9a0685727e1eb#heading-72" target="_blank" rel="noopener">超全的设计模式简介（45种）—观察者模式</a></p>
+<p><a href="https://juejin.im/post/5afe6430518825428630bc4d" target="_blank" rel="noopener">JavaScript 中常见设计模式整理</a></p>
+<p><a href="https://juejin.im/post/5bb1bb616fb9a05d2b6dccfa" target="_blank" rel="noopener">谈谈观察者模式和发布订阅模式</a></p>
+
+      </div>
       
-        <div class="readmore">
-          <a href="/2020/01/30/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-socket-io%E7%9A%84%E6%80%BB%E7%BB%93/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-08T17:33:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年2月8日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/&title=设计模式（二）--观察者模式 | curTain&summary=
+写一个观察者模式。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/&title=设计模式（二）--观察者模式 | curTain&summary=
+写一个观察者模式。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E5%85%A5%E9%97%A8/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 入门</a>
-        
-          <a href="/tags/%E6%80%BB%E7%BB%93/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 总结</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
-        
+
       
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式（一）--单例模式">
+                                  
+                                      设计模式（一）--单例模式
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
 
-  
 
 
-    
-  
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '设计模式（二）--观察者模式',
+      tools: true
+    }
+  </script>
+
 
 </div>
 <aside class='l_side'>
@@ -500,35 +613,19 @@
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
             
               
-  <section class='widget tagcloud'>
+  <section class='widget toc-wrapper'>
     
 <header class='pure'>
-  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
   
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/tags/"
-    title="tags/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
   
 </header>
 
     <div class='content pure'>
-      <a href="/tags/canvas/" style="font-size: 14px; color: #999">canvas</a> <a href="/tags/js%E5%9F%BA%E7%A1%80/" style="font-size: 24px; color: #555">js基础</a> <a href="/tags/vsCode/" style="font-size: 14px; color: #999">vsCode</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 14px; color: #999">入门</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 14px; color: #999">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 19px; color: #777">正则</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结："><span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
     </div>
   </section>
 
@@ -537,176 +634,6 @@
           
         
           
-          
-        
-          
-          
-        
-      
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-              
-  <section class='widget category'>
-    
-<header class='pure'>
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
-  
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/categories/"
-    title="categories/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
-  
-</header>
-
-    <div class='content pure'>
-      <ul class="entry">
-        
-          <li><a class="flat-box" title="/categories/javascript/" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/socket-io/" href="/categories/socket-io/"><div class='name'>socket.io</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"><div class='name'>前端</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E5%B7%A5%E5%85%B7/" href="/categories/%E5%B7%A5%E5%85%B7/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E6%88%91%E7%9A%84%E4%BD%9C%E5%93%81/" href="/categories/%E6%88%91%E7%9A%84%E4%BD%9C%E5%93%81/"><div class='name'>我的作品</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/" href="/categories/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/"><div class='name'>我的随笔</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-            
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-      
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-              <section class='widget grid'>
-  
-<header class='pure'>
-  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
-  
-</header>
-
-  <div class='content pure'>
-    <ul class="grid navgation">
-      
-        <li><a class="flat-box" title="/" href="/"
-          
-          
-          id="home">
-          
-            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
-          
-          近期文章
-        </a></li>
-      
-        <li><a class="flat-box" title="/archives/" href="/archives/"
-          
-            rel="nofollow"
-          
-          
-          id="archives">
-          
-            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
-          
-          文章归档
-        </a></li>
-      
-        <li><a class="flat-box" title="/projects/" href="/projects/"
-          
-          
-          id="projects">
-          
-            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
-          
-          我的作品
-        </a></li>
-      
-        <li><a class="flat-box" title="/friends/" href="/friends/"
-          
-            rel="nofollow"
-          
-          
-          id="friends">
-          
-            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
-          
-          我的友链
-        </a></li>
-      
-        <li><a class="flat-box" title="/favorite/" href="/favorite/"
-          
-            rel="nofollow"
-          
-          
-          id="favorite">
-          
-            <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-          
-          收藏夹
-        </a></li>
-      
-        <li><a class="flat-box" title="/about/" href="/about/"
-          
-            rel="nofollow"
-          
-          
-          id="about">
-          
-            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
-          
-          关于小站
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
-
-            
           
         
           
@@ -846,6 +773,38 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
 
 
 
