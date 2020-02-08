@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>设计模式（三）--代理模式</title>
+      <link href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>写一个代理模式.</p><a id="more"></a>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>设计模式（二）--观察者模式</title>
       <link href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"/>
       <url>/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</url>

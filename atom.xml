@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.curtaintan.club/"/>
-  <updated>2020-02-08T09:33:31.663Z</updated>
+  <updated>2020-02-08T13:17:34.250Z</updated>
   <id>http://blog.curtaintan.club/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式（三）--代理模式</title>
+    <link href="http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</id>
+    <published>2020-02-08T13:08:41.000Z</published>
+    <updated>2020-02-08T13:17:34.250Z</updated>
+    
+    <content type="html"><![CDATA[<p>写一个代理模式.</p><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;写一个代理模式.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://blog.curtaintan.club/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>设计模式（二）--观察者模式</title>
