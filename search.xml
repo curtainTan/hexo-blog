@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>设计模式（一）--单例模式</title>
+      <link href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>写一个单例模式。</p><a id="more"></a><h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>确保只有一个实例，使每次获取的实例都是同一个。</p><h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>( name )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    getName()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">    setName( data )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = data</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取单例的方法   ---   使用闭包获取单例</span></span><br><span class="line">Store.getInstance = (</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> instance</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"> name </span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>( !instance )&#123;</span><br><span class="line">                instance = <span class="keyword">new</span> Store( name )</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store1 = Store.getInstance( <span class="string">"你好"</span> )</span><br><span class="line"><span class="keyword">let</span> store2 = Store.getInstance( <span class="string">"你好----"</span> )</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( store1 )</span><br><span class="line"><span class="built_in">console</span>.log( store2 )</span><br><span class="line"><span class="built_in">console</span>.log( store1 === store2 )</span><br></pre></td></tr></table></figure><h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/a3f69ad1bf9019e1d04d1d15b54eea25.png" alt=""></fancybox></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>单例模式运用非常广泛，只要在代码中涉及到只存在一个实例，就可以使用单例模式，</p><p>vuex 和 redux 就是使用单例模式构建。</p><p><strong>写一个单例模式的要点：</strong></p><ol><li>使用一个特定函数来获取单例，</li><li>此函数使用闭包来确保但会单例是唯一的，</li><li>使用函数柯理化–接收传入参数</li></ol><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://juejin.im/post/59df4f74f265da430f311909" target="_blank" rel="noopener">JavaScript设计模式</a></p><p><a href="https://juejin.im/post/5e021eb96fb9a01628014095#heading-0" target="_blank" rel="noopener">JavaScript设计模式es6（23种)</a></p><p><a href="https://juejin.im/post/5afe6430518825428630bc4d" target="_blank" rel="noopener">JavaScript 中常见设计模式整理</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>javascript之防抖与节流</title>
       <link href="/2020/02/07/javascript%E4%B9%8B%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/"/>
       <url>/2020/02/07/javascript%E4%B9%8B%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/</url>
@@ -13,7 +32,7 @@
       
       <categories>
           
-          <category> JavaScript </category>
+          <category> javascript </category>
           
       </categories>
       
@@ -38,7 +57,7 @@
       
       <categories>
           
-          <category> JavaScript </category>
+          <category> javascript </category>
           
       </categories>
       
@@ -63,7 +82,7 @@
       
       <categories>
           
-          <category> JavaScript </category>
+          <category> javascript </category>
           
       </categories>
       

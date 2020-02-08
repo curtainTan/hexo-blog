@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>javascript 之 new 的实现 | curTain</title>
+  <title>设计模式（一）--单例模式 | curTain</title>
   
   <meta name="keywords" content="curtain的小站">
   
@@ -289,8 +289,8 @@
         
   
     <h1 class="title">
-      <a href="/2020/02/06/javascript%20%E4%B9%8B%20new%20%E7%9A%84%E5%AE%9E%E7%8E%B0/">
-        javascript 之 new 的实现
+      <a href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+        设计模式（一）--单例模式
       </a>
     </h1>
   
@@ -321,7 +321,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-02-06</p>
+    <p>2020-02-08</p>
   </a>
 </div>
 
@@ -331,9 +331,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javascript/' rel="nofollow">
+    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javascript</p>
+      <p>设计模式</p>
     </a>
   </div>
 
@@ -373,26 +373,24 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>网上有很多讲原型、原型链、new 的执行与实现的文章，我也看了很多。</p>
-<p>本文描述一下 new 的执行过程与手写实现一个 new 的实现。</p>
+        <p>写一个单例模式。</p>
 <a id="more"></a>
 
-<h1 id="1-new-的执行过程"><a href="#1-new-的执行过程" class="headerlink" title="1. new 的执行过程"></a>1. new 的执行过程</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/1854fef99c105a5ec081cb921de59aeb.png" alt=""></fancybox></p>
-<p>我们以上图为例阐述 new 的执行过程。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>确保只有一个实例，使每次获取的实例都是同一个。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>( name )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    getName()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">    setName( data )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = data</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取单例的方法   ---   使用闭包获取单例</span></span><br><span class="line">Store.getInstance = (</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> instance</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"> name </span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>( !instance )&#123;</span><br><span class="line">                instance = <span class="keyword">new</span> Store( name )</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store1 = Store.getInstance( <span class="string">"你好"</span> )</span><br><span class="line"><span class="keyword">let</span> store2 = Store.getInstance( <span class="string">"你好----"</span> )</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( store1 )</span><br><span class="line"><span class="built_in">console</span>.log( store2 )</span><br><span class="line"><span class="built_in">console</span>.log( store1 === store2 )</span><br></pre></td></tr></table></figure>
+
+<h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/a3f69ad1bf9019e1d04d1d15b54eea25.png" alt=""></fancybox></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>单例模式运用非常广泛，只要在代码中涉及到只存在一个实例，就可以使用单例模式，</p>
+<p>vuex 和 redux 就是使用单例模式构建。</p>
+<p><strong>写一个单例模式的要点：</strong></p>
 <ol>
-<li>创建一个中间对象</li>
-<li>将该中间对象的原型指向构造函数的原型</li>
-<li>将构造函数的 this 指向该中间对象并执行</li>
-<li>返回该中间对象，即返回实例对象</li>
+<li>使用一个特定函数来获取单例，</li>
+<li>此函数使用闭包来确保但会单例是唯一的，</li>
+<li>使用函数柯理化–接收传入参数</li>
 </ol>
-<h1 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2. 代码实现"></a>2. 代码实现</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 取出传入参数</span></span><br><span class="line">    <span class="keyword">let</span> argArray = <span class="built_in">Array</span>.from( <span class="built_in">arguments</span> )</span><br><span class="line">    <span class="comment">// 取出构造函数与需要传入构造函数的参数</span></span><br><span class="line">    <span class="keyword">let</span> constructorFun = argArray.shift()</span><br><span class="line">    <span class="comment">// 创建中间函数</span></span><br><span class="line">    <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">    <span class="comment">// 将该中间对象的原型指向构造函数的原型</span></span><br><span class="line">    obj.__proto__ = constructorFun.prototype</span><br><span class="line">    <span class="comment">// 绑定 this 并传入参数执行</span></span><br><span class="line">    constructorFun.apply( obj, argArray )</span><br><span class="line">    <span class="comment">// 返回创建的对象</span></span><br><span class="line">    <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-运行测试"><a href="#3-运行测试" class="headerlink" title="3. 运行测试"></a>3. 运行测试</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"> name, age </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> argArray = <span class="built_in">Array</span>.from( <span class="built_in">arguments</span> )</span><br><span class="line">    <span class="keyword">let</span> constructorFun = argArray.shift()</span><br><span class="line">    <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">    obj.__proto__ = constructorFun.prototype</span><br><span class="line">    constructorFun.apply( obj, argArray )</span><br><span class="line">    <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"myNew："</span>,myNew( Animal, <span class="string">"dog"</span>, <span class="string">"12"</span> ) )</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"new："</span>, <span class="keyword">new</span> Animal( <span class="string">"cat"</span>, <span class="string">"11"</span> ) )</span><br></pre></td></tr></table></figure>
-
-<p>测试结果：</p>
-<p><fancybox><img src="https://s2.ax1x.com/2020/02/06/1ybPDx.png" alt=""></fancybox></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>写出 new 的执行过程与实现，基本算是考察对 prototype 原型链的理解。</p>
-<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p><a href="https://github.com/amandakelake/blog/issues/37" target="_blank" rel="noopener">彻底捋清楚 new 的实现</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://juejin.im/post/59df4f74f265da430f311909" target="_blank" rel="noopener">JavaScript设计模式</a></p>
+<p><a href="https://juejin.im/post/5e021eb96fb9a01628014095#heading-0" target="_blank" rel="noopener">JavaScript设计模式es6（23种)</a></p>
+<p><a href="https://juejin.im/post/5afe6430518825428630bc4d" target="_blank" rel="noopener">JavaScript 中常见设计模式整理</a></p>
 
       </div>
       
@@ -405,7 +403,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-08T14:00:56+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-08T14:38:50+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年2月8日</p>
@@ -416,9 +414,6 @@
       
         
           
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>js基础</p></a></div>
-
 
         
       
@@ -430,8 +425,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/06/javascript%20%E4%B9%8B%20new%20%E7%9A%84%E5%AE%9E%E7%8E%B0/&title=javascript 之 new 的实现 | curTain&summary=网上有很多讲原型、原型链、new 的执行与实现的文章，我也看了很多。
-本文描述一下 new 的执行过程与手写实现一个 new 的实现。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/&title=设计模式（一）--单例模式 | curTain&summary=写一个单例模式。"
           
           >
           
@@ -443,8 +437,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/06/javascript%20%E4%B9%8B%20new%20%E7%9A%84%E5%AE%9E%E7%8E%B0/&title=javascript 之 new 的实现 | curTain&summary=网上有很多讲原型、原型链、new 的执行与实现的文章，我也看了很多。
-本文描述一下 new 的执行过程与手写实现一个 new 的实现。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/&title=设计模式（一）--单例模式 | curTain&summary=写一个单例模式。"
           
           >
           
@@ -468,33 +461,14 @@
       
           <div class="prev-next">
               
-                  <section class="prev">
-                      <span class="art-item-left">
-                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                          <h4>
-                              <a href="/2020/02/06/javascript%E4%B9%8B%E7%BB%A7%E6%89%BF/" rel="prev" title="javascript之继承">
-                                
-                                    javascript之继承
-                                
-                              </a>
-                          </h4>
-                          
-                              
-                              <h6 class="tags">
-                                  <a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> js基础</a>
-                              </h6>
-                          
-                      </span>
-                  </section>
-              
               
                   <section class="next">
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2020/01/31/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%86%99%E4%B8%80%E4%B8%AA%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="prev" title="思路清晰---写一个深拷贝">
+                              <a href="/2020/02/07/javascript%E4%B9%8B%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96/" rel="prev" title="javascript之防抖与节流">
                                   
-                                      思路清晰---写一个深拷贝
+                                      javascript之防抖与节流
                                   
                               </a>
                           </h4>
@@ -545,7 +519,7 @@
 
   <script>
     window.subData = {
-      title: 'javascript 之 new 的实现',
+      title: '设计模式（一）--单例模式',
       tools: true
     }
   </script>
@@ -656,7 +630,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-new-的执行过程"><span class="toc-text">1. new 的执行过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-代码实现"><span class="toc-text">2. 代码实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-运行测试"><span class="toc-text">3. 运行测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考："><span class="toc-text">参考：</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行结果"><span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
     </div>
   </section>
 
