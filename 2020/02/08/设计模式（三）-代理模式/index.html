@@ -373,11 +373,36 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p><fancybox><img src="https://image.gslb.dawnlab.me/c217555bcfb6965d1c845059a5ee1500.png" alt=""></fancybox></p>
+        <p><fancybox><img src="https://image.gslb.dawnlab.me/8151655788e5ad17587fdc36a060bfb2.png" alt=""></fancybox></p>
 <p>写一个代理模式.</p>
 <a id="more"></a>
 
+<h1 id="1-情景"><a href="#1-情景" class="headerlink" title="1. 情景"></a>1. 情景</h1><p>情景: 小明追女生 A</p>
+<ul>
+<li>非代理模式: 小明 =花=&gt; 女生A</li>
+<li>代理模式: 小明 =花=&gt; 让女生A的好友B帮忙 =花=&gt; 女生A</li>
+</ul>
+<h1 id="2-代理模式的特点"><a href="#2-代理模式的特点" class="headerlink" title="2. 代理模式的特点"></a>2. 代理模式的特点</h1><ul>
+<li>代理对象和本体对象具有一致的接口, 对使用者友好</li>
+</ul>
+<blockquote><p>常用的虚拟代理形式：某一个花销很大的操作，可以通过虚拟代理的方式延迟到这种需要它的时候才去创建（例：使用虚拟代理实现图片懒加载）<br>图片懒加载的方式：先通过一张loading图占位，然后通过异步的方式加载图片，等图片加载好了再把完成的图片加载到img标签里面。</p>
+<footer><strong>考拉海购前端团队</strong><cite><a href="https://juejin.im/post/59df4f74f265da430f311909" target="_blank" rel="noopener">juejin.im/post/59df4f74f265da430f311909</a></cite></footer></blockquote>
 
+<h1 id="3-代码设计"><a href="#3-代码设计" class="headerlink" title="3. 代码设计"></a>3. 代码设计</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/1477504b420fce64b3cd68ebed8e9c00.png" alt=""></fancybox></p>
+<h1 id="4-es6-代理模式-—-Proxy"><a href="#4-es6-代理模式-—-Proxy" class="headerlink" title="4. es6 代理模式 —- Proxy"></a>4. es6 代理模式 —- Proxy</h1><p><strong>目的：在操作前可以进行其他的操作（对数据加工等）。</strong></p>
+<p><strong>代码设计</strong><br><fancybox><img src="https://image.gslb.dawnlab.me/017a9c46002a617e370af1ffc6a158ec.png" alt=""></fancybox></p>
+<p><strong>运行结果：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/60e895dd1bc44e25965c0350cd5a0efe.png" alt=""></fancybox></p>
+<p>案例参考：</p>
+<ul>
+<li><a href="https://juejin.im/post/5a5227ce6fb9a01c927e85c4" target="_blank" rel="noopener">ES6中的代理模式—–Proxy</a></li>
+<li><a href="http://es6.ruanyifeng.com/#docs/proxy" target="_blank" rel="noopener">阮一峰– es6 入门</a></li>
+</ul>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p>代理模式，总的来说，是在操作前，可以进行其他的操作。</p>
+<h1 id="5-参考材料"><a href="#5-参考材料" class="headerlink" title="5. 参考材料"></a>5. 参考材料</h1><p><a href="https://github.com/MuYunyun/blog/blob/master/BasicSkill/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.md" target="_blank" rel="noopener">BasicSkill–代理模式</a></p>
+<p><a href="https://juejin.im/post/59df4f74f265da430f311909#heading-2" target="_blank" rel="noopener">JavaScript设计模式</a></p>
+<p><a href="https://www.cnblogs.com/mn6364/p/10990874.html" target="_blank" rel="noopener">js –代理模式</a></p>
+<h1 id="6-代码"><a href="#6-代码" class="headerlink" title="6. 代码"></a>6. 代码</h1><figure class="highlight js"><figcaption><span>图片懒加载</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 真实的对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RealImg</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>.imgNode = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>)</span><br><span class="line">        <span class="built_in">document</span>.body.appendChild( <span class="keyword">this</span>.imgNode )</span><br><span class="line">    &#125;</span><br><span class="line">    setSrc( src )&#123;</span><br><span class="line">        <span class="keyword">this</span>.imgNode.src = src</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 代理对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProxyImg</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>.realImg = <span class="keyword">new</span> RealImg()</span><br><span class="line">    &#125;</span><br><span class="line">    setSrc( src )&#123;</span><br><span class="line">        <span class="keyword">this</span>.realImg.setSrc(<span class="string">"http://seopic.699pic.com/photo/40007/8839.jpg_wh1200.jpg"</span>)</span><br><span class="line">        <span class="keyword">let</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">        img.src = src</span><br><span class="line">        img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.realImg.setSrc( src )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> proxyImg = <span class="keyword">new</span> ProxyImg()</span><br><span class="line">proxyImg.setSrc( <span class="string">"http://seopic.699pic.com/photo/40006/7735.jpg_wh1200.jpg"</span> )</span><br></pre></td></tr></table></figure>
 
       </div>
       
@@ -390,7 +415,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T18:32:57+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T22:46:30+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年2月9日</p>
@@ -618,6 +643,20 @@
           
             
               
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-情景"><span class="toc-text">1. 情景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-代理模式的特点"><span class="toc-text">2. 代理模式的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-代码设计"><span class="toc-text">3. 代码设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-es6-代理模式-—-Proxy"><span class="toc-text">4. es6 代理模式 —- Proxy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-总结"><span class="toc-text">4. 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-参考材料"><span class="toc-text">5. 参考材料</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-代码"><span class="toc-text">6. 代码</span></a></li></ol>
+    </div>
+  </section>
+
 
             
           

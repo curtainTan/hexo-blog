@@ -383,22 +383,23 @@
 <p>当我们选择自己喜欢的版块时，我们就订阅了相关板块的消息。</p>
 <p>当此板块内有热门消息时，虎扑就会给我们推送此消息，他不会把其他板块的消息推送给我们。</p>
 <h1 id="2-分析："><a href="#2-分析：" class="headerlink" title="2. 分析："></a>2. 分析：</h1><p>我们可以抽象出三个对象，一个发布者，一个调度中心，一个订阅者</p>
-<pre><code>发布者：我就是在不同板块发送热门消息的
-
-调度中心：存下所有板块，与板块对应的订阅者
-        一个函数：接收消息并给相关板块所有的订阅者发送消息
-        一个函数：移除订阅者
-        一个函数：添加订阅者
-
-订阅者：自己的属性
-       一个函数：订阅消息
-       一个函数：取消订阅消息</code></pre><p>画出 UML 类图就是文章前的图片。</p>
+<p>发布者：我就是在不同板块发送热门消息的</p>
+<p>调度中心：存下所有板块，与板块对应的订阅者</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个函数：接收消息并给相关板块所有的订阅者发送消息</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个函数：移除订阅者</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个函数：添加订阅者</p>
+<p>订阅者：自己的属性</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个函数：订阅消息</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个函数：取消订阅消息</p>
+<p>画出 UML 类图就是文章前的图片。</p>
 <h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3. 代码实现"></a>3. 代码实现</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/584ee200caf26a8c25c9ec5232c3996b.png" alt=""></fancybox></p>
 <p>真实代码放在文章末尾。</p>
 <p><strong>结果：</strong></p>
 <p><fancybox><img src="https://image.gslb.dawnlab.me/122ac8c8cbcff112954ff8a7cd4063a1.png" alt=""></fancybox></p>
 <h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p><strong>什么是发布订阅模式：</strong></p>
-<p>&lt;% blockquote 维基百科 <a href="https://zh.wikipedia.org/wiki/%E5%8F%91%E5%B8%83/%E8%AE%A2%E9%98%85" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%8F%91%E5%B8%83/%E8%AE%A2%E9%98%85</a> %&gt;<br>发布-订阅是一种消息范式，消息的发送者（称为发布者）不会将消息直接发送给特定的接收者（称为订阅者）。而是将发布的消息分为不同的类别，无需了解哪些订阅者（如果有的话）可能存在。同样的，订阅者可以表达对一个或多个类别的兴趣，只接收感兴趣的消息，无需了解哪些发布者（如果有的话）存在。<br>&lt;% endblockquote %&gt;</p>
+<blockquote><p>发布-订阅是一种消息范式，消息的发送者（称为发布者）不会将消息直接发送给特定的接收者（称为订阅者）。而是将发布的消息分为不同的类别，无需了解哪些订阅者（如果有的话）可能存在。同样的，订阅者可以表达对一个或多个类别的兴趣，只接收感兴趣的消息，无需了解哪些发布者（如果有的话）存在。</p>
+<footer><strong>维基百科</strong><cite><a href="https://zh.wikipedia.org/wiki/%E5%8F%91%E5%B8%83/%E8%AE%A2%E9%98%85" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E5%8F%91%E5%B8%83/%E8%AE%A2%E9%98%85</a></cite></footer></blockquote>
+
 <p><strong>说说我的理解：</strong></p>
 <p>发布订阅模式可以理解成三个对象，一个是发布者，一个是订阅者，一个是调度中心。</p>
 <p>为什么需要一个调度中心？因为订阅者的订阅是有一定要求的，而不是接收所有发布的消息，</p>
@@ -427,7 +428,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T18:32:48+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T21:40:31+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年2月9日</p>
