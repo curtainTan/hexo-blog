@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>设计模式（四）---发布订阅模式 | curTain</title>
+  
+  <meta name="keywords" content="curtain的小站">
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="curTain">
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://518test.curtaintan.club/blog.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>curTain</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/"
+            
+              rel="nofollow"
+            
+            
+            id="archives">
+            <i class='fas fa-archive fa-fw'></i>&nbsp;归档
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          curTain
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;首页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/projects/"
+                  
+                  
+                  id="projects">
+									<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/02/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/">
+        设计模式（四）---发布订阅模式
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://blog.curtaintan.club" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>tanTantan</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-02-09</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>设计模式</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p><fancybox><img src="https://image.gslb.dawnlab.me/03749b735b8f8f8ea84314ccbf236dbb.png" alt=""></fancybox></p>
+<p>我看了很多关于发布订阅模式与观察者模式的文章，有点朋友认为观察者模式就是发布订阅模式，根据我看了这么多的文章的总结，他们确实是不一样的。</p>
+<p>在vue中，emit和on方法。他们都似乎不约而同的自带了发布订阅属性一般，让开发变得更加高效好用起来。</p>
+<p>今天就写一个发布订阅。</p>
+<a id="more"></a>
+
+<h1 id="1-情景模拟："><a href="#1-情景模拟：" class="headerlink" title="1. 情景模拟："></a>1. 情景模拟：</h1><p>当我们在注册虎扑的时候，软件会让我们选择我们感兴趣的板块，例如：唱、跳、rap、篮球…..</p>
+<p>当我们选择自己喜欢的版块时，我们就订阅了相关板块的消息。</p>
+<p>当此板块内有热门消息时，虎扑就会给我们推送此消息，他不会把其他板块的消息推送给我们。</p>
+<h1 id="2-分析："><a href="#2-分析：" class="headerlink" title="2. 分析："></a>2. 分析：</h1><p>我们可以抽象出三个对象，一个发布者，一个调度中心，一个订阅者</p>
+<pre><code>发布者：我就是在不同板块发送热门消息的
+
+调度中心：存下所有板块，与板块对应的订阅者
+        一个函数：接收消息并给相关板块所有的订阅者发送消息
+        一个函数：移除订阅者
+        一个函数：添加订阅者
+
+订阅者：自己的属性
+       一个函数：订阅消息
+       一个函数：取消订阅消息</code></pre><p>画出 UML 类图就是文章前的图片。</p>
+<h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3. 代码实现"></a>3. 代码实现</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/584ee200caf26a8c25c9ec5232c3996b.png" alt=""></fancybox></p>
+<p>真实代码放在文章末尾。</p>
+<p><strong>结果：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/122ac8c8cbcff112954ff8a7cd4063a1.png" alt=""></fancybox></p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p><strong>什么是发布订阅模式：</strong></p>
+<p>&lt;% blockquote 维基百科 <a href="https://zh.wikipedia.org/wiki/%E5%8F%91%E5%B8%83/%E8%AE%A2%E9%98%85" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%8F%91%E5%B8%83/%E8%AE%A2%E9%98%85</a> %&gt;<br>发布-订阅是一种消息范式，消息的发送者（称为发布者）不会将消息直接发送给特定的接收者（称为订阅者）。而是将发布的消息分为不同的类别，无需了解哪些订阅者（如果有的话）可能存在。同样的，订阅者可以表达对一个或多个类别的兴趣，只接收感兴趣的消息，无需了解哪些发布者（如果有的话）存在。<br>&lt;% endblockquote %&gt;</p>
+<p><strong>说说我的理解：</strong></p>
+<p>发布订阅模式可以理解成三个对象，一个是发布者，一个是订阅者，一个是调度中心。</p>
+<p>为什么需要一个调度中心？因为订阅者的订阅是有一定要求的，而不是接收所有发布的消息，</p>
+<p>所以调度中心就是将消息分别发送给订阅者。订阅者不会接收到没有订阅的消息。</p>
+<p><strong>观察者模式：</strong></p>
+<p>观察者只有两个对象，一个观察者、一个被观察者，被观察者只要作出变化（不论什么变化），所有的观察者都会接受到消息。</p>
+<h1 id="5-参考材料"><a href="#5-参考材料" class="headerlink" title="5. 参考材料"></a>5. 参考材料</h1><p><a href="https://juejin.im/post/5b125ad3e51d450688133f22#heading-1" target="_blank" rel="noopener">发布订阅模式，在工作中它的能量超乎你的想象</a></p>
+<p><a href="https://juejin.im/post/5bb1bb616fb9a05d2b6dccfa" target="_blank" rel="noopener">谈谈观察者模式和发布订阅模式</a></p>
+<p><a href="https://blog.csdn.net/a469516684/article/details/86082844" target="_blank" rel="noopener">EventBus—思考观察者模式与发布订阅者模式</a></p>
+<p><a href="https://juejin.im/post/5b2e65fee51d4558df370532" target="_blank" rel="noopener">JavaScript中发布/订阅模式的理解</a></p>
+<h1 id="6-代码："><a href="#6-代码：" class="headerlink" title="6. 代码："></a>6. 代码：</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发布者   传入调度中心实例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Publisher</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>( dispatch )&#123;</span><br><span class="line">        <span class="keyword">this</span>.dispatch = dispatch</span><br><span class="line">    &#125;</span><br><span class="line">    publish()&#123;</span><br><span class="line">        <span class="keyword">let</span> arg = <span class="built_in">Array</span>.from( <span class="built_in">arguments</span> )</span><br><span class="line">        <span class="keyword">let</span> event = arg.shift()</span><br><span class="line">        <span class="keyword">this</span>.dispatch.emit( event, arg )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调度中心</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dispatcher</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>.eventObj = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    on( event, fn )&#123;</span><br><span class="line">        <span class="keyword">if</span>( !<span class="keyword">this</span>.eventObj[event] )&#123;</span><br><span class="line">            <span class="keyword">this</span>.eventObj[event] = []</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.eventObj[event].push( fn )</span><br><span class="line">    &#125;</span><br><span class="line">    emit( type, arg )&#123;</span><br><span class="line">        <span class="keyword">let</span> funs = <span class="keyword">this</span>.eventObj[type]</span><br><span class="line">        <span class="keyword">if</span>( !funs || funs.length === <span class="number">0</span> )&#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        funs.forEach( <span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            item.apply( <span class="keyword">this</span>, arg )</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    remove( type, fn )&#123;</span><br><span class="line">        <span class="keyword">let</span> fns = <span class="keyword">this</span>.eventObj[ type ]</span><br><span class="line">        <span class="keyword">if</span>( !fns ) <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">if</span>( !fn )&#123;</span><br><span class="line">            <span class="keyword">delete</span> <span class="keyword">this</span>.eventObj[type]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.eventObj[ type ] = fns.filter( <span class="function"><span class="params">item</span> =&gt;</span> item !== fn )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 订阅者类   传入 dispatch 和 自己的属性</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subscriber</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>( dispatch, name )&#123;</span><br><span class="line">        <span class="keyword">this</span>.dispatch = dispatch</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    fn = <span class="function">(<span class="params"> msg </span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">`我是<span class="subst">$&#123; <span class="keyword">this</span>.name &#125;</span>:`</span> ,<span class="string">"收到订阅的消息："</span>, msg )</span><br><span class="line">    &#125;</span><br><span class="line">    subscrib( type, fn )&#123;</span><br><span class="line">        <span class="keyword">this</span>.dispatch.on( type, fn, <span class="keyword">this</span> )</span><br><span class="line">    &#125;</span><br><span class="line">    removeSubscrib( type, fn )&#123;</span><br><span class="line">        <span class="keyword">this</span>.dispatch.remove( type, fn )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">let</span> dispatch = <span class="keyword">new</span> Dispatcher()</span><br><span class="line"><span class="keyword">let</span> pub = <span class="keyword">new</span> Publisher( dispatch )</span><br><span class="line"><span class="keyword">let</span> sub1 = <span class="keyword">new</span> Subscriber( dispatch, <span class="string">"sub1"</span> )</span><br><span class="line"><span class="keyword">let</span> sub2 = <span class="keyword">new</span> Subscriber( dispatch, <span class="string">"sub2"</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅消息</span></span><br><span class="line">sub1.subscrib( <span class="string">"篮球"</span>, sub1.fn )</span><br><span class="line">sub2.subscrib( <span class="string">"篮球"</span>, sub2.fn )</span><br><span class="line">sub2.subscrib( <span class="string">"足球"</span>, sub2.fn )</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发布消息</span></span><br><span class="line">pub.publish( <span class="string">"篮球"</span>, <span class="string">"乔丹去世了---"</span> )</span><br><span class="line">pub.publish( <span class="string">"足球"</span>, <span class="string">"国足能进世界杯吗？？"</span> )</span><br><span class="line"><span class="comment">// 取消订阅</span></span><br><span class="line">sub1.removeSubscrib( <span class="string">"篮球"</span>, sub1.fn )</span><br><span class="line">pub.publish( <span class="string">"篮球"</span>, <span class="string">"这里有一些NBA相关的信息"</span> )</span><br></pre></td></tr></table></figure>
+
+<h2 id="通用代码："><a href="#通用代码：" class="headerlink" title="通用代码："></a>通用代码：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> event = &#123;</span><br><span class="line">    list: &#123;&#125;,</span><br><span class="line">    on(key, fn) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.list[key]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.list[key] = [];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.list[key].push(fn);</span><br><span class="line">    &#125;,</span><br><span class="line">    emit() &#123;</span><br><span class="line">        <span class="keyword">let</span> key = [].shift.call(<span class="built_in">arguments</span>),</span><br><span class="line">            fns = <span class="keyword">this</span>.list[key];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!fns || fns.length === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fns.forEach(<span class="function"><span class="params">fn</span> =&gt;</span> &#123;</span><br><span class="line">            fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    remove(key, fn) &#123;</span><br><span class="line">        <span class="comment">// 这回我们加入了取消订阅的方法</span></span><br><span class="line">        <span class="keyword">let</span> fns = <span class="keyword">this</span>.list[key];</span><br><span class="line">        <span class="comment">// 如果缓存列表中没有函数，返回false</span></span><br><span class="line">        <span class="keyword">if</span> (!fns) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// 如果没有传对应函数的话</span></span><br><span class="line">        <span class="comment">// 就会将key值对应缓存列表中的函数都清空掉</span></span><br><span class="line">        <span class="keyword">if</span> (!fn) &#123;</span><br><span class="line">            fns &amp;&amp; (fns.length = <span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 遍历缓存列表，看看传入的fn与哪个函数相同</span></span><br><span class="line">            <span class="comment">// 如果相同就直接从缓存列表中删掉即可</span></span><br><span class="line">            fns.forEach(<span class="function">(<span class="params">cb, i</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (cb === fn) &#123;</span><br><span class="line">                    fns.splice(i, <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'一起喵喵喵'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dog</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'一起旺旺旺'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">event.on(<span class="string">'pet'</span>, data =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'接收数据'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">&#125;);</span><br><span class="line">event.on(<span class="string">'pet'</span>, cat);</span><br><span class="line">event.on(<span class="string">'pet'</span>, dog);</span><br><span class="line"><span class="comment">// 取消dog方法的订阅</span></span><br><span class="line">event.remove(<span class="string">'pet'</span>, dog);</span><br><span class="line"><span class="comment">// 发布</span></span><br><span class="line">event.emit(<span class="string">'pet'</span>, [<span class="string">'二哈'</span>, <span class="string">'波斯猫'</span>]);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    接收数据</span></span><br><span class="line"><span class="comment">    [ '二哈', '波斯猫' ]</span></span><br><span class="line"><span class="comment">    一起喵喵喵</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>摘自：</strong></p>
+<p><strong><a href="https://juejin.im/post/5b125ad3e51d450688133f22#heading-4" target="_blank" rel="noopener">发布订阅模式，在工作中它的能量超乎你的想象</a></strong></p>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-09T18:32:48+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年2月9日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/&title=设计模式（四）---发布订阅模式 | curTain&summary=
+我看了很多关于发布订阅模式与观察者模式的文章，有点朋友认为观察者模式就是发布订阅模式，根据我看了这么多的文章的总结，他们确实是不一样的。
+在vue中，emit和on方法。他们都似乎不约而同的自带了发布订阅属性一般，让开发变得更加高效好用起来。
+今天就写一个发布订阅。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/&title=设计模式（四）---发布订阅模式 | curTain&summary=
+我看了很多关于发布订阅模式与观察者模式的文章，有点朋友认为观察者模式就是发布订阅模式，根据我看了这么多的文章的总结，他们确实是不一样的。
+在vue中，emit和on方法。他们都似乎不约而同的自带了发布订阅属性一般，让开发变得更加高效好用起来。
+今天就写一个发布订阅。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式（三）--代理模式">
+                                  
+                                      设计模式（三）--代理模式
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '设计模式（四）---发布订阅模式',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://speed.moe/images/94023bd1a60711bea47670702ff87934.jpg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1948750473@qq.com"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/curtainTan"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=109496832"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-情景模拟："><span class="toc-text">1. 情景模拟：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-分析："><span class="toc-text">2. 分析：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-代码实现"><span class="toc-text">3. 代码实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-总结"><span class="toc-text">4. 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-参考材料"><span class="toc-text">5. 参考材料</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-代码："><span class="toc-text">6. 代码：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#通用代码："><span class="toc-text">通用代码：</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:1948750473@qq.com"
+            class="social fab fa-qq flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/curtainTan"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=109496832"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
