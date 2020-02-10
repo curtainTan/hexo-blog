@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>设计模式（五）---装饰器模式 | curTain</title>
+  <title>es6---Decorator | curTain</title>
   
   <meta name="keywords" content="curtain的小站">
   
@@ -289,8 +289,8 @@
         
   
     <h1 class="title">
-      <a href="/2020/02/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%94%EF%BC%89-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/">
-        设计模式（五）---装饰器模式
+      <a href="/2020/02/10/es6-Decorator/">
+        es6---Decorator
       </a>
     </h1>
   
@@ -331,9 +331,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/' rel="nofollow">
+    <a href='/categories/javascript/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>设计模式</p>
+      <p>javascript</p>
     </a>
   </div>
 
@@ -373,21 +373,47 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p><fancybox><img src="https://image.gslb.dawnlab.me/124991d344285d28139138d6d1a00a7d.png" alt=""></fancybox></p>
-<p>手写一个装饰器模式。</p>
+        <p>搭建可使用 Decorator 的环境，并学习 Decorator 。</p>
 <a id="more"></a>
 
-<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><p><strong>装饰器模式的目的：</strong></p>
-<ol>
-<li>为对象添加新功能</li>
-<li>不改变其原有的结构和功能</li>
+<h1 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1. 环境搭建"></a>1. 环境搭建</h1><ol>
+<li>安装插件：</li>
 </ol>
-<h1 id="2-代码演示"><a href="#2-代码演示" class="headerlink" title="2. 代码演示"></a>2. 代码演示</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> </span>&#123;</span><br><span class="line">    draw() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"画一个圆形"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Decorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(circle)&#123;</span><br><span class="line">        <span class="keyword">this</span>.circle = circle;</span><br><span class="line">    &#125;</span><br><span class="line">    draw() &#123;</span><br><span class="line">        <span class="keyword">this</span>.circle.draw();</span><br><span class="line">        <span class="keyword">this</span>.setRedBorder(<span class="keyword">this</span>.circle);</span><br><span class="line">    &#125;</span><br><span class="line">    setBorder(circle) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"设置边框"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试代码</span></span><br><span class="line"><span class="keyword">let</span> circle = <span class="keyword">new</span> Circle();</span><br><span class="line"><span class="keyword">let</span> dec = <span class="keyword">new</span> Decorator(circle);</span><br><span class="line">dec.setRedBorder();</span><br></pre></td></tr></table></figure>
+<p><strong>webpack ：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add webpack webpack-cli</span><br></pre></td></tr></table></figure>
 
-<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>装饰器小情景：手机又照相的功能，我们可以在手机摄像头前装饰一个放大镜，手机在具有照相的基础还有放大的功能。</p>
-<p><strong>本质：</strong>在执行真正的操作前后，可以进行其他的操作</p>
-<h1 id="4-参考材料"><a href="#4-参考材料" class="headerlink" title="4. 参考材料"></a>4. 参考材料</h1><p><a href="https://github.com/MuYunyun/blog/blob/master/BasicSkill/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.md" target="_blank" rel="noopener">装饰者模式</a></p>
-<p><a href="https://www.jianshu.com/p/398f0e8f2699" target="_blank" rel="noopener">JS设计模式-装饰器模式</a></p>
+<p><strong>babel ：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @babel/cli @babel/core @babel/preset-env babel-loader</span><br></pre></td></tr></table></figure>
+
+<p><strong>babel 装饰器相关插件：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @babel/plugin-proposal-decorators babel-plugin-transform-<span class="class"><span class="keyword">class</span>-<span class="title">properties</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>webpack.config.js 配置</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/6daf0e45f415f634d1d7e6fd084f9054.png" alt=""></fancybox></p>
+<p>配置代码放在文章末尾。</p>
+<p><strong>配置 package.json</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack"</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>环境配置完毕，运行 <code>yarn dev</code> 就可以将文件编译好。</p>
+<p>新建一个html文件，引入编译好的 js 文件，环境配置基本完成。</p>
+<p><strong>目录结构：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/ad660f54c86b4d30f9fe7d93c7f3483a.png" alt=""></fancybox></p>
+<h1 id="2-开始书写代码"><a href="#2-开始书写代码" class="headerlink" title="2. 开始书写代码"></a>2. 开始书写代码</h1><p>编写 bundle.js</p>
+<h2 id="2-1-类的装饰："><a href="#2-1-类的装饰：" class="headerlink" title="2.1 类的装饰："></a>2.1 类的装饰：</h2><p><strong>代码设计：</strong><br><fancybox><img src="https://image.gslb.dawnlab.me/0653a511ca0ddb772e26aa5bf1d669b6.png" alt=""></fancybox></p>
+<p><strong>运行结果：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/2de3ec69dcadd741363c8900ad824c22.png" alt=""></fancybox></p>
+<h2 id="2-2-类方法的修饰"><a href="#2-2-类方法的修饰" class="headerlink" title="2.2 类方法的修饰"></a>2.2 类方法的修饰</h2><p><strong>代码设计：</strong><br><fancybox><img src="https://image.gslb.dawnlab.me/dc114028d6ae3eceb45a0dfdf92ee224.png" alt=""></fancybox></p>
+<p><strong>运行结果：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/97f7d88203ca25ced8007e485edb6b72.png" alt=""></fancybox></p>
+<h2 id="2-2-类属性的修饰"><a href="#2-2-类属性的修饰" class="headerlink" title="2.2 类属性的修饰"></a>2.2 类属性的修饰</h2><p><strong>代码设计：</strong><br><fancybox><img src="https://image.gslb.dawnlab.me/77917f3081af6e5790e9d41fc217aea7.png" alt=""></fancybox></p>
+<p><strong>运行结果：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/ecf3285bee122202661e7b9f28be9b5d.png" alt=""></fancybox></p>
+<p><strong>注：</strong></p>
+<p>可以在 js 文件头部编写 <code>&quot;use strict&quot;</code>来使用严格模式，</p>
+<p>使用严格模式后，当修改不可修改的属性时，就会打断操作并报错。</p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>装饰器不能用修饰函数，因为函数存在变量提升。</p>
+<h1 id="4-参考材料"><a href="#4-参考材料" class="headerlink" title="4. 参考材料"></a>4. 参考材料</h1><p><a href="https://www.imooc.com/video/17455" target="_blank" rel="noopener">茵风泳月–mobx入门基础教程</a></p>
+<p><a href="http://es6.ruanyifeng.com/#docs/decorator#%E7%B1%BB%E7%9A%84%E8%A3%85%E9%A5%B0" target="_blank" rel="noopener">阮一峰–es6 基础入门</a></p>
+<h1 id="5-代码"><a href="#5-代码" class="headerlink" title="5. 代码"></a>5. 代码</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义类修饰器</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"> target </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> desc = <span class="built_in">Object</span>.getOwnPropertyDescriptors( target.prototype )</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">const</span> key <span class="keyword">of</span> <span class="built_in">Object</span>.keys( desc ) )&#123;</span><br><span class="line">        <span class="keyword">if</span>( key === <span class="string">"constuctor"</span> )&#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> func = desc[key].value</span><br><span class="line">        <span class="keyword">if</span>( <span class="keyword">typeof</span> func === <span class="string">"function"</span> )&#123;</span><br><span class="line">            <span class="built_in">Object</span>.defineProperty( target.prototype, key, &#123;</span><br><span class="line">                value( ...arg )&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log( <span class="string">"加之前"</span>, key )</span><br><span class="line">                    <span class="keyword">const</span> ret = func.apply( <span class="keyword">this</span>, arg )</span><br><span class="line">                    <span class="built_in">console</span>.log( <span class="string">"相加----结果："</span>, ret )</span><br><span class="line">                    <span class="built_in">console</span>.log( <span class="string">"加之后"</span>, key )</span><br><span class="line">                    <span class="keyword">return</span> ret</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 属性修饰器</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readonly</span>(<span class="params"> target, key, desc </span>)</span>&#123;</span><br><span class="line">    desc.writable = <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 方法修饰器</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">validate</span>(<span class="params"> target, key, desc </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> func = desc.value</span><br><span class="line">    desc.value = <span class="function"><span class="keyword">function</span>(<span class="params"> ...arg </span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> num <span class="keyword">of</span> arg )&#123;</span><br><span class="line">            <span class="keyword">if</span>( <span class="keyword">typeof</span> num !== <span class="string">"number"</span> )&#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`"<span class="subst">$&#123; num &#125;</span> " 不是一个数字..`</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">"函数里面的装饰器-----函数的操作---"</span> )</span><br><span class="line">        <span class="keyword">return</span> func.apply( <span class="keyword">this</span>, [ <span class="number">4</span>, <span class="number">7</span> ] )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@log</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Numberic</span> </span>&#123;</span><br><span class="line">    @readonly PI = <span class="number">3.1315926</span></span><br><span class="line">    <span class="comment">// 修饰方法</span></span><br><span class="line">    add( ...nums )&#123;</span><br><span class="line">        <span class="keyword">return</span> nums.reduce( <span class="function">(<span class="params"> p, n </span>) =&gt;</span> ( p + n ), <span class="number">0</span> )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="keyword">new</span> Numberic().add( <span class="number">1</span>, <span class="number">2</span> ) )</span><br><span class="line"><span class="keyword">var</span> ss =  <span class="keyword">new</span> Numberic()</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"修改数据前："</span>, ss )</span><br><span class="line">ss.PI = <span class="number">99</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"修改数据后："</span>, ss )</span><br></pre></td></tr></table></figure>
 
       </div>
       
@@ -400,7 +426,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-10T16:14:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-10T18:23:06+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年2月10日</p>
@@ -411,6 +437,9 @@
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>js基础</p></a></div>
+
 
         
       
@@ -422,8 +451,7 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%94%EF%BC%89-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/&title=设计模式（五）---装饰器模式 | curTain&summary=
-手写一个装饰器模式。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/10/es6-Decorator/&title=es6---Decorator | curTain&summary=搭建可使用 Decorator 的环境，并学习 Decorator 。"
           
           >
           
@@ -435,8 +463,7 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%94%EF%BC%89-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/&title=设计模式（五）---装饰器模式 | curTain&summary=
-手写一个装饰器模式。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/10/es6-Decorator/&title=es6---Decorator | curTain&summary=搭建可使用 Decorator 的环境，并学习 Decorator 。"
           
           >
           
@@ -460,33 +487,14 @@
       
           <div class="prev-next">
               
-                  <section class="prev">
-                      <span class="art-item-left">
-                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                          <h4>
-                              <a href="/2020/02/10/es6-Decorator/" rel="prev" title="es6---Decorator">
-                                
-                                    es6---Decorator
-                                
-                              </a>
-                          </h4>
-                          
-                              
-                              <h6 class="tags">
-                                  <a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> js基础</a>
-                              </h6>
-                          
-                      </span>
-                  </section>
-              
               
                   <section class="next">
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2020/02/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式（四）---发布订阅模式">
+                              <a href="/2020/02/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%94%EF%BC%89-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式（五）---装饰器模式">
                                   
-                                      设计模式（四）---发布订阅模式
+                                      设计模式（五）---装饰器模式
                                   
                               </a>
                           </h4>
@@ -532,7 +540,7 @@
 
   <script>
     window.subData = {
-      title: '设计模式（五）---装饰器模式',
+      title: 'es6---Decorator',
       tools: true
     }
   </script>
@@ -643,7 +651,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-介绍"><span class="toc-text">1. 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-代码演示"><span class="toc-text">2. 代码演示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-总结"><span class="toc-text">3. 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-参考材料"><span class="toc-text">4. 参考材料</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-环境搭建"><span class="toc-text">1. 环境搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-开始书写代码"><span class="toc-text">2. 开始书写代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-类的装饰："><span class="toc-text">2.1 类的装饰：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-类方法的修饰"><span class="toc-text">2.2 类方法的修饰</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-类属性的修饰"><span class="toc-text">2.2 类属性的修饰</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-总结"><span class="toc-text">3. 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-参考材料"><span class="toc-text">4. 参考材料</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-代码"><span class="toc-text">5. 代码</span></a></li></ol>
     </div>
   </section>
 
