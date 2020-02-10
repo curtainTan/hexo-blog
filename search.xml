@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>设计模式（五）---装饰器模式</title>
+      <link href="/2020/02/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%94%EF%BC%89-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2020/02/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%BA%94%EF%BC%89-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p><fancybox><img src="https://image.gslb.dawnlab.me/124991d344285d28139138d6d1a00a7d.png" alt=""></fancybox></p><p>手写一个装饰器模式。</p><a id="more"></a><h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><p><strong>装饰器模式的目的：</strong></p><ol><li>为对象添加新功能</li><li>不改变其原有的结构和功能</li></ol><h1 id="2-代码演示"><a href="#2-代码演示" class="headerlink" title="2. 代码演示"></a>2. 代码演示</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> </span>&#123;</span><br><span class="line">    draw() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"画一个圆形"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Decorator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(circle)&#123;</span><br><span class="line">        <span class="keyword">this</span>.circle = circle;</span><br><span class="line">    &#125;</span><br><span class="line">    draw() &#123;</span><br><span class="line">        <span class="keyword">this</span>.circle.draw();</span><br><span class="line">        <span class="keyword">this</span>.setRedBorder(<span class="keyword">this</span>.circle);</span><br><span class="line">    &#125;</span><br><span class="line">    setBorder(circle) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"设置边框"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试代码</span></span><br><span class="line"><span class="keyword">let</span> circle = <span class="keyword">new</span> Circle();</span><br><span class="line"><span class="keyword">let</span> dec = <span class="keyword">new</span> Decorator(circle);</span><br><span class="line">dec.setRedBorder();</span><br></pre></td></tr></table></figure><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>装饰器小情景：手机又照相的功能，我们可以在手机摄像头前装饰一个放大镜，手机在具有照相的基础还有放大的功能。</p><p><strong>本质：</strong>在执行真正的操作前后，可以进行其他的操作</p><h1 id="4-参考材料"><a href="#4-参考材料" class="headerlink" title="4. 参考材料"></a>4. 参考材料</h1><p><a href="https://github.com/MuYunyun/blog/blob/master/BasicSkill/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.md" target="_blank" rel="noopener">装饰者模式</a></p><p><a href="https://www.jianshu.com/p/398f0e8f2699" target="_blank" rel="noopener">JS设计模式-装饰器模式</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>设计模式（四）---发布订阅模式</title>
       <link href="/2020/02/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/"/>
       <url>/2020/02/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%9B%9B%EF%BC%89-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F/</url>
