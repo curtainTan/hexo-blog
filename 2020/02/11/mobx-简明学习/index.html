@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>mobx--简明学习 | curTain</title>
+  
+  <meta name="keywords" content="curtain的小站">
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="curTain">
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://518test.curtaintan.club/blog.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>curTain</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/"
+            
+              rel="nofollow"
+            
+            
+            id="archives">
+            <i class='fas fa-archive fa-fw'></i>&nbsp;归档
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          curTain
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;首页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/projects/"
+                  
+                  
+                  id="projects">
+									<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+      <a title='mobx--简明学习' href='/2020/02/11/mobx-%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0/'><img class='thumbnail' src='https://image.gslb.dawnlab.me/5c02d727ac406be380b53ad10fe75f92.png'></a>
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/02/11/mobx-%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0/">
+        mobx--简明学习
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://blog.curtaintan.club" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>tanTantan</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-02-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/mobx/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>mobx</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p><fancybox><img src="https://image.gslb.dawnlab.me/6e7e66ff9996ffb60b60ef4706ceb9f2.png" alt=""></fancybox></p>
+<p>mobx 简明学习与实践….</p>
+<a id="more"></a>
+
+<p><strong>前置环境准备：</strong>请参考：<strong><a href="http://blog.curtaintan.club/2020/02/10/es6-Decorator/">es6—Decorator</a></strong></p>
+<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p><em>学习前，建议仔细阅读一遍 <strong><a href="https://cn.mobx.js.org/" target="_blank" rel="noopener">MobX 介绍</a></strong> 了解 mobx 运行机制。</em></p>
+<p>先看 mobx 官网的文档目录：<br><fancybox><img src="https://image.gslb.dawnlab.me/ec3dc09eacd9da06d5254f2d0355517a.png" alt=""></fancybox></p>
+<p>可以看到，整个库，需要我们学习的就只有三个主要的点：</p>
+<ol>
+<li>observable 相关 —– 创建观察数据</li>
+<li>对 observables 作出响应 —– 数据改变时的响应操作</li>
+<li>改变 observables</li>
+</ol>
+<p>还有一个工具函数。</p>
+<h1 id="2-observable-相关-—-创建被观察数据"><a href="#2-observable-相关-—-创建被观察数据" class="headerlink" title="2. observable 相关 —- 创建被观察数据"></a>2. observable 相关 —- 创建被观察数据</h1><p>创建可观察数据的方式有两种：</p>
+<ol>
+<li>使用 observable 函数构建</li>
+<li>使用 @observable 装饰类构建</li>
+</ol>
+<h2 id="2-1-使用-observable-函数构建"><a href="#2-1-使用-observable-函数构建" class="headerlink" title="2.1 使用 observable 函数构建"></a>2.1 使用 observable 函数构建</h2><figure class="highlight js"><figcaption><span>observable 函数构建可观察的数据</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> value = observable(<span class="string">"value"</span>)</span><br><span class="line"><span class="keyword">const</span> list = observable([<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>])</span><br><span class="line"><span class="keyword">const</span> map = observable.map(&#123; <span class="attr">key</span>: <span class="string">"value"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 observable.box()</span></span><br><span class="line"><span class="keyword">const</span> cityName = observable.box(<span class="string">"tan"</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-1-使用-observable-装饰类构建"><a href="#2-1-使用-observable-装饰类构建" class="headerlink" title="2.1 使用 @observable 装饰类构建"></a>2.1 使用 @observable 装饰类构建</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    @observable num = <span class="number">22</span></span><br><span class="line">    @observable str = <span class="string">"string"</span></span><br><span class="line">    @observable bool = <span class="literal">false</span></span><br><span class="line">    @observable obj = &#123;</span><br><span class="line">        name: <span class="string">"tan"</span>,</span><br><span class="line">        age: <span class="number">12</span></span><br><span class="line">    &#125;</span><br><span class="line">    @observable array = []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-对-observables-作出响应"><a href="#3-对-observables-作出响应" class="headerlink" title="3. 对 observables 作出响应"></a>3. 对 observables 作出响应</h1><p>有 4 个 api 处理响应：</p>
+<ol>
+<li>computed 和 @computed 函数内依赖的观察项改变时，自动执行，类似 vue 中的 computed</li>
+<li>autorun( fn, { options } ): 函数内的依赖项改变时，自动执行</li>
+<li>when( fn, fn ): 第一个函数内依赖项改变时执行第一个函数，第一个函数返回 true 时，执行第二个函数</li>
+<li>reaction( fn, fn ): 第一个函数返回一个数组，数组中值的改变时，执行第二个函数</li>
+</ol>
+<p>observer 和 @observer 修饰 react 类，用于更新视图</p>
+<p><strong>代码：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/12691c66d2e142ff96b024157e974bfe.png" alt=""></fancybox></p>
+<p>代码放在文章尾部</p>
+<p><strong>运行结果：</strong><br><fancybox><img src="https://image.gslb.dawnlab.me/3cb216864da9253115ef5c162a1d09c6.png" alt=""></fancybox></p>
+<h1 id="4-action-–改变–-observables"><a href="#4-action-–改变–-observables" class="headerlink" title="4. action –改变– observables"></a>4. action –改变– observables</h1><p>我们可以直接通过 store 来修改属性，但是每一次属性的改变，响应操作都会执行，当我们需要一次性执多个属性的改变的时候，响应操作就会执行多次，但是我们只需要执行一次就够了，那怎么解决呢？？此时 action 就出场了。</p>
+<p>action 主要有：</p>
+<ol>
+<li>action( fn ): fn — 创建一个 action 函数</li>
+<li>@action - fn : 修饰类方法，使其变成 action 方法</li>
+<li>@action.bound : 修饰类方法，绑定 this</li>
+<li>runInAction(name?, thunk)： 直接运行 action 操作，搭配 @action 可执行异步</li>
+</ol>
+<p><strong>案例：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/14079b48e3c40c775f1c3c9c9d351800.png" alt=""></fancybox><br>代码放在文章底部</p>
+<p><strong>测试结果：</strong></p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/67b0553703743d9e422da1752a5b2d5b.png" alt=""></fancybox></p>
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h1><p><em>工具函数就自行看官方文档了。</em></p>
+<p>对比着 mobx 的运行流程图：</p>
+<p><fancybox><img src="https://image.gslb.dawnlab.me/6e7e66ff9996ffb60b60ef4706ceb9f2.png" alt=""></fancybox></p>
+<p>我们就可以很轻易的理解各个 api 之间的关系了。</p>
+<h1 id="6-参考材料"><a href="#6-参考材料" class="headerlink" title="6. 参考材料"></a>6. 参考材料</h1><p><a href="https://cn.mobx.js.org/" target="_blank" rel="noopener">mobx—-官网</a></p>
+<p>推荐大家去观看此教程，非常好的教程。<br><a href="https://www.imooc.com/video/17455" target="_blank" rel="noopener">茵风泳月–mobx入门基础教程</a></p>
+<h1 id="7-文中使用代码："><a href="#7-文中使用代码：" class="headerlink" title="7. 文中使用代码："></a>7. 文中使用代码：</h1><h2 id="测试相应的代码"><a href="#测试相应的代码" class="headerlink" title="测试相应的代码"></a>测试相应的代码</h2><figure class="highlight js"><figcaption><span>测试副作用</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable, computed, autorun, when, reaction &#125; <span class="keyword">from</span> <span class="string">"mobx"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    @observable num = <span class="number">22</span></span><br><span class="line">    @observable str = <span class="string">"string"</span></span><br><span class="line">    @observable bool = <span class="literal">false</span></span><br><span class="line">    @observable obj = &#123;</span><br><span class="line">        name: <span class="string">"tan"</span>,</span><br><span class="line">        age: <span class="number">12</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @computed <span class="keyword">get</span> mixed()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.obj.age + <span class="string">"-----"</span> + <span class="keyword">this</span>.str</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> store = <span class="keyword">new</span> Store()</span><br><span class="line"><span class="comment">// 测试 computed</span></span><br><span class="line"><span class="keyword">var</span> foo =  computed( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> store.str + <span class="string">"/"</span> + store.obj.age</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log( foo.get() )</span><br><span class="line"><span class="built_in">console</span>.log( store.mixed )</span><br><span class="line"></span><br><span class="line">foo.observe( <span class="function"><span class="keyword">function</span>(<span class="params"> change </span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"computed 值改变："</span> )</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"修改值："</span>, change )</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试 autorun </span></span><br><span class="line">autorun( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"autorun运行："</span> )</span><br><span class="line">    <span class="built_in">console</span>.log( store.str + <span class="string">"/"</span> + store.obj.age )</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试 wen</span></span><br><span class="line">when( <span class="function"><span class="params">()</span>=&gt;</span> store.bool , ()=&gt; <span class="built_in">console</span>.log( <span class="string">"变成 true 了..."</span> ) )</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试 reaction</span></span><br><span class="line">reaction( <span class="function"><span class="params">()</span> =&gt;</span> [ store.str, store.obj.age ], </span><br><span class="line">          arr =&gt; <span class="built_in">console</span>.log( <span class="string">"reaction 运行："</span>,arr ) )</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"开始测试：------- wen ------"</span> )</span><br><span class="line">store.bool = <span class="literal">true</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"开始测试：------- 其他三个 ------"</span> )</span><br><span class="line">store.obj.age = <span class="number">13</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="测试-action"><a href="#测试-action" class="headerlink" title="测试 action"></a>测试 action</h2><figure class="highlight js"><figcaption><span>测试 action </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable, action, reaction &#125; <span class="keyword">from</span> <span class="string">"mobx"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    @observable num = <span class="number">22</span></span><br><span class="line">    @observable str = <span class="string">"string"</span></span><br><span class="line">    @observable bool = <span class="literal">false</span></span><br><span class="line">    @observable obj = &#123;</span><br><span class="line">        name: <span class="string">"tan"</span>,</span><br><span class="line">        age: <span class="number">12</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @action bar()&#123;</span><br><span class="line">        <span class="keyword">this</span>.str = <span class="string">"修改值了--"</span></span><br><span class="line">        <span class="keyword">this</span>.num = <span class="number">89</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> store = <span class="keyword">new</span> Store()</span><br><span class="line">reaction( <span class="function"><span class="params">()</span> =&gt;</span> [ store.str, store.obj.age ], </span><br><span class="line">         arr =&gt; <span class="built_in">console</span>.log( <span class="string">"reaction 运行："</span>,arr ) )</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不用 action 改变值</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"不用 action 改变值："</span> )</span><br><span class="line">store.obj.age = <span class="number">11</span></span><br><span class="line">store.str = <span class="string">"你好---"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 @action</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"使用 action 修饰器改变多个值"</span> )</span><br><span class="line">store.bar()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 action   执行</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"使用 action 修饰器改变多个值"</span> )</span><br><span class="line">action( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    store.str = <span class="string">"ppppppp"</span></span><br><span class="line">    store.obj.age = <span class="number">45</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-11T17:02:07+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年2月11日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/mobx/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>mobx</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/11/mobx-%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0/&title=mobx--简明学习 | curTain&summary=
+mobx 简明学习与实践…."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/11/mobx-%E7%AE%80%E6%98%8E%E5%AD%A6%E4%B9%A0/&title=mobx--简明学习 | curTain&summary=
+mobx 简明学习与实践…."
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/02/10/es6-Decorator/" rel="prev" title="es6---Decorator">
+                                  
+                                      es6---Decorator
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> js基础</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'mobx--简明学习',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://speed.moe/images/94023bd1a60711bea47670702ff87934.jpg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1948750473@qq.com"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/curtainTan"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=109496832"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前言"><span class="toc-text">1. 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-observable-相关-—-创建被观察数据"><span class="toc-text">2. observable 相关 —- 创建被观察数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-使用-observable-函数构建"><span class="toc-text">2.1 使用 observable 函数构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-使用-observable-装饰类构建"><span class="toc-text">2.1 使用 @observable 装饰类构建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-对-observables-作出响应"><span class="toc-text">3. 对 observables 作出响应</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-action-–改变–-observables"><span class="toc-text">4. action –改变– observables</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-总结"><span class="toc-text">5. 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-参考材料"><span class="toc-text">6. 参考材料</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-文中使用代码："><span class="toc-text">7. 文中使用代码：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试相应的代码"><span class="toc-text">测试相应的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试-action"><span class="toc-text">测试 action</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:1948750473@qq.com"
+            class="social fab fa-qq flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/curtainTan"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=109496832"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
