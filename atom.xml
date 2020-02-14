@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.curtaintan.club/"/>
-  <updated>2020-02-12T15:44:32.236Z</updated>
+  <updated>2020-02-14T02:18:57.932Z</updated>
   <id>http://blog.curtaintan.club/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>思路清晰--前端性能优化</title>
+    <link href="http://blog.curtaintan.club/2020/02/14/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    <id>http://blog.curtaintan.club/2020/02/14/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</id>
+    <published>2020-02-14T01:25:00.000Z</published>
+    <updated>2020-02-14T02:18:57.932Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-原则"><a href="#1-原则" class="headerlink" title="1. 原则"></a>1. 原则</h1><ol><li>多使用内存、缓存或其他方法来存储</li><li>减少 cpu 计算，减少 http 网络请求</li></ol><h1 id="2-从哪里入手"><a href="#2-从哪里入手" class="headerlink" title="2. 从哪里入手"></a>2. 从哪里入手</h1><ol><li>加载页面和静态资源</li><li>页面渲染</li></ol><h2 id="2-1-加载资源优化"><a href="#2-1-加载资源优化" class="headerlink" title="2.1 加载资源优化"></a>2.1 加载资源优化</h2><ol><li>静态资源的压缩和合并</li><li>静态资源缓存</li><li>使用 CDN 让资源加载更快</li><li>使用 SSR 后端渲染，数据直接输出到 HTML 中</li></ol><h2 id="2-2-渲染优化"><a href="#2-2-渲染优化" class="headerlink" title="2.2 渲染优化"></a>2.2 渲染优化</h2><ol><li>CSS 放前面，JS 放后面</li><li>懒加载（图片懒加载、下拉加载更多）</li><li>减少 DOM 查询，对 DOM 查询做缓存</li><li>减少 DOM 操作，多个操作尽量合并在一起执行（例如：插入列表）</li><li>使用事件节流与防抖</li><li>尽早执行操作（ 如：DOMContentLoaded ）</li></ol><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>简略的概述了一下前端性能的优化。</p><h1 id="4-资源推荐"><a href="#4-资源推荐" class="headerlink" title="4. 资源推荐"></a>4. 资源推荐</h1><p>框架打包优化</p><p><a href="https://juejin.im/post/5cd4d991e51d453a4a357e69" target="_blank" rel="noopener">🚀 记一次前端性能优化</a></p><p><a href="https://csspod.com/frontend-performance-best-practices/" target="_blank" rel="noopener">前端性能优化最佳实践</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-原则&quot;&gt;&lt;a href=&quot;#1-原则&quot; class=&quot;headerlink&quot; title=&quot;1. 原则&quot;&gt;&lt;/a&gt;1. 原则&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;多使用内存、缓存或其他方法来存储&lt;/li&gt;
+&lt;li&gt;减少 cpu 计算，减少 http 网络请求&lt;/li&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://blog.curtaintan.club/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="性能优化" scheme="http://blog.curtaintan.club/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>[转载]webpack优化</title>
@@ -471,30 +500,6 @@
     
     
       <category term="正则" scheme="http://blog.curtaintan.club/tags/%E6%AD%A3%E5%88%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客再次启程</title>
-    <link href="http://blog.curtaintan.club/2019/12/02/%E5%8D%9A%E5%AE%A2%E5%86%8D%E6%AC%A1%E5%90%AF%E7%A8%8B/"/>
-    <id>http://blog.curtaintan.club/2019/12/02/%E5%8D%9A%E5%AE%A2%E5%86%8D%E6%AC%A1%E5%90%AF%E7%A8%8B/</id>
-    <published>2019-12-02T09:52:17.000Z</published>
-    <updated>2020-02-07T15:56:26.796Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://speed.moe/images/11283769e2d6035f894edb659848d4e1.jpg" alt=""></p><p>换了博客的主题，页面美观多了，心情也舒畅多了。更加有动力写博客了，整理好心情，重新出发！！</p><a id="more"></a><h1 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h1><p>经过一天的配置，博客搭建的差不多了，</p><p>整理好心情！！！</p><h1 id="重新出发！"><a href="#重新出发！" class="headerlink" title="重新出发！"></a>重新出发！</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://speed.moe/images/11283769e2d6035f894edb659848d4e1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;换了博客的主题，页面美观多了，心情也舒畅多了。更加有动力写博客了，整理好心情，重新出发！！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="我的随笔" scheme="http://blog.curtaintan.club/categories/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="生活" scheme="http://blog.curtaintan.club/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   

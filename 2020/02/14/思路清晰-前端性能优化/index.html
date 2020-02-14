@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: 总结 | curTain</title>
+  <title>思路清晰--前端性能优化 | curTain</title>
   
   <meta name="keywords" content="curtain的小站">
   
@@ -53,7 +53,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover  half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>curTain</h1>
@@ -274,25 +274,11 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class='l_main'>
+      <div class='l_main'>
   
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
 
 
   <section class='meta'>
@@ -301,11 +287,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2020/01/30/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-socket-io%E7%9A%84%E6%80%BB%E7%BB%93/">
-      思路清晰---socket.io的总结
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2020/02/14/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+        思路清晰--前端性能优化
+      </a>
+    </h1>
+  
 
 
       
@@ -333,7 +321,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-01-30</p>
+    <p>2020-02-14</p>
   </a>
 </div>
 
@@ -343,11 +331,29 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/socket-io/' rel="nofollow">
+    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>socket.io</p>
+      <p>前端</p>
     </a>
   </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
 
 
           
@@ -365,47 +371,171 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p><fancybox><img src="https://s2.ax1x.com/2020/01/31/11oObQ.png" alt=""></fancybox></p>
-<p>思路清晰的使用socket.io…..</p>
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="1-原则"><a href="#1-原则" class="headerlink" title="1. 原则"></a>1. 原则</h1><ol>
+<li>多使用内存、缓存或其他方法来存储</li>
+<li>减少 cpu 计算，减少 http 网络请求</li>
+</ol>
+<h1 id="2-从哪里入手"><a href="#2-从哪里入手" class="headerlink" title="2. 从哪里入手"></a>2. 从哪里入手</h1><ol>
+<li>加载页面和静态资源</li>
+<li>页面渲染</li>
+</ol>
+<h2 id="2-1-加载资源优化"><a href="#2-1-加载资源优化" class="headerlink" title="2.1 加载资源优化"></a>2.1 加载资源优化</h2><ol>
+<li>静态资源的压缩和合并</li>
+<li>静态资源缓存</li>
+<li>使用 CDN 让资源加载更快</li>
+<li>使用 SSR 后端渲染，数据直接输出到 HTML 中</li>
+</ol>
+<h2 id="2-2-渲染优化"><a href="#2-2-渲染优化" class="headerlink" title="2.2 渲染优化"></a>2.2 渲染优化</h2><ol>
+<li>CSS 放前面，JS 放后面</li>
+<li>懒加载（图片懒加载、下拉加载更多）</li>
+<li>减少 DOM 查询，对 DOM 查询做缓存</li>
+<li>减少 DOM 操作，多个操作尽量合并在一起执行（例如：插入列表）</li>
+<li>使用事件节流与防抖</li>
+<li>尽早执行操作（ 如：DOMContentLoaded ）</li>
+</ol>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>简略的概述了一下前端性能的优化。</p>
+<h1 id="4-资源推荐"><a href="#4-资源推荐" class="headerlink" title="4. 资源推荐"></a>4. 资源推荐</h1><p>框架打包优化</p>
+<p><a href="https://juejin.im/post/5cd4d991e51d453a4a357e69" target="_blank" rel="noopener">🚀 记一次前端性能优化</a></p>
+<p><a href="https://csspod.com/frontend-performance-best-practices/" target="_blank" rel="noopener">前端性能优化最佳实践</a></p>
+
+      </div>
       
-        <div class="readmore">
-          <a href="/2020/01/30/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-socket-io%E7%9A%84%E6%80%BB%E7%BB%93/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-14T10:18:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年2月14日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>性能优化</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/14/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/&title=思路清晰--前端性能优化 | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/14/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/&title=思路清晰--前端性能优化 | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E5%85%A5%E9%97%A8/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 入门</a>
-        
-          <a href="/tags/%E6%80%BB%E7%BB%93/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 总结</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
-        
+
       
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/02/12/%5B%E8%BD%AC%E8%BD%BD%5D-webpack%E4%BC%98%E5%8C%96/" rel="prev" title="[转载]webpack优化">
+                                  
+                                      [转载]webpack优化
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/webpack/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> webpack</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
 
-  
 
 
-    
-  
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '思路清晰--前端性能优化',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -499,35 +629,19 @@
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
             
               
-  <section class='widget tagcloud'>
+  <section class='widget toc-wrapper'>
     
 <header class='pure'>
-  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
   
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/tags/"
-    title="tags/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
   
 </header>
 
     <div class='content pure'>
-      <a href="/tags/canvas/" style="font-size: 14px; color: #999">canvas</a> <a href="/tags/js%E5%9F%BA%E7%A1%80/" style="font-size: 24px; color: #555">js基础</a> <a href="/tags/mobx/" style="font-size: 17.33px; color: #828282">mobx</a> <a href="/tags/vsCode/" style="font-size: 14px; color: #999">vsCode</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/webpack/" style="font-size: 20.67px; color: #6c6c6c">webpack</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 14px; color: #999">入门</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">性能优化</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 14px; color: #999">总结</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 17.33px; color: #828282">正则</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-原则"><span class="toc-text">1. 原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-从哪里入手"><span class="toc-text">2. 从哪里入手</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-加载资源优化"><span class="toc-text">2.1 加载资源优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-渲染优化"><span class="toc-text">2.2 渲染优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-总结"><span class="toc-text">3. 总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-资源推荐"><span class="toc-text">4. 资源推荐</span></a></li></ol>
     </div>
   </section>
 
@@ -536,182 +650,6 @@
           
         
           
-          
-        
-          
-          
-        
-      
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-              
-  <section class='widget category'>
-    
-<header class='pure'>
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
-  
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/categories/"
-    title="categories/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
-  
-</header>
-
-    <div class='content pure'>
-      <ul class="entry">
-        
-          <li><a class="flat-box" title="/categories/javascript/" href="/categories/javascript/"><div class='name'>javascript</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/mobx/" href="/categories/mobx/"><div class='name'>mobx</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/socket-io/" href="/categories/socket-io/"><div class='name'>socket.io</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"><div class='name'>前端</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E5%B7%A5%E5%85%B7/" href="/categories/%E5%B7%A5%E5%85%B7/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E6%88%91%E7%9A%84%E4%BD%9C%E5%93%81/" href="/categories/%E6%88%91%E7%9A%84%E4%BD%9C%E5%93%81/"><div class='name'>我的作品</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/" href="/categories/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/"><div class='name'>我的随笔</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><div class='name'>设计模式</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E8%BD%AC%E8%BD%BD/" href="/categories/%E8%BD%AC%E8%BD%BD/"><div class='name'>转载</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box child" title="/categories/%E8%BD%AC%E8%BD%BD/webpack/" href="/categories/%E8%BD%AC%E8%BD%BD/webpack/"><div class='name'>webpack</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-            
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-      
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-              <section class='widget grid'>
-  
-<header class='pure'>
-  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
-  
-</header>
-
-  <div class='content pure'>
-    <ul class="grid navgation">
-      
-        <li><a class="flat-box" title="/" href="/"
-          
-          
-          id="home">
-          
-            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
-          
-          近期文章
-        </a></li>
-      
-        <li><a class="flat-box" title="/archives/" href="/archives/"
-          
-            rel="nofollow"
-          
-          
-          id="archives">
-          
-            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
-          
-          文章归档
-        </a></li>
-      
-        <li><a class="flat-box" title="/projects/" href="/projects/"
-          
-          
-          id="projects">
-          
-            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
-          
-          我的作品
-        </a></li>
-      
-        <li><a class="flat-box" title="/friends/" href="/friends/"
-          
-            rel="nofollow"
-          
-          
-          id="friends">
-          
-            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
-          
-          我的友链
-        </a></li>
-      
-        <li><a class="flat-box" title="/favorite/" href="/favorite/"
-          
-            rel="nofollow"
-          
-          
-          id="favorite">
-          
-            <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-          
-          收藏夹
-        </a></li>
-      
-        <li><a class="flat-box" title="/about/" href="/about/"
-          
-            rel="nofollow"
-          
-          
-          id="about">
-          
-            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
-          
-          关于小站
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
-
-            
           
         
           
@@ -851,6 +789,38 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
 
 
 

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>思路清晰--前端性能优化</title>
+      <link href="/2020/02/14/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+      <url>/2020/02/14/%E6%80%9D%E8%B7%AF%E6%B8%85%E6%99%B0-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-原则"><a href="#1-原则" class="headerlink" title="1. 原则"></a>1. 原则</h1><ol><li>多使用内存、缓存或其他方法来存储</li><li>减少 cpu 计算，减少 http 网络请求</li></ol><h1 id="2-从哪里入手"><a href="#2-从哪里入手" class="headerlink" title="2. 从哪里入手"></a>2. 从哪里入手</h1><ol><li>加载页面和静态资源</li><li>页面渲染</li></ol><h2 id="2-1-加载资源优化"><a href="#2-1-加载资源优化" class="headerlink" title="2.1 加载资源优化"></a>2.1 加载资源优化</h2><ol><li>静态资源的压缩和合并</li><li>静态资源缓存</li><li>使用 CDN 让资源加载更快</li><li>使用 SSR 后端渲染，数据直接输出到 HTML 中</li></ol><h2 id="2-2-渲染优化"><a href="#2-2-渲染优化" class="headerlink" title="2.2 渲染优化"></a>2.2 渲染优化</h2><ol><li>CSS 放前面，JS 放后面</li><li>懒加载（图片懒加载、下拉加载更多）</li><li>减少 DOM 查询，对 DOM 查询做缓存</li><li>减少 DOM 操作，多个操作尽量合并在一起执行（例如：插入列表）</li><li>使用事件节流与防抖</li><li>尽早执行操作（ 如：DOMContentLoaded ）</li></ol><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>简略的概述了一下前端性能的优化。</p><h1 id="4-资源推荐"><a href="#4-资源推荐" class="headerlink" title="4. 资源推荐"></a>4. 资源推荐</h1><p>框架打包优化</p><p><a href="https://juejin.im/post/5cd4d991e51d453a4a357e69" target="_blank" rel="noopener">🚀 记一次前端性能优化</a></p><p><a href="https://csspod.com/frontend-performance-best-practices/" target="_blank" rel="noopener">前端性能优化最佳实践</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 性能优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[转载]webpack优化</title>
       <link href="/2020/02/12/%5B%E8%BD%AC%E8%BD%BD%5D-webpack%E4%BC%98%E5%8C%96/"/>
       <url>/2020/02/12/%5B%E8%BD%AC%E8%BD%BD%5D-webpack%E4%BC%98%E5%8C%96/</url>
