@@ -373,7 +373,11 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <h1 id="webpack各种优化"><a href="#webpack各种优化" class="headerlink" title="webpack各种优化"></a>webpack各种优化</h1><p>上一章节我们已经掌握了webpack常见的所有配置</p>
+        <p><em>转载自：珠峰培训</em></p>
+<p><em>原文地址：<a href="https://github.com/zhufengzhufeng/webpack-train" target="_blank" rel="noopener">github</a></em></p>
+<a id="more"></a>
+
+<h1 id="webpack各种优化"><a href="#webpack各种优化" class="headerlink" title="webpack各种优化"></a>webpack各种优化</h1><p>上一章节我们已经掌握了webpack常见的所有配置</p>
 <p>这一节我们来看看如何实现webpack中的优化，我们先来编写最基本的webpack配置，然后依次实现各种优化！</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">"mini-css-extract-plugin"</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">"html-webpack-plugin"</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">mode</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    mode: mode,</span><br><span class="line">    entry: <span class="string">"./src/main.js"</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">      filename: <span class="string">"bundle.js"</span>,</span><br><span class="line">      path: path.resolve(__dirname, <span class="string">"dist"</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">        &#123;</span><br><span class="line">          test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span><br><span class="line">          use: <span class="string">"file-loader"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">          use: <span class="string">"babel-loader"</span> <span class="comment">// .babelrc已经配置支持react</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">          use: [</span><br><span class="line">            mode !== <span class="string">"development"</span></span><br><span class="line">              ? MiniCssExtractPlugin.loader</span><br><span class="line">              : <span class="string">"style-loader"</span>,</span><br><span class="line">            <span class="string">"css-loader"</span></span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">      <span class="keyword">new</span> PurgecssPlugin(&#123;</span><br><span class="line">        paths: glob.sync(<span class="string">`<span class="subst">$&#123;path.join(__dirname, <span class="string">"src"</span>)&#125;</span>/**/*`</span>, &#123; <span class="attr">nodir</span>: <span class="literal">true</span> &#125;) <span class="comment">// 不匹配目录，只匹配文件</span></span><br><span class="line">      &#125;),</span><br><span class="line">      mode !== <span class="string">"development"</span> &amp;&amp;</span><br><span class="line">        <span class="keyword">new</span> MiniCssExtractPlugin(&#123;</span><br><span class="line">          filename: <span class="string">"css/[name].css"</span></span><br><span class="line">        &#125;),</span><br><span class="line">      <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">        template: <span class="string">"./src/template.html"</span>,</span><br><span class="line">        filename: <span class="string">"index.html"</span></span><br><span class="line">      &#125;)</span><br><span class="line">    ].filter(<span class="built_in">Boolean</span>)</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><code>.babelrc</code>配置文件</p>
@@ -536,10 +540,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-12T23:44:32+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-15T17:27:13+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年2月12日</p>
+    <p>更新于 2020年2月15日</p>
   </a>
 </div>
 
@@ -561,7 +565,8 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/12/[%E8%BD%AC%E8%BD%BD]-webpack%E4%BC%98%E5%8C%96/&title=[转载]webpack优化 | curTain&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/02/12/[%E8%BD%AC%E8%BD%BD]-webpack%E4%BC%98%E5%8C%96/&title=[转载]webpack优化 | curTain&summary=转载自：珠峰培训
+原文地址：github"
           
           >
           
@@ -573,7 +578,8 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/12/[%E8%BD%AC%E8%BD%BD]-webpack%E4%BC%98%E5%8C%96/&title=[转载]webpack优化 | curTain&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/02/12/[%E8%BD%AC%E8%BD%BD]-webpack%E4%BC%98%E5%8C%96/&title=[转载]webpack优化 | curTain&summary=转载自：珠峰培训
+原文地址：github"
           
           >
           
