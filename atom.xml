@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.curtaintan.club/"/>
-  <updated>2020-02-17T04:34:31.763Z</updated>
+  <updated>2020-02-17T06:51:41.116Z</updated>
   <id>http://blog.curtaintan.club/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>css之盒模型</title>
+    <link href="http://blog.curtaintan.club/2020/02/17/css%E4%B9%8B%E7%9B%92%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://blog.curtaintan.club/2020/02/17/css%E4%B9%8B%E7%9B%92%E6%A8%A1%E5%9E%8B/</id>
+    <published>2020-02-17T05:16:27.000Z</published>
+    <updated>2020-02-17T06:51:41.116Z</updated>
+    
+    <content type="html"><![CDATA[<p><fancybox><img src="https://image.gslb.dawnlab.me/fc2a80e8075489dd5f57b4c6262a8113.png" alt=""></fancybox></p><p>盒子模型…</p><a id="more"></a><h1 id="1-简单盒模型"><a href="#1-简单盒模型" class="headerlink" title="1. 简单盒模型"></a>1. 简单盒模型</h1><p>我在查资料的时候，看到一篇文章很好的说明了两种模型的关系：</p><blockquote><p>通常情况下，被更多人认知的盒模型就是简单盒模型，简单盒模型在早期IE时期有一种怪异模式下的解析方式，也就是现在的border-box，后来W3C制定的标准以后规定在标准解析模式下使用标准盒模型(content-box)。</p><footer><strong>你真的了解盒模型吗？</strong><cite><a href="https://rainey.space/2016/07/02/Ni_Zhen_De_Liao_Jie_He_Mo_Xing_Ma/" target="_blank" rel="noopener">rainey.space/2016/07/02/Ni_Zhen_De_Liao_Jie_He_Mo_Xing_Ma</a></cite></footer></blockquote><p>文中有这样一个段子：</p><blockquote><p>IE：我觉得盒模型应该是这样的，blahblah。<br>W3C：明显应该是这样的才对，blahblah。<br>结果是 IE 在怪异模式下用了「不标准」的盒模型，标准模式下用了「标准」的盒模型。<br>围观群众：听说 IE 的盒模型不标准。<br>……多年过去……<br>W3C：感觉还是 IE 的那个模型比较好。但我们已经回不去了……算了加个属性支持一下 IE 那种模式吧。<br><code>box-sizing</code> 这货就是用来擦屁股的，我从来没见过有人用 <code>padding-box</code> 的……<br>作者：顾轶灵<br>链接：<a href="https://www.zhihu.com/question/25509268/answer/30949718" target="_blank" rel="noopener">https://www.zhihu.com/question/25509268/answer/30949718</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p></blockquote><h1 id="2-测试代码"><a href="#2-测试代码" class="headerlink" title="2. 测试代码"></a>2. 测试代码</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/55a3a646889a1ae518708c376cc60805.png" alt=""></fancybox></p><p>代码放在文末</p><p><strong>运行结果：</strong></p><p><fancybox><img src="https://image.gslb.dawnlab.me/415425ebeafaf5ae1cf5a73ec42a31ee.png" alt=""></fancybox></p><h1 id="3-box-sizing-content-box"><a href="#3-box-sizing-content-box" class="headerlink" title="3. box-sizing: content-box"></a>3. box-sizing: content-box</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/4cac638ea37d79552dc885573710f8b1.png" alt=""></fancybox></p><h1 id="4-box-sizing-border-box"><a href="#4-box-sizing-border-box" class="headerlink" title="4. box-sizing: border-box"></a>4. box-sizing: border-box</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/0b50d7702ec405a4f4ab30fd35323861.png" alt=""></fancybox></p><h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h1><p>在浏览器中，box-sizing 默认是 content-box</p><ol><li><p>content-box（标准盒模型）<br>width = 内容的宽度<br>height = 内容的高度</p></li><li><p>border-box（怪异盒模型）<br>width = border + padding + 内容的宽度<br>height = border + padding + 内容的高度</p></li></ol><h1 id="6-参考材料"><a href="#6-参考材料" class="headerlink" title="6. 参考材料"></a>6. 参考材料</h1><p><a href="https://rainey.space/2016/07/02/Ni_Zhen_De_Liao_Jie_He_Mo_Xing_Ma/" target="_blank" rel="noopener">你真的了解盒模型吗？</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;fancybox&gt;&lt;img src=&quot;https://image.gslb.dawnlab.me/fc2a80e8075489dd5f57b4c6262a8113.png&quot; alt=&quot;&quot;&gt;&lt;/fancybox&gt;&lt;/p&gt;
+&lt;p&gt;盒子模型…&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://blog.curtaintan.club/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="css" scheme="http://blog.curtaintan.club/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>算法之排序</title>
@@ -468,30 +492,6 @@
     
     
       <category term="vsCode" scheme="http://blog.curtaintan.club/tags/vsCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一个小demo弄懂vue的$nextTick</title>
-    <link href="http://blog.curtaintan.club/2020/01/06/%E4%B8%80%E4%B8%AA%E5%B0%8Fdemo%E5%BC%84%E6%87%82vue%E7%9A%84$nextTick/"/>
-    <id>http://blog.curtaintan.club/2020/01/06/%E4%B8%80%E4%B8%AA%E5%B0%8Fdemo%E5%BC%84%E6%87%82vue%E7%9A%84$nextTick/</id>
-    <published>2020-01-06T01:51:23.000Z</published>
-    <updated>2020-01-31T01:31:37.853Z</updated>
-    
-    <content type="html"><![CDATA[<p><fancybox><img src="https://image.gslb.dawnlab.me/62c937472655f71064368ea87d641cb1.jpg" alt=""></fancybox></p><p>一个小demo弄懂vue的$nextTick的作用</p><a id="more"></a><p>有这样一段代码：</p><p>代码截图：<br><fancybox><img src="https://image.gslb.dawnlab.me/10875e2f276bac164ab38fbc55dd6d12.png" alt=""></fancybox></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/vue/2.6.10/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"span"</span> <span class="attr">v-if</span>=<span class="string">"showSpan"</span> &gt;</span>span<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"btn"</span> &gt;</span>显示<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el: <span class="string">"#app"</span>,</span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="actionscript">            showSpan: <span class="literal">false</span></span></span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            btn()&#123;</span><br><span class="line"><span class="actionscript">                <span class="keyword">this</span>.showSpan = <span class="literal">true</span></span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log( <span class="built_in">document</span>.querySelector(<span class="string">"span"</span>) )</span></span><br><span class="line"><span class="javascript">                setTimeout( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log( <span class="string">"200毫秒后"</span> )</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log( <span class="built_in">document</span>.querySelector(<span class="string">"span"</span>) )</span></span><br><span class="line">                &#125;, 200 )</span><br><span class="line"><span class="javascript">                <span class="keyword">this</span>.$nextTick( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log( <span class="string">"$nextTick执行的结果"</span> )</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log( <span class="built_in">document</span>.querySelector(<span class="string">"span"</span>) )</span></span><br><span class="line">                &#125; )</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>执行结果：</p><p><fancybox><img src="https://image.gslb.dawnlab.me/a497ffd403e6b77e63c3b9ec527675bc.png" alt=""></fancybox></p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>第一个结果为null，因为没有找到dom元素，<br>第二个出现的是$nextTick执行的结果，是确定dom重新渲染挂载完毕执行的回调函数<br>第三个才是定时器的结果，是在最后执行的函数。</p><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>可知，vue中数据更新引起的dom更新是异步执行的。</p><h2 id="小拓展"><a href="#小拓展" class="headerlink" title="小拓展"></a>小拓展</h2><h3 id="v-if和v-show的区别"><a href="#v-if和v-show的区别" class="headerlink" title="v-if和v-show的区别"></a>v-if和v-show的区别</h3><p>当我们把上文的 <code>v-if</code> 改成 <code>v-show</code> 后，我们可以看到：</p><p><fancybox><img src="https://image.gslb.dawnlab.me/3a87602c6d51db2eaaec1aa8a5629c74.png" alt=""></fancybox></p><p>可以看出，<code>v-if=false</code> 时，元素不会渲染到页面，使用 <code>v-show</code> 元素一直在页面中，只是设置样式 <code>display: none;</code> 没有显示而已，</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;fancybox&gt;&lt;img src=&quot;https://image.gslb.dawnlab.me/62c937472655f71064368ea87d641cb1.jpg&quot; alt=&quot;&quot;&gt;&lt;/fancybox&gt;&lt;/p&gt;
-&lt;p&gt;一个小demo弄懂vue的$nextTick的作用&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://blog.curtaintan.club/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="vue" scheme="http://blog.curtaintan.club/tags/vue/"/>
     
   </entry>
   
