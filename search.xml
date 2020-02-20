@@ -586,11 +586,11 @@
     
     
     <entry>
-      <title>vscode相关配置</title>
-      <link href="/2020/01/06/vscode%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/"/>
-      <url>/2020/01/06/vscode%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
+      <title>curtain 的 vscode</title>
+      <link href="/2020/01/06/%E6%88%91%E7%9A%84vscode/"/>
+      <url>/2020/01/06/%E6%88%91%E7%9A%84vscode/</url>
       
-        <content type="html"><![CDATA[<p>记录自己常用的一些配置…</p><a id="more"></a><h2 id="打开setting-json配置文件"><a href="#打开setting-json配置文件" class="headerlink" title="打开setting.json配置文件"></a>打开setting.json配置文件</h2><p><img src="https://image.gslb.dawnlab.me/c219e2ba7704d878cc8270f905269137.png" alt=""></p><h2 id="VSCode实现用Ctrl-滚轮实现代码的缩放"><a href="#VSCode实现用Ctrl-滚轮实现代码的缩放" class="headerlink" title="VSCode实现用Ctrl+滚轮实现代码的缩放"></a>VSCode实现用Ctrl+滚轮实现代码的缩放</h2><p>配置文件如下：</p><p>在文件–&gt;首选项–&gt;设置–&gt;用户设置中添加如下代码：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"editor.mouseWheelZoom": true</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>记录自己常用的一些配置…</p><a id="more"></a><h1 id="1-打开setting-json配置文件"><a href="#1-打开setting-json配置文件" class="headerlink" title="1. 打开setting.json配置文件"></a>1. 打开setting.json配置文件</h1><p><img src="https://image.gslb.dawnlab.me/c219e2ba7704d878cc8270f905269137.png" alt=""></p><h1 id="2-VSCode实现用Ctrl-滚轮实现代码的缩放"><a href="#2-VSCode实现用Ctrl-滚轮实现代码的缩放" class="headerlink" title="2. VSCode实现用Ctrl+滚轮实现代码的缩放"></a>2. VSCode实现用Ctrl+滚轮实现代码的缩放</h1><p>配置文件如下：</p><p>在文件–&gt;首选项–&gt;设置–&gt;用户设置中添加如下代码：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"editor.mouseWheelZoom": true</span><br></pre></td></tr></table></figure><h1 id="3-关闭-vscode-空包折叠"><a href="#3-关闭-vscode-空包折叠" class="headerlink" title="3. 关闭 vscode 空包折叠"></a>3. 关闭 vscode 空包折叠</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"explorer.compactFolders": false</span><br></pre></td></tr></table></figure><h1 id="4-vscode-常用快捷键"><a href="#4-vscode-常用快捷键" class="headerlink" title="4. vscode 常用快捷键"></a>4. vscode 常用快捷键</h1><p>更多请参考：<a href="https://www.html.cn/top/15974.html" target="_blank" rel="noopener">23个鲜为人知的VSCode快捷键（动图演示）</a></p>]]></content>
       
       
       <categories>
