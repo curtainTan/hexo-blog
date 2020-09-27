@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.curtaintan.club/"/>
-  <updated>2020-09-27T06:27:02.312Z</updated>
+  <updated>2020-09-27T08:50:00.671Z</updated>
   <id>http://blog.curtaintan.club/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>红宝书第一章--什么是js</title>
+    <link href="http://blog.curtaintan.club/2020/09/27/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BB%80%E4%B9%88%E6%98%AFjs/"/>
+    <id>http://blog.curtaintan.club/2020/09/27/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BB%80%E4%B9%88%E6%98%AFjs/</id>
+    <published>2020-09-27T06:41:42.000Z</published>
+    <updated>2020-09-27T08:50:00.671Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="js-历史回顾"><a href="#js-历史回顾" class="headerlink" title="js 历史回顾"></a>js 历史回顾</h3><ol><li>问世缘由</li></ol><blockquote><p>1995年，javascript 问世。在此之前，要验证某个必填字段是否已填写，或某个输入值是否有效，需要与服务端进行一次往返通信，js 的用途就是代替服务端语言处理输入验证。</p></blockquote><ol start="2"><li>ECMAScript 与 javascript 的关系</li></ol><blockquote><p>1995 年 Brandan Eich 花了 10 天写出 javascript，并把它内置到网景浏览器2中，让 web 大受欢迎，此时，微软决定向 IE 投入更多资源，网景浏览器3发布不久，微软发布了 IE3，其中包含了自己名为 JScript 的 javascript 实现。<br>微软的 javascript 实现意味着出现了两个版本的 javascript：网景的 javascript 和 微软的 JScript，1997 年，javascript1.1 作为题提案被提交给欧洲计算机制造商协会（Ecma），第 39 技术委员会承担了“标准化一门通用、跨平台、厂商中立的脚本语言的语法和语义”的任务，此后，各家浏览器均以 ECMAScript 作为自己 JavaScript 实现的一句，虽然具体实现各不相同</p></blockquote><h3 id="JavaScript-的实现"><a href="#JavaScript-的实现" class="headerlink" title="JavaScript 的实现"></a>JavaScript 的实现</h3><p>虽然 JavaScript 和 ECMAScript 基本上是同义词，但是 js 不限于 ECMAScript，完整的 JavaScript 包含以下三个部分：</p><ol><li>核心（ECMAScript）</li><li>文档对象模型（DOM）</li><li>浏览器对象模型（BOM）</li></ol><h4 id="ECMAScript-概述"><a href="#ECMAScript-概述" class="headerlink" title="ECMAScript 概述"></a>ECMAScript 概述</h4><p>ECMAScript 作为一门语言的基准定义，目的是在它之上再构建更稳定的脚本语言</p><p>web 浏览器只是 ECMAScript 实现的一种宿主环境，宿主环境提供 ECMAScript 的基准实现和自身交互必须的扩展。扩展（比如 DOM 和 BOM）使用 ECMAScript 核心类型和语法，提供特定环境的额外功能</p><p><strong>ECMAScript 版本概述</strong></p><ol><li>ES1：本质上与网景的JavaScript1.1相同，删除所有浏览器特定的代码</li><li>ES2：只做了一些编校工作</li><li>ES3：第一次对标准进行更新，新增字符串处理、错误定义和数值输出，添加了正则、新的控制语句、try/catch的支持</li><li>ES4：进行彻底修订，包括强类型变量、新语句和数据结构、真正的类和经典的继承，以及操作数据的新手段，为了避免改动太大，又制定了 ES3.1</li><li>ES5：ES3.1 变成了 ES5，于2009年12月发布，添加了序列化和解析 JSON 数据的 JSON 对象、继承、增强 ES 引擎解释和执行代码能力的严格模式</li><li>ES6：于2015年6月发布，这一版包含了有史以来最重要的一批增强特性，正式支持了类、模块、迭代器、生成器、箭头函数、期约、反射、代理和众多新的数据类型</li><li>ES7：于2016年6月发布，新增少量api，如 <code>Array.prototype.includes</code> 和指数操作</li><li>ES8：完成于2017年6月，添加异步函数（async/await）、<code>SharedArrayBuffer</code> 等</li><li>ES9：发布于2018年6月，对原始对象添加方法，如正则和promise</li><li>ES10：发布于2019年6月，对原始对象添加方法，如数组，并添加新的语法如：<code>obj?.name?.first</code></li></ol><h4 id="DOM-简介"><a href="#DOM-简介" class="headerlink" title="DOM 简介"></a>DOM 简介</h4><p>DOM 通过创建表示文档的树，让开发者可以随心所欲的控制网页中的内容和结构。使用 DOM API，可以轻松的删除、添加、替换、修改节点</p><h4 id="BOM简介"><a href="#BOM简介" class="headerlink" title="BOM简介"></a>BOM简介</h4><p>IE3 和 网景浏览器3 提供了浏览器对象模型 API，用于支持访问和操作浏览器的窗口，它是唯一一个没有相关标准的 JavaScript 实现。但是 HTML5 正在规范尽可能多的 BOM 特性</p><p><strong>BOM的能力</strong></p><ol><li>弹出新浏览器窗口</li><li>移动、缩放和关闭浏览器窗口</li><li>navigator 对象，获取浏览器相关信息</li><li>location 对象，网页信息</li><li>screen 对象，屏幕信息</li><li>performance 对象，提供浏览器占用内存、导航行为等信息</li><li>cookie </li><li>其他自定义对象：<code>XMLHttpRequest</code> 和 <code>ActiveXObject</code></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;js-历史回顾&quot;&gt;&lt;a href=&quot;#js-历史回顾&quot; class=&quot;headerlink&quot; title=&quot;js 历史回顾&quot;&gt;&lt;/a&gt;js 历史回顾&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;问世缘由&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1995年，javasc
+      
+    
+    </summary>
+    
+    
+      <category term="红宝书" scheme="http://blog.curtaintan.club/categories/%E7%BA%A2%E5%AE%9D%E4%B9%A6/"/>
+    
+    
+      <category term="科普" scheme="http://blog.curtaintan.club/tags/%E7%A7%91%E6%99%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>9.27-每日一题-二叉搜索树的最近公共祖先</title>
@@ -466,28 +496,6 @@
     
       &lt;p&gt;&lt;fancybox&gt;&lt;img src=&quot;https://image.gslb.dawnlab.me/97ffbb5c36692b1f63a62b517db84ff8.png&quot; alt=&quot;&quot;&gt;&lt;/fancybox&gt;&lt;/p&gt;
 &lt;p&gt;写一个观察者模式。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="设计模式" scheme="http://blog.curtaintan.club/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式（一）--单例模式</title>
-    <link href="http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
-    <published>2020-02-08T06:00:08.000Z</published>
-    <updated>2020-02-08T08:07:23.641Z</updated>
-    
-    <content type="html"><![CDATA[<p><fancybox><img src="https://image.gslb.dawnlab.me/b9bb7ddf819be28cee3cbe3dfb440e9a.png" alt=""></fancybox></p><p>写一个单例模式。</p><a id="more"></a><h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>确保一个类只有一个实例，使每次获取的实例都是同一个。</p><h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>( name )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    getName()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">    setName( data )&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = data</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取单例的方法   ---   使用闭包获取单例</span></span><br><span class="line">Store.getInstance = (</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> instance</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"> name </span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>( !instance )&#123;</span><br><span class="line">                instance = <span class="keyword">new</span> Store( name )</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> instance</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store1 = Store.getInstance( <span class="string">"你好"</span> )</span><br><span class="line"><span class="keyword">let</span> store2 = Store.getInstance( <span class="string">"你好----"</span> )</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( store1 )</span><br><span class="line"><span class="built_in">console</span>.log( store2 )</span><br><span class="line"><span class="built_in">console</span>.log( store1 === store2 )</span><br></pre></td></tr></table></figure><h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/a3f69ad1bf9019e1d04d1d15b54eea25.png" alt=""></fancybox></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>单例模式运用非常广泛，只要在代码中涉及到只存在一个实例，就可以使用单例模式，</p><p>vuex 和 redux 就是使用单例模式构建。</p><p><strong>写一个单例模式的要点：</strong></p><ol><li>使用一个特定函数来获取单例，</li><li>此函数使用闭包来确保但会单例是唯一的，</li><li>使用函数柯理化–接收传入参数</li></ol><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://juejin.im/post/59df4f74f265da430f311909" target="_blank" rel="noopener">JavaScript设计模式</a></p><p><a href="https://juejin.im/post/5e021eb96fb9a01628014095#heading-0" target="_blank" rel="noopener">JavaScript设计模式es6（23种)</a></p><p><a href="https://juejin.im/post/5afe6430518825428630bc4d" target="_blank" rel="noopener">JavaScript 中常见设计模式整理</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;fancybox&gt;&lt;img src=&quot;https://image.gslb.dawnlab.me/b9bb7ddf819be28cee3cbe3dfb440e9a.png&quot; alt=&quot;&quot;&gt;&lt;/fancybox&gt;&lt;/p&gt;
-&lt;p&gt;写一个单例模式。&lt;/p&gt;
     
     </summary>
     

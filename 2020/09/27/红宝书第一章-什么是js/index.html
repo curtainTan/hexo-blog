@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: 前端 | curTain</title>
+  <title>红宝书第一章--什么是js | curTain</title>
   
   <meta name="keywords" content="curtain的小站">
   
@@ -53,7 +53,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover  half'>
+    <cover class='cover post half'>
       
         
   <h1 class='title'>curTain</h1>
@@ -274,19 +274,11 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class='l_main'>
+      <div class='l_main'>
   
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
-      
-  <section class="post-list">
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
 
 
   <section class='meta'>
@@ -295,11 +287,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/08/14/%E6%AD%A3%E5%88%99%E5%B0%8F%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bapi%E9%80%9F%E5%AD%A6/">
-      正则小记（一）之api速学
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2020/09/27/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BB%80%E4%B9%88%E6%98%AFjs/">
+        红宝书第一章--什么是js
+      </a>
+    </h1>
+  
 
 
       
@@ -327,7 +321,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-08-14</p>
+    <p>2020-09-27</p>
   </a>
 </div>
 
@@ -337,11 +331,29 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E5%89%8D%E7%AB%AF/' rel="nofollow">
+    <a href='/categories/%E7%BA%A2%E5%AE%9D%E4%B9%A6/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>前端</p>
+      <p>红宝书</p>
     </a>
   </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
 
 
           
@@ -359,64 +371,190 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3529936001,627965941&fm=26&gp=0.jpg" alt=""></p>
-<p>作为一个前端，正则是必须要会的技能之一，所以，让我们开始学习正则吧。</p>
-<p>这是正则学习的第一篇文章…</p>
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h3 id="js-历史回顾"><a href="#js-历史回顾" class="headerlink" title="js 历史回顾"></a>js 历史回顾</h3><ol>
+<li>问世缘由</li>
+</ol>
+<blockquote>
+<p>1995年，javascript 问世。在此之前，要验证某个必填字段是否已填写，或某个输入值是否有效，需要与服务端进行一次往返通信，js 的用途就是代替服务端语言处理输入验证。</p>
+</blockquote>
+<ol start="2">
+<li>ECMAScript 与 javascript 的关系</li>
+</ol>
+<blockquote>
+<p>1995 年 Brandan Eich 花了 10 天写出 javascript，并把它内置到网景浏览器2中，让 web 大受欢迎，此时，微软决定向 IE 投入更多资源，网景浏览器3发布不久，微软发布了 IE3，其中包含了自己名为 JScript 的 javascript 实现。<br>微软的 javascript 实现意味着出现了两个版本的 javascript：网景的 javascript 和 微软的 JScript，1997 年，javascript1.1 作为题提案被提交给欧洲计算机制造商协会（Ecma），第 39 技术委员会承担了“标准化一门通用、跨平台、厂商中立的脚本语言的语法和语义”的任务，此后，各家浏览器均以 ECMAScript 作为自己 JavaScript 实现的一句，虽然具体实现各不相同</p>
+</blockquote>
+<h3 id="JavaScript-的实现"><a href="#JavaScript-的实现" class="headerlink" title="JavaScript 的实现"></a>JavaScript 的实现</h3><p>虽然 JavaScript 和 ECMAScript 基本上是同义词，但是 js 不限于 ECMAScript，完整的 JavaScript 包含以下三个部分：</p>
+<ol>
+<li>核心（ECMAScript）</li>
+<li>文档对象模型（DOM）</li>
+<li>浏览器对象模型（BOM）</li>
+</ol>
+<h4 id="ECMAScript-概述"><a href="#ECMAScript-概述" class="headerlink" title="ECMAScript 概述"></a>ECMAScript 概述</h4><p>ECMAScript 作为一门语言的基准定义，目的是在它之上再构建更稳定的脚本语言</p>
+<p>web 浏览器只是 ECMAScript 实现的一种宿主环境，宿主环境提供 ECMAScript 的基准实现和自身交互必须的扩展。扩展（比如 DOM 和 BOM）使用 ECMAScript 核心类型和语法，提供特定环境的额外功能</p>
+<p><strong>ECMAScript 版本概述</strong></p>
+<ol>
+<li>ES1：本质上与网景的JavaScript1.1相同，删除所有浏览器特定的代码</li>
+<li>ES2：只做了一些编校工作</li>
+<li>ES3：第一次对标准进行更新，新增字符串处理、错误定义和数值输出，添加了正则、新的控制语句、try/catch的支持</li>
+<li>ES4：进行彻底修订，包括强类型变量、新语句和数据结构、真正的类和经典的继承，以及操作数据的新手段，为了避免改动太大，又制定了 ES3.1</li>
+<li>ES5：ES3.1 变成了 ES5，于2009年12月发布，添加了序列化和解析 JSON 数据的 JSON 对象、继承、增强 ES 引擎解释和执行代码能力的严格模式</li>
+<li>ES6：于2015年6月发布，这一版包含了有史以来最重要的一批增强特性，正式支持了类、模块、迭代器、生成器、箭头函数、期约、反射、代理和众多新的数据类型</li>
+<li>ES7：于2016年6月发布，新增少量api，如 <code>Array.prototype.includes</code> 和指数操作</li>
+<li>ES8：完成于2017年6月，添加异步函数（async/await）、<code>SharedArrayBuffer</code> 等</li>
+<li>ES9：发布于2018年6月，对原始对象添加方法，如正则和promise</li>
+<li>ES10：发布于2019年6月，对原始对象添加方法，如数组，并添加新的语法如：<code>obj?.name?.first</code></li>
+</ol>
+<h4 id="DOM-简介"><a href="#DOM-简介" class="headerlink" title="DOM 简介"></a>DOM 简介</h4><p>DOM 通过创建表示文档的树，让开发者可以随心所欲的控制网页中的内容和结构。使用 DOM API，可以轻松的删除、添加、替换、修改节点</p>
+<h4 id="BOM简介"><a href="#BOM简介" class="headerlink" title="BOM简介"></a>BOM简介</h4><p>IE3 和 网景浏览器3 提供了浏览器对象模型 API，用于支持访问和操作浏览器的窗口，它是唯一一个没有相关标准的 JavaScript 实现。但是 HTML5 正在规范尽可能多的 BOM 特性</p>
+<p><strong>BOM的能力</strong></p>
+<ol>
+<li>弹出新浏览器窗口</li>
+<li>移动、缩放和关闭浏览器窗口</li>
+<li>navigator 对象，获取浏览器相关信息</li>
+<li>location 对象，网页信息</li>
+<li>screen 对象，屏幕信息</li>
+<li>performance 对象，提供浏览器占用内存、导航行为等信息</li>
+<li>cookie </li>
+<li>其他自定义对象：<code>XMLHttpRequest</code> 和 <code>ActiveXObject</code></li>
+</ol>
+
+      </div>
       
-        <div class="readmore">
-          <a href="/2019/08/14/%E6%AD%A3%E5%88%99%E5%B0%8F%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8Bapi%E9%80%9F%E5%AD%A6/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-27T16:50:00+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年9月27日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A7%91%E6%99%AE/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>科普</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/09/27/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BB%80%E4%B9%88%E6%98%AFjs/&title=红宝书第一章--什么是js | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/09/27/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%B8%80%E7%AB%A0-%E4%BB%80%E4%B9%88%E6%98%AFjs/&title=红宝书第一章--什么是js | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/%E6%AD%A3%E5%88%99/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 正则</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
-        
+
       
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        <div class="prev-next">
-          
-            <a class="prev" rel="prev" href="/categories/%E5%89%8D%E7%AB%AF/">
-              <section class="post prev" >
-                <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-              </section>
-            </a>
-          
-          <p class="current">
-            2 / 2
-          </p>
-          
-        </div>
-      </div>
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/09/27/9.27-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="prev" title="9.27-每日一题-二叉搜索树的最近公共祖先">
+                                  
+                                      9.27-每日一题-二叉搜索树的最近公共祖先
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/leetcode/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> leetcode</a> <a class="tag" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 二叉树</a> <a class="tag" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 二叉搜索树</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
 
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
-
-  
 
 
-    
-  
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '红宝书第一章--什么是js',
+      tools: true
+    }
+  </script>
+
 
 </div>
 <aside class='l_side'>
@@ -511,35 +649,19 @@
         
           
           
-        
-          
-          
-        
-          
-          
-        
-          
-          
             
               
-  <section class='widget tagcloud'>
+  <section class='widget toc-wrapper'>
     
 <header class='pure'>
-  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
   
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/tags/"
-    title="tags/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
   
 </header>
 
     <div class='content pure'>
-      <a href="/tags/ajax/" style="font-size: 17.33px; color: #828282">ajax</a> <a href="/tags/canvas/" style="font-size: 14px; color: #999">canvas</a> <a href="/tags/css/" style="font-size: 20.67px; color: #6c6c6c">css</a> <a href="/tags/js%E5%9F%BA%E7%A1%80/" style="font-size: 24px; color: #555">js基础</a> <a href="/tags/leetcode/" style="font-size: 14px; color: #999">leetcode</a> <a href="/tags/mobx/" style="font-size: 17.33px; color: #828282">mobx</a> <a href="/tags/vsCode/" style="font-size: 14px; color: #999">vsCode</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" style="font-size: 14px; color: #999">二叉搜索树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 14px; color: #999">二叉树</a> <a href="/tags/%E5%85%A5%E9%97%A8/" style="font-size: 14px; color: #999">入门</a> <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" style="font-size: 14px; color: #999">性能优化</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 14px; color: #999">总结</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #999">排序</a> <a href="/tags/%E6%AD%A3%E5%88%99/" style="font-size: 17.33px; color: #828282">正则</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 14px; color: #999">生活</a> <a href="/tags/%E7%A7%91%E6%99%AE/" style="font-size: 14px; color: #999">科普</a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#js-历史回顾"><span class="toc-text">js 历史回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript-的实现"><span class="toc-text">JavaScript 的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ECMAScript-概述"><span class="toc-text">ECMAScript 概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM-简介"><span class="toc-text">DOM 简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BOM简介"><span class="toc-text">BOM简介</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -548,182 +670,6 @@
           
         
           
-          
-        
-          
-          
-        
-      
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-              
-  <section class='widget category'>
-    
-<header class='pure'>
-  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
-  
-    <a class="rightBtn"
-    
-      rel="nofollow"
-    
-    
-    href="/categories/"
-    title="categories/">
-    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
-  
-</header>
-
-    <div class='content pure'>
-      <ul class="entry">
-        
-          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/mobx/" href="/categories/mobx/"><div class='name'>mobx</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/socket-io/" href="/categories/socket-io/"><div class='name'>socket.io</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"><div class='name'>前端</div><div class='badge'>(11)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E5%B7%A5%E5%85%B7/" href="/categories/%E5%B7%A5%E5%85%B7/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E6%88%91%E7%9A%84%E4%BD%9C%E5%93%81/" href="/categories/%E6%88%91%E7%9A%84%E4%BD%9C%E5%93%81/"><div class='name'>我的作品</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/" href="/categories/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/"><div class='name'>我的随笔</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E7%AE%97%E6%B3%95/" href="/categories/%E7%AE%97%E6%B3%95/"><div class='name'>算法</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E7%BA%A2%E5%AE%9D%E4%B9%A6/" href="/categories/%E7%BA%A2%E5%AE%9D%E4%B9%A6/"><div class='name'>红宝书</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><div class='name'>设计模式</div><div class='badge'>(5)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-            
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-      
-        
-          
-          
-        
-          
-          
-        
-          
-          
-        
-          
-          
-            
-              <section class='widget grid'>
-  
-<header class='pure'>
-  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
-  
-</header>
-
-  <div class='content pure'>
-    <ul class="grid navgation">
-      
-        <li><a class="flat-box" title="/" href="/"
-          
-          
-          id="home">
-          
-            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
-          
-          近期文章
-        </a></li>
-      
-        <li><a class="flat-box" title="/archives/" href="/archives/"
-          
-            rel="nofollow"
-          
-          
-          id="archives">
-          
-            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
-          
-          文章归档
-        </a></li>
-      
-        <li><a class="flat-box" title="/projects/" href="/projects/"
-          
-          
-          id="projects">
-          
-            <i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
-          
-          我的作品
-        </a></li>
-      
-        <li><a class="flat-box" title="/friends/" href="/friends/"
-          
-            rel="nofollow"
-          
-          
-          id="friends">
-          
-            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
-          
-          我的友链
-        </a></li>
-      
-        <li><a class="flat-box" title="/favorite/" href="/favorite/"
-          
-            rel="nofollow"
-          
-          
-          id="favorite">
-          
-            <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-          
-          收藏夹
-        </a></li>
-      
-        <li><a class="flat-box" title="/about/" href="/about/"
-          
-            rel="nofollow"
-          
-          
-          id="about">
-          
-            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
-          
-          关于小站
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
-
-            
           
         
           
@@ -863,6 +809,38 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
 
 
 
