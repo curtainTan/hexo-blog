@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.curtaintan.club/"/>
-  <updated>2020-09-28T00:45:17.033Z</updated>
+  <updated>2020-09-28T08:33:24.832Z</updated>
   <id>http://blog.curtaintan.club/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>红宝书第二章-HTML中的js</title>
+    <link href="http://blog.curtaintan.club/2020/09/28/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%BA%8C%E7%AB%A0-HTML%E4%B8%AD%E7%9A%84js/"/>
+    <id>http://blog.curtaintan.club/2020/09/28/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%BA%8C%E7%AB%A0-HTML%E4%B8%AD%E7%9A%84js/</id>
+    <published>2020-09-28T00:51:11.000Z</published>
+    <updated>2020-09-28T08:33:24.832Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、-lt-script-gt-元素"><a href="#一、-lt-script-gt-元素" class="headerlink" title="一、&lt;script&gt; 元素"></a>一、&lt;script&gt; 元素</h2><p><code>&lt;script&gt;</code> 元素由网景公司创造出来，并在网景浏览器2中实现，<code>&lt;script&gt;</code> 元素有以下 8 个属性</p><style>table th:first-of-type {    width: 130px;}table th:nth-of-type(2) {    width: 100px;}</style><table><thead><tr><th>属性名</th><th>填写</th><th>说明</th></tr></thead><tbody><tr><td>async</td><td>选填</td><td>表示立即下载该脚本，但不阻止其他页面操作，比如下载资源或等待掐他脚本加载</td></tr><tr><td>charset</td><td>可选</td><td>使用 src 属性指定的代码字符集，很少使用</td></tr><tr><td>corssorigin</td><td>可选</td><td>配置相关请求的CORS设置，默认不使用 CORS</td></tr><tr><td>defer</td><td>可选</td><td>立即下载脚本，不阻止页面其他操作，在文档解析完成后再执行脚本</td></tr><tr><td>integrity</td><td>可选</td><td>允许对比接收到的资源和指定的加密签名以验证资源的完整性，如果接收到的资源的签名与这个属性指定的签名不匹配，页面会报错，脚本不执行</td></tr><tr><td>language</td><td>废弃</td><td>用来标识代码块中的脚本语言，如 <code>VB</code>、<code>JS</code></td></tr><tr><td>src</td><td>可选</td><td>包含要执行代码的外部文件</td></tr><tr><td>type</td><td>可选</td><td>代替<code>language</code>，表示代码块中脚本语言的内容类型，一般是<code>text/javascript</code>，如果这个值是 <code>module</code> ，则代码会被当成 ES6 模块，而且只有这时候代码中才能出现 <code>import</code> 和 <code>export</code> 关键字</td></tr></tbody></table><p><strong>注意：</strong> 使用了 src 属性的 <code>&lt;script&gt;</code> 元素不应该再在元素中包含其他 javascript 代码，如果两者都提供的话，则浏览器只会下载并执行脚本，从而忽略行内代码</p><h3 id="lt-script-gt-标签位置"><a href="#lt-script-gt-标签位置" class="headerlink" title="&lt;script&gt; 标签位置"></a><code>&lt;script&gt;</code> 标签位置</h3><p>由于 script 标签会打断 DOM 的解析，所以将脚本放置在文档首部会阻塞 DOM 的解析，导致页面加载变慢，所以一般将 script 标签放在 body 元素中的内容后面，页面会在处理 js 代码之前完成渲染页面</p><h3 id="推迟脚本执行"><a href="#推迟脚本执行" class="headerlink" title="推迟脚本执行"></a>推迟脚本执行</h3><p>HTML4.0.1 为 script 标签定义了 defer 属性，这个属性表示脚本在整个页面解析完成之后再运行，HTML5 规范要求脚本要求脚本按照他们出现的顺序执行，因此第一个推迟的脚本会在第二个推迟的脚本之前运行（defer脚本按顺序执行），并且两者都会在 <code>DOMContentLoaded</code> 事件之前执行</p><h3 id="异步执行脚本"><a href="#异步执行脚本" class="headerlink" title="异步执行脚本"></a>异步执行脚本</h3><p>HTML5 为 script 元素定义了 async 属性，async 与 defer 类似，脚本的加载不会阻塞 DOM 的解析，但是 async 脚本加载完成会立即执行，如果此时还在进行 ODM 的解析，会打断 DOM 解析，被标记为 async 的脚本不能保证按照他们出现的顺序执行，异步脚本会在页面的 <code>load</code> 事件前执行</p><h3 id="动态加载脚本"><a href="#动态加载脚本" class="headerlink" title="动态加载脚本"></a>动态加载脚本</h3><p>除了 script 标签，还有其他方式加载脚本，</p><ol><li>使用 js 创建 script 标签</li><li>在文档头部预加载：<code>&lt;link rel=&quot;preload&quot; href=&quot;a.js&quot;&gt;</code></li></ol><h4 id="lt-noscript-gt-元素"><a href="#lt-noscript-gt-元素" class="headerlink" title="&lt;noscript&gt; 元素"></a><code>&lt;noscript&gt; 元素</code></h4><p>针对早期浏览器不支持 javascript 的问题，需要一个页面优雅降级的处理方案，<code>&lt;noscript&gt;</code> 元素出现，对不支持 javascript 的浏览器提供替代内容，与 <code>&lt;canvas&gt;</code> 元素中添加内容的目的一样，用于提示用户不支持相关操作</p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol><li>使用外部 javascript 文件时，必须将 src 属性设置为包含文件的 URL</li><li>对于不推迟执行的脚本，通常会把 <code>&lt;script&gt;</code> 元素放到页面尾部，介于主内容尾部和<code>&lt;/body&gt;</code>标签之前</li><li>使用 defer 属性会把脚本推迟到文档渲染完毕之后执行，推迟的脚本总是按照他们被列出的次序执行</li><li>使用 async 属性异步加载脚本，让脚本加载完成立马执行</li><li>通过使用 <code>&lt;noscript&gt;</code> 元素指定浏览器不支持脚本时显示的内容</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、-lt-script-gt-元素&quot;&gt;&lt;a href=&quot;#一、-lt-script-gt-元素&quot; class=&quot;headerlink&quot; title=&quot;一、&amp;lt;script&amp;gt; 元素&quot;&gt;&lt;/a&gt;一、&amp;lt;script&amp;gt; 元素&lt;/h2&gt;&lt;p&gt;&lt;cod
+      
+    
+    </summary>
+    
+    
+      <category term="红宝书" scheme="http://blog.curtaintan.club/categories/%E7%BA%A2%E5%AE%9D%E4%B9%A6/"/>
+    
+    
+      <category term="科普" scheme="http://blog.curtaintan.club/tags/%E7%A7%91%E6%99%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>9.28-每日一题-填充节点的next指针</title>
@@ -480,28 +506,6 @@
 &lt;p&gt;我看了很多关于发布订阅模式与观察者模式的文章，有点朋友认为观察者模式就是发布订阅模式，根据我看了这么多的文章的总结，他们确实是不一样的。&lt;/p&gt;
 &lt;p&gt;在vue中，emit和on方法。他们都似乎不约而同的自带了发布订阅属性一般，让开发变得更加高效好用起来。&lt;/p&gt;
 &lt;p&gt;今天就写一个发布订阅。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="设计模式" scheme="http://blog.curtaintan.club/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式（三）--代理模式</title>
-    <link href="http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
-    <id>http://blog.curtaintan.club/2020/02/08/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%89%EF%BC%89-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</id>
-    <published>2020-02-08T13:08:41.000Z</published>
-    <updated>2020-02-09T14:46:30.384Z</updated>
-    
-    <content type="html"><![CDATA[<p><fancybox><img src="https://image.gslb.dawnlab.me/8151655788e5ad17587fdc36a060bfb2.png" alt=""></fancybox></p><p>写一个代理模式.</p><a id="more"></a><h1 id="1-情景"><a href="#1-情景" class="headerlink" title="1. 情景"></a>1. 情景</h1><p>情景: 小明追女生 A</p><ul><li>非代理模式: 小明 =花=&gt; 女生A</li><li>代理模式: 小明 =花=&gt; 让女生A的好友B帮忙 =花=&gt; 女生A</li></ul><h1 id="2-代理模式的特点"><a href="#2-代理模式的特点" class="headerlink" title="2. 代理模式的特点"></a>2. 代理模式的特点</h1><ul><li>代理对象和本体对象具有一致的接口, 对使用者友好</li></ul><blockquote><p>常用的虚拟代理形式：某一个花销很大的操作，可以通过虚拟代理的方式延迟到这种需要它的时候才去创建（例：使用虚拟代理实现图片懒加载）<br>图片懒加载的方式：先通过一张loading图占位，然后通过异步的方式加载图片，等图片加载好了再把完成的图片加载到img标签里面。</p><footer><strong>考拉海购前端团队</strong><cite><a href="https://juejin.im/post/59df4f74f265da430f311909" target="_blank" rel="noopener">juejin.im/post/59df4f74f265da430f311909</a></cite></footer></blockquote><h1 id="3-代码设计"><a href="#3-代码设计" class="headerlink" title="3. 代码设计"></a>3. 代码设计</h1><p><fancybox><img src="https://image.gslb.dawnlab.me/1477504b420fce64b3cd68ebed8e9c00.png" alt=""></fancybox></p><h1 id="4-es6-代理模式-—-Proxy"><a href="#4-es6-代理模式-—-Proxy" class="headerlink" title="4. es6 代理模式 —- Proxy"></a>4. es6 代理模式 —- Proxy</h1><p><strong>目的：在操作前可以进行其他的操作（对数据加工等）。</strong></p><p><strong>代码设计</strong><br><fancybox><img src="https://image.gslb.dawnlab.me/017a9c46002a617e370af1ffc6a158ec.png" alt=""></fancybox></p><p><strong>运行结果：</strong></p><p><fancybox><img src="https://image.gslb.dawnlab.me/60e895dd1bc44e25965c0350cd5a0efe.png" alt=""></fancybox></p><p>案例参考：</p><ul><li><a href="https://juejin.im/post/5a5227ce6fb9a01c927e85c4" target="_blank" rel="noopener">ES6中的代理模式—–Proxy</a></li><li><a href="http://es6.ruanyifeng.com/#docs/proxy" target="_blank" rel="noopener">阮一峰– es6 入门</a></li></ul><h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p>代理模式，总的来说，是在操作前，可以进行其他的操作。</p><h1 id="5-参考材料"><a href="#5-参考材料" class="headerlink" title="5. 参考材料"></a>5. 参考材料</h1><p><a href="https://github.com/MuYunyun/blog/blob/master/BasicSkill/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F.md" target="_blank" rel="noopener">BasicSkill–代理模式</a></p><p><a href="https://juejin.im/post/59df4f74f265da430f311909#heading-2" target="_blank" rel="noopener">JavaScript设计模式</a></p><p><a href="https://www.cnblogs.com/mn6364/p/10990874.html" target="_blank" rel="noopener">js –代理模式</a></p><h1 id="6-代码"><a href="#6-代码" class="headerlink" title="6. 代码"></a>6. 代码</h1><figure class="highlight js"><figcaption><span>图片懒加载</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 真实的对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RealImg</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>.imgNode = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>)</span><br><span class="line">        <span class="built_in">document</span>.body.appendChild( <span class="keyword">this</span>.imgNode )</span><br><span class="line">    &#125;</span><br><span class="line">    setSrc( src )&#123;</span><br><span class="line">        <span class="keyword">this</span>.imgNode.src = src</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 代理对象</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProxyImg</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>.realImg = <span class="keyword">new</span> RealImg()</span><br><span class="line">    &#125;</span><br><span class="line">    setSrc( src )&#123;</span><br><span class="line">        <span class="keyword">this</span>.realImg.setSrc(<span class="string">"http://seopic.699pic.com/photo/40007/8839.jpg_wh1200.jpg"</span>)</span><br><span class="line">        <span class="keyword">let</span> img = <span class="keyword">new</span> Image()</span><br><span class="line">        img.src = src</span><br><span class="line">        img.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.realImg.setSrc( src )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> proxyImg = <span class="keyword">new</span> ProxyImg()</span><br><span class="line">proxyImg.setSrc( <span class="string">"http://seopic.699pic.com/photo/40006/7735.jpg_wh1200.jpg"</span> )</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;fancybox&gt;&lt;img src=&quot;https://image.gslb.dawnlab.me/8151655788e5ad17587fdc36a060bfb2.png&quot; alt=&quot;&quot;&gt;&lt;/fancybox&gt;&lt;/p&gt;
-&lt;p&gt;写一个代理模式.&lt;/p&gt;
     
     </summary>
     
