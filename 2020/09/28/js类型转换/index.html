@@ -401,6 +401,15 @@
 <blockquote>
 <p>当对象转换为数字时，调用对象的 <code>valueOf()</code> 方法，然后依据前面的规则转换返回的值，如果转换的结果是引用类型，则调用对象的 <code>toString()</code> 方法，再次按照前面的规则转换返回的字符串，如果返回还是引用类型，最后返回 <code>NaN</code></p>
 </blockquote>
+<style>
+table th:first-of-type {
+    width: 100px;
+}
+table th:nth-of-type(3) {
+    width: 100px;
+}
+</style>
+
 <p>部分内置对象默认调用的 <code>valueOf()</code> 方法的行为：</p>
 <table>
 <thead>
@@ -411,11 +420,6 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>Array</td>
-<td>返回数组本身</td>
-<td>对象</td>
-</tr>
-<tr>
 <td>Boolean</td>
 <td>布尔值</td>
 <td>基础类型</td>
@@ -423,17 +427,22 @@
 <tr>
 <td>Date</td>
 <td>返回毫秒数-从1970.1.1 0:0:0 开始计算</td>
-<td>数值</td>
-</tr>
-<tr>
-<td>Function</td>
-<td>函数本身</td>
-<td>对象类型</td>
+<td>基础类型</td>
 </tr>
 <tr>
 <td>Nunber</td>
 <td>数字值</td>
-<td>数值类型</td>
+<td>基础类型</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串值</td>
+<td>基础类型</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>返回数组本身</td>
+<td>对象类型</td>
 </tr>
 <tr>
 <td>Object</td>
@@ -441,15 +450,15 @@
 <td>对象类型</td>
 </tr>
 <tr>
-<td>String</td>
-<td>字符串值</td>
-<td>原始类型</td>
+<td>Function</td>
+<td>函数本身</td>
+<td>对象类型</td>
 </tr>
 </tbody></table>
 <p><strong>注意：</strong></p>
 <p>当数组只有一个元素时，会将第一个元素提取出来做转换</p>
 <p><strong>案例：</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Number() 类型转换</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">true</span>)        <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>)        <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>)   <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"0x15"</span>)      <span class="comment">// 21</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">""</span>)          <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"-0X16"</span>)     <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="built_in">Symbol</span>(<span class="number">12</span>))  <span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// valueOf() 方法返回值</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].valueOf()     <span class="comment">// [1, 2, 3, 4]  对象类型</span></span><br><span class="line"><span class="built_in">Number</span>( [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] )     <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>( [ <span class="number">12</span> ] )        <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">Number</span>( [ <span class="string">"12"</span> ] )      <span class="comment">// 12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> empty = [].valueOf()   <span class="comment">// []  对象类型</span></span><br><span class="line"><span class="built_in">Number</span>( empty )   <span class="comment">// 0  [].valueOf()=[]-&gt;NaN, 再调用empty.toString()='' Number("") -&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>().valueOf()     <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>( <span class="built_in">Boolean</span>() )     <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">date.valueOf()          <span class="comment">// 1601345955850</span></span><br><span class="line"><span class="built_in">Number</span>( date )          <span class="comment">// 1601345955850</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="keyword">var</span> a = <span class="number">1</span> &#125;</span><br><span class="line">fn.valueOf()            <span class="comment">// fn()&#123; var a = 1 &#125;</span></span><br><span class="line"><span class="built_in">Number</span>( fn )            <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">name</span>: <span class="string">"tan"</span> &#125;</span><br><span class="line">obj.valueOf()           <span class="comment">// &#123;name: "tan"&#125;   // 对象本身</span></span><br><span class="line"><span class="built_in">Number</span>( fn )            <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Number() 类型转换</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">true</span>)        <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>)        <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>)   <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"0x15"</span>)      <span class="comment">// 21   0x15 -&gt; 16+5=21</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">""</span>)          <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"-0X16"</span>)     <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="built_in">Symbol</span>(<span class="number">12</span>))  <span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// valueOf() 方法返回值</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].valueOf()     <span class="comment">// [1, 2, 3, 4]  对象类型</span></span><br><span class="line"><span class="built_in">Number</span>( [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] )     <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>( [ <span class="number">12</span> ] )        <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">Number</span>( [ <span class="string">"12"</span> ] )      <span class="comment">// 12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> empty = [].valueOf()   <span class="comment">// []  对象类型</span></span><br><span class="line"><span class="built_in">Number</span>( empty )   <span class="comment">// 0  [].valueOf()=[]-&gt;NaN, 再调用empty.toString()='' Number("") -&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>().valueOf()     <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>( <span class="built_in">Boolean</span>() )     <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">date.valueOf()          <span class="comment">// 1601345955850</span></span><br><span class="line"><span class="built_in">Number</span>( date )          <span class="comment">// 1601345955850</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="keyword">var</span> a = <span class="number">1</span> &#125;</span><br><span class="line">fn.valueOf()            <span class="comment">// fn()&#123; var a = 1 &#125;</span></span><br><span class="line"><span class="built_in">Number</span>( fn )            <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">name</span>: <span class="string">"tan"</span> &#125;</span><br><span class="line">obj.valueOf()           <span class="comment">// &#123;name: "tan"&#125;   // 对象本身</span></span><br><span class="line"><span class="built_in">Number</span>( fn )            <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="1-2-parseInt-param，radix"><a href="#1-2-parseInt-param，radix" class="headerlink" title="1.2 parseInt( param，radix )"></a>1.2 parseInt( param，radix )</h3><p>传入两个参数，第一个是需要进行转换的参数，第二是转换的进制，最终返回十进制数字或NaN</p>
 <h4 id="1-2-1-第一个参数是字符串："><a href="#1-2-1-第一个参数是字符串：" class="headerlink" title="1.2.1 第一个参数是字符串："></a>1.2.1 第一个参数是字符串：</h4><ol>
@@ -588,7 +597,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-29T23:02:28+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-29T23:10:19+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>更新于 2020年9月29日</p>
