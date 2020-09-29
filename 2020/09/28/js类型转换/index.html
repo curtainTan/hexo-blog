@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>js类型转换 | curTain</title>
+  
+  <meta name="keywords" content="curtain的小站">
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="curTain">
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://518test.curtaintan.club/blog.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>curTain</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/"
+            
+              rel="nofollow"
+            
+            
+            id="archives">
+            <i class='fas fa-archive fa-fw'></i>&nbsp;归档
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          curTain
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;首页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/projects/"
+                  
+                  
+                  id="projects">
+									<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/09/28/js%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+        js类型转换
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://blog.curtaintan.club" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>tanTantan</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-09-28</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/JavaScript/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>JavaScript</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>js 中类型转换分为显式类型转换和隐式类型转换</p>
+<ol>
+<li>显式类型转换方法：<code>Number()</code>、<code>parseInt()</code>、<code>parseFloat()</code>、<code>toString()</code>、<code>String</code>、<code>Boolean()</code></li>
+<li>隐式类型转换：逻辑运算符（ &amp;&amp;、||、！ ）、运算符（+、-、*、/）、关系运算符（&gt;、&lt;、&lt;=、&gt;=）、相等运算符（==）、if/while 条件运算</li>
+</ol>
+<h2 id="一、显式类型转换"><a href="#一、显式类型转换" class="headerlink" title="一、显式类型转换"></a>一、显式类型转换</h2><h3 id="1-1-Number"><a href="#1-1-Number" class="headerlink" title="1.1 Number()"></a>1.1 Number()</h3><blockquote>
+<p>Number() 能将任意类型的参数转换为数值类型</p>
+</blockquote>
+<p>规则如下：</p>
+<ul>
+<li>布尔值：true 和 false 分别被转换为 1 和 0</li>
+<li>数字：返回本身</li>
+<li>null：返回 0</li>
+<li>undefined：返回 NaN </li>
+<li>字符串：<ul>
+<li>只包含数字（<code>0X</code>/<code>0x</code>开头的十六进制数字字符串，允许正负号），返回十进制数</li>
+<li>包含有效浮点数，返回浮点数</li>
+<li>空字符串，返回0</li>
+<li>不是以上形式的字符串，返回 NaN</li>
+</ul>
+</li>
+<li>Symbol：抛错</li>
+<li>对象：调用对象的 <code>valueOf()</code> 方法，然后依据前面的规则转换返回的值，如果转换的结果是 <code>NaN</code>，则调用对象的 <code>toString()</code> 方法，再次按照前面的规则转换返回的字符串</li>
+</ul>
+<p><strong>强调：</strong></p>
+<blockquote>
+<p>当对象转换为数字时，调用对象的 <code>valueOf()</code> 方法，然后依据前面的规则转换返回的值，如果转换的结果是引用类型，则调用对象的 <code>toString()</code> 方法，再次按照前面的规则转换返回的字符串，如果返回还是引用类型，最后返回 <code>NaN</code></p>
+</blockquote>
+<p>部分内置对象默认调用的 <code>valueOf()</code> 方法的行为：</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>返回值</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Array</td>
+<td>返回数组本身</td>
+<td>对象</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔值</td>
+<td>基础类型</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>返回毫秒数-从1970.1.1 0:0:0 开始计算</td>
+<td>数值</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>函数本身</td>
+<td>对象类型</td>
+</tr>
+<tr>
+<td>Nunber</td>
+<td>数字值</td>
+<td>数值类型</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>对象本身</td>
+<td>对象类型</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串值</td>
+<td>原始类型</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong></p>
+<p>当数组只有一个元素时，会将第一个元素提取出来做转换</p>
+<p><strong>案例：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Number() 类型转换</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">true</span>)        <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>)        <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>)   <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"0x15"</span>)      <span class="comment">// 21</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">""</span>)          <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"-0X16"</span>)     <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="built_in">Symbol</span>(<span class="number">12</span>))  <span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// valueOf() 方法返回值</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>].valueOf()     <span class="comment">// [1, 2, 3, 4]  对象类型</span></span><br><span class="line"><span class="built_in">Number</span>( [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] )     <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Number</span>( [ <span class="number">12</span> ] )        <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">Number</span>( [ <span class="string">"12"</span> ] )      <span class="comment">// 12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> empty = [].valueOf()   <span class="comment">// []  对象类型</span></span><br><span class="line"><span class="built_in">Number</span>( empty )   <span class="comment">// 0  [].valueOf()=[]-&gt;NaN, 再调用empty.toString()='' Number("") -&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Boolean</span>().valueOf()     <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>( <span class="built_in">Boolean</span>() )     <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">date.valueOf()          <span class="comment">// 1601345955850</span></span><br><span class="line"><span class="built_in">Number</span>( date )          <span class="comment">// 1601345955850</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="keyword">var</span> a = <span class="number">1</span> &#125;</span><br><span class="line">fn.valueOf()            <span class="comment">// fn()&#123; var a = 1 &#125;</span></span><br><span class="line"><span class="built_in">Number</span>( fn )            <span class="comment">// NaN</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">name</span>: <span class="string">"tan"</span> &#125;</span><br><span class="line">obj.valueOf()           <span class="comment">// &#123;name: "tan"&#125;   // 对象本身</span></span><br><span class="line"><span class="built_in">Number</span>( fn )            <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-parseInt-param，radix"><a href="#1-2-parseInt-param，radix" class="headerlink" title="1.2 parseInt( param，radix )"></a>1.2 parseInt( param，radix )</h3><p>传入两个参数，第一个是需要进行转换的参数，第二是转换的进制，最终返回十进制数字或NaN</p>
+<h4 id="1-2-1-第一个参数是字符串："><a href="#1-2-1-第一个参数是字符串：" class="headerlink" title="1.2.1 第一个参数是字符串："></a>1.2.1 第一个参数是字符串：</h4><ol>
+<li>忽略字符串前面的空格，从非空字符开始计算</li>
+<li>空字符串返回 NaN</li>
+<li>第一个字符超过进制，返回 NaN，进制从0-9a-z开始计算，最大进制为 36</li>
+<li>如果第一个字符在进制内，则解析到第一个超出进制的符号为止</li>
+</ol>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">"  0111"</span>)      <span class="comment">// 111</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">""</span>)            <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"1c"</span>, <span class="number">13</span>)      <span class="comment">// 25  13+12</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"1cd"</span>, <span class="number">13</span>)     <span class="comment">// 25  13+12</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"dc1"</span>, <span class="number">13</span>)     <span class="comment">// NaN d进制超过13</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"-1cd"</span>, <span class="number">13</span>)    <span class="comment">// -25</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-第一个参数是数字："><a href="#1-2-2-第一个参数是数字：" class="headerlink" title="1.2.2 第一个参数是数字："></a>1.2.2 第一个参数是数字：</h4><ol>
+<li>第一个参数不是以 0 开头的，以第二个参数作为进制进行转换</li>
+<li>第一个参数是以 0 开头的，先进行八进制转换，再以第二个参数作为进制进行转换</li>
+<li>第一个参数是以 <code>0X/0x</code> 开头的，先进行十六进制转换，在以第二个参数作为进制进行转换</li>
+</ol>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="number">111</span>)       <span class="comment">// 111</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="number">13</span>, <span class="number">16</span>)    <span class="comment">// 19   16+3</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="number">013</span>, <span class="number">16</span>)   <span class="comment">// 17   013-&gt;8+3=11  11-&gt;16+1=17</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="number">0X13</span>, <span class="number">16</span>)  <span class="comment">// 25   0X13-&gt;16+3=19  19-&gt;16+9=25</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-3-第一个参数是-null-或-undefined"><a href="#1-2-3-第一个参数是-null-或-undefined" class="headerlink" title="1.2.3 第一个参数是 null 或 undefined"></a>1.2.3 第一个参数是 <code>null</code> 或 <code>undefined</code></h4><p>返回 <code>NaN</code></p>
+<h4 id="1-2-4-第一个元素是数组"><a href="#1-2-4-第一个元素是数组" class="headerlink" title="1.2.4 第一个元素是数组"></a>1.2.4 第一个元素是数组</h4><p>取数组的第一个元素作为第一个参数，再进行进制转换</p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>([<span class="number">11</span>], <span class="number">16</span>)  <span class="comment">// 17</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-5-第一个参数是-Symbol-类型"><a href="#1-2-5-第一个参数是-Symbol-类型" class="headerlink" title="1.2.5 第一个参数是 Symbol 类型"></a>1.2.5 第一个参数是 Symbol 类型</h4><p>抛出错误</p>
+<h3 id="1-3-parseFloat-string-string"><a href="#1-3-parseFloat-string-string" class="headerlink" title="1.3 parseFloat( string: string )"></a>1.3 parseFloat( string: string )</h3><p>将参数转为浮点型数字，没有进制转换，转换规则与 <code>parseInt</code> 基本相同</p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseFloat</span>( <span class="string">"123.45abc"</span> )   <span class="comment">// 123.45</span></span><br><span class="line"><span class="built_in">parseFloat</span>( [<span class="string">"123.45abc"</span>, <span class="string">"78"</span>, <span class="string">"9"</span>] )   <span class="comment">// 123.45</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-toString-方法"><a href="#1-4-toString-方法" class="headerlink" title="1.4 toString() 方法"></a>1.4 toString() 方法</h3><p>转换规则如下：</p>
+<ol>
+<li>Number类型：输出数字字符串，函数可以填入转换进制</li>
+<li><code>null</code> 或 <code>undefined</code>：抛错</li>
+<li>数组：将数组展开，空数组返回 <code>&quot;&quot;</code></li>
+<li>对象：返回 <code>[object Object]</code></li>
+<li>Date：返回日期的文字表示法</li>
+<li>函数：函数的字符串</li>
+<li>Symbol：输出 Symbol 字符串</li>
+<li>Boolean：返回字符串</li>
+</ol>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">29</span></span><br><span class="line">num.toString()      <span class="comment">// 29</span></span><br><span class="line">num.toString(<span class="number">15</span>)    <span class="comment">// 1e    15+14   14-&gt;e</span></span><br><span class="line"><span class="number">29.5</span> .toString(<span class="number">15</span>)  <span class="comment">// 1e.7777777777778</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nul = <span class="literal">null</span></span><br><span class="line">nul.toString()      <span class="comment">// 抛错</span></span><br><span class="line"></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].toString()  <span class="comment">// 1,2,3</span></span><br><span class="line">[&#123;<span class="attr">name</span>:<span class="string">"tan"</span>&#125;,<span class="number">1</span>,<span class="number">3</span>].toString()   <span class="comment">// [object Object],1,3</span></span><br><span class="line">[].toString()   <span class="comment">// ''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">name</span>:<span class="string">"tan"</span>&#125;</span><br><span class="line">obj.toString()  <span class="comment">// [object Object]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">date.toString() <span class="comment">// Tue Sep 29 2020 18:20:50 GMT+0800 (中国标准时间)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="string">"tan"</span>) &#125;</span><br><span class="line">fn.toString()   <span class="comment">// function fn()&#123; console.log("tan") &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tan = <span class="built_in">Symbol</span>(<span class="string">"tan"</span>)</span><br><span class="line">tan.toString()  <span class="comment">// Symbol(tan)</span></span><br><span class="line"></span><br><span class="line"><span class="literal">true</span>.toString() <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-String-value-any"><a href="#1-5-String-value-any" class="headerlink" title="1.5 String( value?: any )"></a>1.5 String( value?: any )</h3><p>将参数转为字符串，与 <code>toString</code> 转换规则基本类似，只能传一个参数</p>
+<p>与 <code>toString()</code> 不同，<code>String()</code> 可以转换 <code>null</code> 和 <code>undefined</code></p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>(<span class="number">123</span>)     <span class="comment">// 123</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">true</span>)    <span class="comment">// true</span></span><br><span class="line"><span class="built_in">String</span>(&#123;&#125;)      <span class="comment">// [object Object]</span></span><br><span class="line"><span class="built_in">String</span>([])      <span class="comment">// ""</span></span><br><span class="line"><span class="built_in">String</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">// 1,2,3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">null</span>)    <span class="comment">// null </span></span><br><span class="line"><span class="built_in">String</span>( <span class="literal">undefined</span> ) <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="string">"tan"</span>) &#125;</span><br><span class="line"><span class="built_in">String</span>(fn)     <span class="comment">// function fn()&#123; console.log("tan") &#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-6-Boolean-value-any"><a href="#1-6-Boolean-value-any" class="headerlink" title="1.6 Boolean( value?: any )"></a>1.6 Boolean( value?: any )</h3><p><code>undefined</code>、<code>null</code>、<code>false</code>、<code>&#39;&#39;</code>、<code>0</code>，<code>+-0</code>、<code>NaN</code> 转换为 <code>false</code></p>
+<p>其余都是 <code>true</code>，负数转为 <code>true</code></p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Boolean</span>(<span class="literal">undefined</span>)  <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">null</span>)       <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>)          <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">-0</span>)         <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="literal">NaN</span>)        <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Boolean</span>(<span class="number">-34</span>)        <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Boolean</span>([])         <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、隐式类型转换"><a href="#二、隐式类型转换" class="headerlink" title="二、隐式类型转换"></a>二、隐式类型转换</h2><blockquote>
+<p>逻辑运算符（ &amp;&amp;、||、！ ）、运算符（+、-、*、/）、关系运算符（&gt;、&lt;、&lt;=、&gt;=）、相等运算符（==）、if/while 条件运算</p>
+</blockquote>
+<h3 id="2-1-条件判断"><a href="#2-1-条件判断" class="headerlink" title="2.1 条件判断"></a>2.1 条件判断</h3><blockquote>
+<p>&amp;&amp;、||、!、if/while 条件判断</p>
+</blockquote>
+<p>会将数据转换成 Boolean 类型，转换规则同 Boolean 强制类型转换</p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( [] )      <span class="comment">// true</span></span><br><span class="line"><span class="keyword">if</span>( ![] )     <span class="comment">// false</span></span><br><span class="line"><span class="keyword">if</span>( <span class="number">-1</span> )      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-运算符"><a href="#2-2-运算符" class="headerlink" title="2.2 运算符"></a>2.2 运算符</h3><blockquote>
+<p>运算符：+ - * /</p>
+</blockquote>
+<h4 id="2-2-1-运算符"><a href="#2-2-1-运算符" class="headerlink" title="2.2.1 + 运算符"></a>2.2.1 + 运算符</h4><p>用于数字相加和字符串拼接</p>
+<ol>
+<li>当一侧为 <code>String</code> 类型时，被识别为字符串拼接，优先将另一侧调用 <code>String()</code> 转换为字符串</li>
+<li>当一侧为 <code>Number</code> 类型时，另一侧为原始类型时，将原始类型调用 <code>Number()</code> 转化为数字类型</li>
+<li>当一侧为 <code>Number</code> 类型时，另一侧为引用类型时，将引用类型作为参数调用 <code>String()</code> 和 <code>Number</code> 类型转换为字符串后拼接</li>
+</ol>
+<p>以上三点，优先级从高到低</p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">123</span> + <span class="string">"123"</span>   <span class="comment">// 123123</span></span><br><span class="line"><span class="number">123</span> + <span class="literal">true</span>    <span class="comment">// 124</span></span><br><span class="line"><span class="number">123</span> + <span class="literal">null</span>    <span class="comment">// 123</span></span><br><span class="line"><span class="string">"1"</span> + <span class="number">4</span> + <span class="number">5</span> + <span class="string">"6"</span> <span class="comment">// 1456</span></span><br><span class="line"></span><br><span class="line"><span class="number">123</span> + &#123;&#125;      <span class="comment">// 123[object Object]   &#123;&#125; -&gt; String(&#123;&#125;) -&gt; [object Object]</span></span><br><span class="line"><span class="number">123</span> + <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;  <span class="comment">// 123function fn()&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nul = <span class="literal">null</span></span><br><span class="line"><span class="string">"tan"</span> + nul     <span class="comment">// tannull    null -&gt; String(null) -&gt; null</span></span><br><span class="line"></span><br><span class="line"><span class="number">12</span> + [ <span class="number">5</span>, <span class="number">4</span> ]   <span class="comment">// 125,4    [5, 4] -&gt; String([5,4]) =&gt; 5,4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-1-运算符-1"><a href="#2-2-1-运算符-1" class="headerlink" title="2.2.1 - * / 运算符"></a>2.2.1 - * / 运算符</h4><p>将各种非 <code>Number</code> 类型隐式调用 <code>Number()</code> 函数将值转换为数值类型，如果其中一个转换为 <code>NaN</code>，结果为 <code>NaN</code></p>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span> + <span class="literal">true</span> <span class="comment">// 2</span></span><br><span class="line"><span class="number">2</span> - <span class="literal">true</span>    <span class="comment">// 3</span></span><br><span class="line"><span class="number">5</span> - <span class="number">012</span>     <span class="comment">// -5    012 -&gt; Number(012) -&gt; 8+2=10</span></span><br><span class="line"><span class="number">5</span> - <span class="number">0x12</span>    <span class="comment">// -13   0x12 -&gt; Number(0x12) -&gt; 16+2=18</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span> - [ <span class="number">2</span> ]    <span class="comment">// 3  [2] -&gt; Number([2]) -&gt; 2</span></span><br><span class="line"><span class="number">5</span> - [ <span class="number">2</span>, <span class="number">3</span> ] <span class="comment">// NaN [2, 3] -&gt; Number([2, 3]) -&gt; NaN</span></span><br><span class="line"><span class="number">5</span> - &#123;&#125;       <span class="comment">// NaN  &#123;&#125; -&gt; Number(&#123;&#125;) -&gt; NaN</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-关系操作符"><a href="#2-3-关系操作符" class="headerlink" title="2.3 关系操作符"></a>2.3 关系操作符</h3><blockquote>
+<p>关系操作符：==、&lt;、&gt;、&lt;=、&lt;= </p>
+</blockquote>
+<h4 id="2-3-1-lt-、-gt-、-lt-、-lt-操作符"><a href="#2-3-1-lt-、-gt-、-lt-、-lt-操作符" class="headerlink" title="2.3.1 &lt;、&gt;、&lt;=、&lt;= 操作符"></a>2.3.1 &lt;、&gt;、&lt;=、&lt;= 操作符</h4><ol>
+<li>两个操作值都是数值，进行数值比较</li>
+<li>都是字符串，比较字符对应的字符编码值</li>
+<li>一方是 Symbol，抛错</li>
+<li>除了上述情况，都使用 <code>Number()</code> 函数进行隐式转换，再进行比较</li>
+</ol>
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>NaN 与任何数值比较都不相等，都返回 false</p>
+</blockquote>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">26</span>] &gt; [<span class="number">12</span>]     <span class="comment">// true     [26] -&gt; Number([26]) -&gt; 26    [24] -&gt; 24 </span></span><br><span class="line"><span class="string">"abc"</span> &lt; <span class="string">"acb"</span>   <span class="comment">// true     b &lt; c</span></span><br><span class="line"><span class="number">77</span> &gt; <span class="string">"76"</span>       <span class="comment">// true</span></span><br><span class="line"><span class="number">77</span> &gt; <span class="string">"76a"</span>      <span class="comment">// false    76a -&gt; Number("76a") -&gt; NaN</span></span><br><span class="line"><span class="number">77</span> &gt; []         <span class="comment">// true     Number([])  -&gt; 0</span></span><br><span class="line"></span><br><span class="line"><span class="number">18</span> &gt; <span class="string">"0x11"</span>     <span class="comment">// true    0x11 -&gt; Number(0x11) -&gt; 16+1=17</span></span><br><span class="line"><span class="number">17</span> &gt; <span class="string">"0x11"</span>     <span class="comment">// false   0x11 -&gt; Number(0x11) -&gt; 16+1=17</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-1-操作符"><a href="#2-3-1-操作符" class="headerlink" title="2.3.1 == 操作符"></a>2.3.1 == 操作符</h4><ol>
+<li><code>NaN</code> 不与其他任何值相等</li>
+<li><code>null</code> 与 <code>undefined</code> 进行比较为 <code>true</code></li>
+<li><code>null</code>、<code>undefined</code> 与其他任何值比较结果都为 <code>false</code></li>
+</ol>
+<ol>
+<li><code>Boolean</code> 与其他类型比较，<code>Boolean</code> 先转换为 <code>Number</code></li>
+<li><code>String</code> 与 <code>Number</code> 进行比较，<code>String</code> 转换为 <code>Number</code></li>
+<li>引用类型与基础类型进行比较，引用类型先转换为基础类型（调用 ToPrimitive）</li>
+<li>引用类型与引用类型，直接判断是否指向同一对象</li>
+</ol>
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>如果没有部署 [Symbol.toPrimitive] 接口，则先返回 <code>valudeOf()</code> 的值，若返回的不是基础类型，再返回 <code>toString()</code> 的值，若返回的不是基础类型的值，则抛出错误</p>
+</blockquote>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[] == ![]    <span class="comment">// true</span></span><br><span class="line"><span class="comment">// ![] -&gt; false</span></span><br><span class="line"><span class="comment">// 再运用规则一：false -&gt; 0</span></span><br><span class="line"><span class="comment">// 再运用规则三：[] 调用 toPrimitive 返回 0</span></span><br><span class="line"><span class="comment">// 0 == 0   返回 true</span></span><br><span class="line"></span><br><span class="line"><span class="string">"[object Object]"</span> = &#123;&#125;  <span class="comment">// true</span></span><br><span class="line"><span class="comment">// 引用类型与基础类型进行比较，引用类型先调用 ToPrimitive 函数，</span></span><br><span class="line"><span class="comment">// 没有 ToPrimitive 函数，则调用 &#123;&#125;.valueOf() 返回引用类型的值</span></span><br><span class="line"><span class="comment">// 返回值不是基础类型，继续调用 &#123;&#125;.toString() 返回 [object Object]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="参考材料"><a href="#参考材料" class="headerlink" title="参考材料"></a>参考材料</h2><p><a href="https://juejin.im/post/6844903828093927431#heading-6" target="_blank" rel="noopener">刘小夕–JS 类型转换的规则是什么？</a></p>
+<p><a href="https://juejin.im/post/6869699873407500295" target="_blank" rel="noopener">粥里有勺糖–offer收割机–js的隐式类型转换规则整理</a></p>
+<p><a href="https://chinese.freecodecamp.org/news/javascript-implicit-type-conversion/" target="_blank" rel="noopener">freeCodeCamp–Javascript 隐式类型转换，一篇就够了！</a></p>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-29T22:52:43+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年9月29日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>js基础</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A7%91%E6%99%AE/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>科普</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/09/28/js%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/&title=js类型转换 | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/09/28/js%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/&title=js类型转换 | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/09/29/9-29-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="prev" title="9.29-每日一题--二叉树后序遍历">
+                                
+                                    9.29-每日一题--二叉树后序遍历
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/leetcode/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> leetcode</a> <a class="tag" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 二叉树</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/09/28/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%BA%8C%E7%AB%A0-HTML%E4%B8%AD%E7%9A%84js/" rel="prev" title="红宝书第二章-HTML中的js">
+                                  
+                                      红宝书第二章-HTML中的js
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E7%A7%91%E6%99%AE/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 科普</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'js类型转换',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://speed.moe/images/94023bd1a60711bea47670702ff87934.jpg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1948750473@qq.com"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/curtainTan"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=109496832"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、显式类型转换"><span class="toc-text">一、显式类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Number"><span class="toc-text">1.1 Number()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-parseInt-param，radix"><span class="toc-text">1.2 parseInt( param，radix )</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-第一个参数是字符串："><span class="toc-text">1.2.1 第一个参数是字符串：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-第一个参数是数字："><span class="toc-text">1.2.2 第一个参数是数字：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-第一个参数是-null-或-undefined"><span class="toc-text">1.2.3 第一个参数是 null 或 undefined</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-4-第一个元素是数组"><span class="toc-text">1.2.4 第一个元素是数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-5-第一个参数是-Symbol-类型"><span class="toc-text">1.2.5 第一个参数是 Symbol 类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-parseFloat-string-string"><span class="toc-text">1.3 parseFloat( string: string )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-toString-方法"><span class="toc-text">1.4 toString() 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-String-value-any"><span class="toc-text">1.5 String( value?: any )</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Boolean-value-any"><span class="toc-text">1.6 Boolean( value?: any )</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、隐式类型转换"><span class="toc-text">二、隐式类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-条件判断"><span class="toc-text">2.1 条件判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-运算符"><span class="toc-text">2.2 运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-运算符"><span class="toc-text">2.2.1 + 运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-运算符-1"><span class="toc-text">2.2.1 - * &#x2F; 运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-关系操作符"><span class="toc-text">2.3 关系操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-lt-、-gt-、-lt-、-lt-操作符"><span class="toc-text">2.3.1 &lt;、&gt;、&lt;&#x3D;、&lt;&#x3D; 操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-操作符"><span class="toc-text">2.3.1 &#x3D;&#x3D; 操作符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考材料"><span class="toc-text">参考材料</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:1948750473@qq.com"
+            class="social fab fa-qq flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/curtainTan"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=109496832"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
