@@ -426,8 +426,88 @@
 <p>案例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用八进制字面量 </span></span><br><span class="line"><span class="comment">//非严格模式:值为 8 </span></span><br><span class="line"><span class="comment">//严格模式:抛出语法错误</span></span><br><span class="line"><span class="keyword">var</span> value = <span class="number">010</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用 parseInt()解析八进制字面量 </span></span><br><span class="line"><span class="comment">//非严格模式:值为 8 </span></span><br><span class="line"><span class="comment">//严格模式:值为 10</span></span><br><span class="line"><span class="keyword">var</span> value = <span class="built_in">parseInt</span>(<span class="string">"010"</span>);</span><br></pre></td></tr></table></figure>
 
-
-
+<h4 id="1-2-7-总结"><a href="#1-2-7-总结" class="headerlink" title="1.2.7 总结"></a>1.2.7 总结</h4><p>简单的概括一下，严格模式会造成以下影响：</p>
+<ol>
+<li>变量必须定义后才能赋值，且不能随意删除</li>
+<li>修改对象中只读属性和不可配置的属性时，会报错</li>
+<li>函数中，arguments 与参数独立，操作互不影响</li>
+<li>显式绑定 this 时，不能将函数绑定到 null 上</li>
+<li>其他影响，eval 函数执行中的变量定义和定义数字时的进制问题</li>
+</ol>
+<p>严格模式的目的：</p>
+<ol>
+<li>消除 js 语法不严谨的地方，减少奇怪行为（不定义变量，直接赋值，八进制数字）</li>
+<li>消除代码运行不安全的地方（修改只读属性）</li>
+<li>提高编译效率和运行速度</li>
+<li>为未来做铺垫</li>
+</ol>
+<h2 id="二、变量"><a href="#二、变量" class="headerlink" title="二、变量"></a>二、变量</h2><p>有三个关键字可以声明变量：<code>var</code>、<code>let</code>、<code>const</code></p>
+<h3 id="2-1-var、let、const-的区别"><a href="#2-1-var、let、const-的区别" class="headerlink" title="2.1 var、let、const 的区别"></a>2.1 var、let、const 的区别</h3><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>变量提升</th>
+<th>块级作用域</th>
+<th>重新赋值</th>
+<th>重复声明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var</td>
+<td>存在</td>
+<td>不存在</td>
+<td>可以</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>let</td>
+<td>不存在</td>
+<td>存在</td>
+<td>可以</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>const</td>
+<td>不存在</td>
+<td>存在</td>
+<td>不可以</td>
+<td>不可以</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong></p>
+<ol>
+<li>const 必须初始化一个值</li>
+<li>var 声明的变量在浏览器环境会挂载到 window 上，而 let 和 const 不会</li>
+</ol>
+<h3 id="2-2-var、let、const-的使用"><a href="#2-2-var、let、const-的使用" class="headerlink" title="2.2 var、let、const 的使用"></a>2.2 var、let、const 的使用</h3><ol>
+<li>不使用 var 定义变量</li>
+<li>使用 let 定义需要改变的基础变量</li>
+<li>使用 const 定义常量或不会直接更改引用的对象</li>
+</ol>
+<h2 id="三、数据类型"><a href="#三、数据类型" class="headerlink" title="三、数据类型"></a>三、数据类型</h2><p>ECMAScript 有其中简单数据类型（原始类型）：</p>
+<ol>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+<li>symbol</li>
+<li>bigInt</li>
+</ol>
+<p>复杂数据类型：object（包含对象、function）</p>
+<h3 id="3-1-typeof-操作符"><a href="#3-1-typeof-操作符" class="headerlink" title="3.1 typeof 操作符"></a>3.1 typeof 操作符</h3><p>对一个值使用 <code>typeof</code> 会返回以下字符串之一：</p>
+<ol>
+<li><code>undefined</code> 表示值未定义</li>
+<li><code>boolean</code> 表示值为布尔值</li>
+<li><code>string</code> 表示值为字符串</li>
+<li><code>number</code> 表示值为数字</li>
+<li><code>object</code> 表示值为对象（不是函数）或 null</li>
+<li><code>function</code> 表示值为函数</li>
+<li><code>symbol</code> 表示值为符号</li>
+<li><code>bigint</code> 表示值为bigint</li>
+</ol>
+<p>案例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span>  <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>  <span class="comment">// object</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>  <span class="comment">// boolean</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"tan"</span>  <span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">12</span>  <span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">12n</span>  <span class="comment">// bigint</span></span><br><span class="line"><span class="keyword">typeof</span> &#123; <span class="attr">name</span>: <span class="string">"yuuu"</span> &#125;  <span class="comment">// object</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">typeof</span> fn  <span class="comment">// function</span></span><br></pre></td></tr></table></figure>
 
 
       </div>
@@ -441,10 +521,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-09-30T17:18:06+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-02T17:44:48+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年9月30日</p>
+    <p>更新于 2020年10月2日</p>
   </a>
 </div>
 
@@ -690,7 +770,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、语法"><span class="toc-text">一、语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-变量命名规则"><span class="toc-text">1.1 变量命名规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-严格模式"><span class="toc-text">1.2 严格模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-针对变量："><span class="toc-text">1.2.1 针对变量：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-针对对象："><span class="toc-text">1.2.2 针对对象：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-针对函数："><span class="toc-text">1.2.3 针对函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-4-针对-eval-函数中的变量"><span class="toc-text">1.2.4 针对 eval() 函数中的变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-5-抑制-this-指向"><span class="toc-text">1.2.5 抑制 this 指向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-6-其他影响"><span class="toc-text">1.2.6 其他影响</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、语法"><span class="toc-text">一、语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-变量命名规则"><span class="toc-text">1.1 变量命名规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-严格模式"><span class="toc-text">1.2 严格模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-针对变量："><span class="toc-text">1.2.1 针对变量：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-针对对象："><span class="toc-text">1.2.2 针对对象：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-针对函数："><span class="toc-text">1.2.3 针对函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-4-针对-eval-函数中的变量"><span class="toc-text">1.2.4 针对 eval() 函数中的变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-5-抑制-this-指向"><span class="toc-text">1.2.5 抑制 this 指向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-6-其他影响"><span class="toc-text">1.2.6 其他影响</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-7-总结"><span class="toc-text">1.2.7 总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、变量"><span class="toc-text">二、变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-var、let、const-的区别"><span class="toc-text">2.1 var、let、const 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-var、let、const-的使用"><span class="toc-text">2.2 var、let、const 的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、数据类型"><span class="toc-text">三、数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-typeof-操作符"><span class="toc-text">3.1 typeof 操作符</span></a></li></ol></li></ol>
     </div>
   </section>
 
