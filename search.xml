@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>10.3-每日一题--缺失数字</title>
+      <link href="/2020/10/03/10-3-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/"/>
+      <url>/2020/10/03/10-3-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>位操作符</title>
+      <link href="/2020/10/02/%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
+      <url>/2020/10/02/%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6/</url>
+      
+        <content type="html"><![CDATA[<ol start="268"><li>缺失数字</li></ol><a id="more"></a><h2 id="268-缺失数字"><a href="#268-缺失数字" class="headerlink" title="268. 缺失数字"></a><a href="https://leetcode-cn.com/problems/missing-number/" target="_blank" rel="noopener">268. 缺失数字</a></h2><p>给定一个包含 0, 1, 2, …, n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。</p><p>示例 1:</p><blockquote><p>输入: [3,0,1]<br>输出: 2<br>示例 2:</p></blockquote><blockquote><p>输入: [9,6,4,2,3,5,7,0,1]<br>输出: 8</p></blockquote><h2 id="解法一-高斯求和公式"><a href="#解法一-高斯求和公式" class="headerlink" title="解法一   高斯求和公式"></a>解法一   高斯求和公式</h2><p>使用数学解法：</p><ol><li>利用高斯求和公式求出序列长度值总和</li><li>遍历数列，求出现有总和</li><li>相减得差</li></ol><p>可知，和为 0 到 n 的和，<br>高斯求和公式：总个数 / 2 * ( 最小的数 + 最大的数 )</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> missingNumber = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 因为缺失了一个数，所以长度要加一，</span></span><br><span class="line">    <span class="comment">// 最大的数就是数组的长度那个数，那个数加上 0</span></span><br><span class="line">    <span class="keyword">let</span> allcount = ( nums.length + <span class="number">1</span> ) / <span class="number">2</span> * ( nums.length + <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i ++ )&#123;</span><br><span class="line">        res += nums[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> allcount - res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="解法二-位运算"><a href="#解法二-位运算" class="headerlink" title="解法二   位运算"></a>解法二   位运算</h2><p>异或运算满足结合律，两个相同的数异或运算返回 0，不相同的数异或返回原来的数</p><p>异或运算的真值表：</p><table><thead><tr><th>a</th><th>b</th><th>a^b</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></tbody></table><p>案例：</p><blockquote><p>1^1   // 0<br>1^2   // 3   10^1 -&gt; 11 -&gt; 2+1=3<br>4^5   // 1    4-&gt;100  5-&gt;101  100^101 -&gt; 001 -&gt; 1</p></blockquote><p>解释：会把数字转换为二进制，再进行异或运算</p><p>案例：</p><p>有这样的案例：</p><p>|下标|0|1|2|3|<br>|–|–|–|–|<br>|数字|0|1|3|4|</p><blockquote><p>得到公式：4^(0^0)^(1^1)^(2^3)^(3^4)<br>交换律：  = (4^4)^(0^0)^(1^1)^(3^3)^2<br>最后结果：= 0^0^0^0^2<br>         = 2</p></blockquote><h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> missingNumber = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = nums.length</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i ++ )&#123;</span><br><span class="line">        n ^= nums[i] ^ i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当涉及到数字运算时，可以优先考虑数学公式和位运算</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js 基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>10.2-每日一题-宝石与石头</title>
       <link href="/2020/10/02/10-2-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
       <url>/2020/10/02/10-2-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
