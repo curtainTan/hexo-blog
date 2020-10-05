@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>位操作符 | curTain</title>
+  <title>10.5-每日一题--四数之和 | curTain</title>
   
   <meta name="keywords" content="curtain的小站">
   
@@ -289,8 +289,8 @@
         
   
     <h1 class="title">
-      <a href="/2020/10/02/%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6/">
-        位操作符
+      <a href="/2020/10/05/10-5-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
+        10.5-每日一题--四数之和
       </a>
     </h1>
   
@@ -321,7 +321,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2020-10-02</p>
+    <p>2020-10-05</p>
   </a>
 </div>
 
@@ -331,9 +331,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/JavaScript/' rel="nofollow">
+    <a href='/categories/%E7%AE%97%E6%B3%95/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>JavaScript</p>
+      <p>算法</p>
     </a>
   </div>
 
@@ -373,73 +373,33 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <ol start="268">
-<li>缺失数字</li>
+        <ol start="18">
+<li>四数之和</li>
 </ol>
 <a id="more"></a>
 
-<h2 id="268-缺失数字"><a href="#268-缺失数字" class="headerlink" title="268. 缺失数字"></a><a href="https://leetcode-cn.com/problems/missing-number/" target="_blank" rel="noopener">268. 缺失数字</a></h2><p>给定一个包含 0, 1, 2, …, n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数。</p>
-<p>示例 1:</p>
+<h2 id="18-四数之和"><a href="#18-四数之和" class="headerlink" title="18. 四数之和"></a><a href="https://leetcode-cn.com/problems/4sum/" target="_blank" rel="noopener">18. 四数之和</a></h2><p>给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。</p>
+<p>注意：</p>
+<p>答案中不可以包含重复的四元组。</p>
+<p>示例：</p>
+<p>给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。</p>
+<p>满足要求的四元组集合为：</p>
 <blockquote>
-<p>输入: [3,0,1]<br>输出: 2<br>示例 2:</p>
+<p>[<br> [-1,  0, 0, 1],<br> [-2, -1, 1, 2],<br> [-2,  0, 0, 2]<br>]</p>
 </blockquote>
-<blockquote>
-<p>输入: [9,6,4,2,3,5,7,0,1]<br>输出: 8</p>
-</blockquote>
-<h2 id="解法一-高斯求和公式"><a href="#解法一-高斯求和公式" class="headerlink" title="解法一   高斯求和公式"></a>解法一   高斯求和公式</h2><p>使用数学解法：</p>
-<ol>
-<li>利用高斯求和公式求出序列长度值总和</li>
-<li>遍历数列，求出现有总和</li>
-<li>相减得差</li>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ol>
+<li>对数组进行排序</li>
+<li>将取得的值以 <strong>数组字符串</strong> 的形式存入数组</li>
+<li>使用 <code>Set</code> 去重</li>
+<li>使用 <code>JSON.parse()</code> 将元素恢复为数组对象</li>
 </ol>
-<p>可知，和为 0 到 n 的和，<br>高斯求和公式：总个数 / 2 * ( 最小的数 + 最大的数 )</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> missingNumber = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 因为缺失了一个数，所以长度要加一，</span></span><br><span class="line">    <span class="comment">// 最大的数就是数组的长度那个数，那个数加上 0</span></span><br><span class="line">    <span class="keyword">let</span> allcount = ( nums.length + <span class="number">1</span> ) / <span class="number">2</span> * ( nums.length + <span class="number">0</span> )</span><br><span class="line">    <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i ++ )&#123;</span><br><span class="line">        res += nums[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> allcount - res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; target</span></span><br><span class="line"><span class="comment"> * @return &#123;number[][]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> fourSum = <span class="function"><span class="keyword">function</span>(<span class="params">nums, target</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = nums.length</span><br><span class="line">    <span class="keyword">let</span> res = []</span><br><span class="line">    <span class="keyword">if</span>( len &lt; <span class="number">4</span> ) <span class="keyword">return</span> res</span><br><span class="line">    nums = nums.sort( <span class="function">(<span class="params"> a, b </span>) =&gt;</span> a - b )</span><br><span class="line">    <span class="comment">// 获取合适的值</span></span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - <span class="number">3</span>; i ++ )&#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len - <span class="number">2</span>; j ++ )&#123;</span><br><span class="line">            <span class="keyword">for</span>( <span class="keyword">let</span> x = j + <span class="number">1</span>; x &lt; len - <span class="number">1</span>; x ++ )&#123;</span><br><span class="line">                <span class="keyword">for</span>( <span class="keyword">let</span> y = x + <span class="number">1</span>; y &lt; len; y ++ )&#123;</span><br><span class="line">                    <span class="keyword">if</span>( nums[i] + nums[j] + nums[x] + nums[y] === target )&#123;</span><br><span class="line">                        <span class="comment">// 将值以字符串的形式存入数组</span></span><br><span class="line">                        res.push( <span class="string">`[<span class="subst">$&#123;nums[i]&#125;</span>,<span class="subst">$&#123;nums[j]&#125;</span>,<span class="subst">$&#123;nums[x]&#125;</span>,<span class="subst">$&#123;nums[y]&#125;</span>]`</span> )</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 去重</span></span><br><span class="line">    res = [ ...new <span class="built_in">Set</span>(res) ]</span><br><span class="line">    <span class="comment">// 恢复元素为数组</span></span><br><span class="line">    res = res.map( <span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">JSON</span>.parse( item ) )</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="解法二-位运算"><a href="#解法二-位运算" class="headerlink" title="解法二   位运算"></a>解法二   位运算</h2><p>异或运算满足结合律，两个相同的数异或运算返回 0，不相同的数异或返回原来的数</p>
-<p>异或运算的真值表：</p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>b</th>
-<th>a^b</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody></table>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>使用 <code>JSON.stringify()</code> 函数处理对象时，属性为 <code>undefined</code> 和 <code>function</code> 会被忽略，所以在使用 <code>JSON.stringify()</code> 时需要先查看对象是否适合使用</p>
 <p>案例：</p>
-<blockquote>
-<p>1^1   // 0<br>1^2   // 3   10^1 -&gt; 11 -&gt; 2+1=3<br>4^5   // 1    4-&gt;100  5-&gt;101  100^101 -&gt; 001 -&gt; 1</p>
-</blockquote>
-<p>解释：会把数字转换为二进制，再进行异或运算</p>
-<p>案例：</p>
-<p>有这样的案例：</p>
-<p>|下标|0|1|2|3|<br>|–|–|–|–|<br>|数字|0|1|3|4|</p>
-<blockquote>
-<p>得到公式：4^(0^0)^(1^1)^(2^3)^(3^4)<br>交换律：  = (4^4)^(0^0)^(1^1)^(3^3)^2<br>最后结果：= 0^0^0^0^2<br>         = 2</p>
-</blockquote>
-<h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> missingNumber = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> n = nums.length</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i ++ )&#123;</span><br><span class="line">        n ^= nums[i] ^ i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name: <span class="string">"tan"</span>,</span><br><span class="line">    age: <span class="literal">undefined</span>,</span><br><span class="line">    book: [</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">"chinese"</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">"math"</span> &#125;</span><br><span class="line">    ],</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( <span class="string">"my name is "</span>, <span class="keyword">this</span>.name )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">JSON</span>.stringify( obj )</span><br><span class="line"><span class="comment">// "&#123;"name":"tan","book":[&#123;"name":"chinese"&#125;,&#123;"name":"math"&#125;]&#125;"</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当涉及到数字运算时，可以优先考虑数学公式和位运算</p>
+<p>可知，值为 <code>undefined</code> 和 <code>function</code> 的属性已经被忽略了</p>
 
       </div>
       
@@ -452,10 +412,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-03T09:46:40+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-05T10:04:32+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2020年10月3日</p>
+    <p>更新于 2020年10月5日</p>
   </a>
 </div>
 
@@ -464,7 +424,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/js-%E5%9F%BA%E7%A1%80/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>js 基础</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/leetcode/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>leetcode</p></a></div>
 
 
         
@@ -477,8 +437,8 @@
       
         <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/10/02/%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6/&title=位操作符 | curTain&summary=
-缺失数字
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/10/05/10-5-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/&title=10.5-每日一题--四数之和 | curTain&summary=
+四数之和
 "
           
           >
@@ -491,8 +451,8 @@
       
         <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/10/02/%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6/&title=位操作符 | curTain&summary=
-缺失数字
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/10/05/10-5-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/&title=10.5-每日一题--四数之和 | curTain&summary=
+四数之和
 "
           
           >
@@ -517,35 +477,21 @@
       
           <div class="prev-next">
               
-                  <section class="prev">
-                      <span class="art-item-left">
-                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                          <h4>
-                              <a href="/2020/10/03/10-3-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/" rel="prev" title="10.3-每日一题--缺失数字">
-                                
-                                    10.3-每日一题--缺失数字
-                                
-                              </a>
-                          </h4>
-                          
-                      </span>
-                  </section>
-              
               
                   <section class="next">
                       <span class="art-item-right" aria-hidden="true">
                           <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                           <h4>
-                              <a href="/2020/10/02/10-2-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="prev" title="10.2-每日一题-宝石与石头">
+                              <a href="/2020/10/04/javascript%E4%B9%8B%E4%BD%8D%E6%93%8D%E4%BD%9C/" rel="prev" title="javascript之位操作">
                                   
-                                      10.2-每日一题-宝石与石头
+                                      javascript之位操作
                                   
                               </a>
                           </h4>
                           
                               
                               <h6 class="tags">
-                                  <a class="tag" href="/tags/leetcode/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> leetcode</a> <a class="tag" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 字符串</a>
+                                  <a class="tag" href="/tags/js%E5%9F%BA%E7%A1%80/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> js基础</a> <a class="tag" href="/tags/%E7%A7%91%E6%99%AE/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 科普</a>
                               </h6>
                           
                       </span>
@@ -589,7 +535,7 @@
 
   <script>
     window.subData = {
-      title: '位操作符',
+      title: '10.5-每日一题--四数之和',
       tools: true
     }
   </script>
@@ -700,7 +646,7 @@
 </header>
 
     <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#268-缺失数字"><span class="toc-text">268. 缺失数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解法一-高斯求和公式"><span class="toc-text">解法一   高斯求和公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解法二-位运算"><span class="toc-text">解法二   位运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现-1"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#18-四数之和"><span class="toc-text">18. 四数之和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li></ol>
     </div>
   </section>
 
