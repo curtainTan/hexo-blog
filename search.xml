@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>10.10-每日一题--最小高度树</title>
+      <link href="/2020/10/10/10-10-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+      <url>/2020/10/10/10-10-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<ol start="310"><li>最小高度树</li></ol><a id="more"></a><p><a href="https://leetcode-cn.com/problems/minimum-height-trees/" target="_blank" rel="noopener">310. 最小高度树</a></p><p>对于一个具有树特征的无向图，我们可选择任何一个节点作为根。图因此可以成为树，在所有可能的树中，具有最小高度的树被称为最小高度树。给出这样的一个图，写出一个函数找到所有的最小高度树并返回他们的根节点。</p><p>格式</p><p>该图包含 n 个节点，标记为 0 到 n - 1。给定数字 n 和一个无向边 edges 列表（每一个边都是一对标签）。</p><p>你可以假设没有重复的边会出现在 edges 中。由于所有的边都是无向边， [0, 1]和 [1, 0] 是相同的，因此不会同时出现在 edges 里。</p><p>示例 1:</p><style>.bg-pre {    padding: 10px;    background: rgba(33,150,243,.2);    border-radius: 4px;}</style><p>输入: n = 4, edges = [[1, 0], [1, 2], [1, 3]]</p><pre class="bg-pre">        0        |        1       / \      2   3 </pre><p>输出: [1]<br>示例 2:</p><p>输入: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]</p><pre class="bg-pre">     0  1  2      \ | /        3        |        4        |        5 </pre><p>输出: [3, 4]</p><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ol><li>使用邻接表存储树的节点</li><li>使用一个数组保存入度为以的节点</li><li>依次互相消除值</li><li>遍历数组，返回最后结果</li></ol><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @param &#123;number[][]&#125; edges</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findMinHeightTrees = <span class="function"><span class="keyword">function</span>(<span class="params">n, edges</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 存储树</span></span><br><span class="line">    <span class="keyword">let</span> graph = <span class="built_in">Array</span>.from(&#123; <span class="attr">length</span>: n &#125;, ()=&gt;([]))</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> item <span class="keyword">of</span> edges )&#123;</span><br><span class="line">        graph[item[<span class="number">0</span>]].push( item[<span class="number">1</span>] )</span><br><span class="line">        graph[item[<span class="number">1</span>]].push( item[<span class="number">0</span>] )</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 入度为 1 的节点</span></span><br><span class="line">    <span class="keyword">let</span> oneArr = <span class="built_in">Array</span>.from(&#123; <span class="attr">length</span>: n &#125;, ()=&gt;(<span class="literal">false</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>( n &gt; <span class="number">2</span> )&#123;</span><br><span class="line">        <span class="comment">// 取出入度为 1 的节点</span></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> item <span class="keyword">in</span> graph )&#123;</span><br><span class="line">            <span class="keyword">if</span>( graph[item].length === <span class="number">1</span> )&#123;</span><br><span class="line">                oneArr[item] = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历入度为 1 的节点</span></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> i <span class="keyword">in</span> graph )&#123;</span><br><span class="line">            <span class="keyword">if</span>( oneArr[i] &amp;&amp; graph[i].length )&#123;</span><br><span class="line">                <span class="comment">// 互相删除节点</span></span><br><span class="line">                <span class="keyword">let</span> otherPoint = graph[i].pop()</span><br><span class="line">                graph[otherPoint] = graph[otherPoint].filter( <span class="function"><span class="params">aa</span> =&gt;</span> aa != i )</span><br><span class="line">                n --</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 取出结果</span></span><br><span class="line">    <span class="keyword">let</span> res = []</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> i <span class="keyword">in</span> oneArr )&#123;</span><br><span class="line">     <span class="keyword">if</span>( !oneArr[i] ) res.push(i)    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> 图 </tag>
+            
+            <tag> 邻接表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构之实现前缀树</title>
       <link href="/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%BC%80%E6%A0%91/"/>
       <url>/2020/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%BC%80%E6%A0%91/</url>
