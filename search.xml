@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>10.14-每日一题--查找常用字符</title>
+      <link href="/2020/10/14/10-14-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+      <url>/2020/10/14/10-14-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<ol start="1002"><li>查找常用字符</li></ol><a id="more"></a><h2 id="1002-查找常用字符"><a href="#1002-查找常用字符" class="headerlink" title="1002. 查找常用字符"></a><a href="https://leetcode-cn.com/problems/find-common-characters/" target="_blank" rel="noopener">1002. 查找常用字符</a></h2><p>给定仅有小写字母组成的字符串数组 A，返回列表中的每个字符串中都显示的全部字符（包括重复字符）组成的列表。例如，如果一个字符在每个字符串中出现 3 次，但不是 4 次，则需要在最终答案中包含该字符 3 次。</p><p>你可以按任意顺序返回答案。</p><p>示例 1：</p><blockquote><p>输入：[“bella”, “label”, “roller”]<br>输出：[“e”, “l”, “l”]</p></blockquote><p>示例 2：</p><blockquote><p>输入：[“cool”, “lock”, “cook”]<br>输出：[“c”, “o”]</p></blockquote><h2 id="解题思路一"><a href="#解题思路一" class="headerlink" title="解题思路一"></a>解题思路一</h2><ol><li>取出第一个元素，以第一个元素为基准迭代</li><li>在剩下的元素里面查找迭代的字母</li><li>找到就替换找到的字母，没找到就跳出此次循环</li><li>判断是否是最后一个元素，是就把当前元素存到 res 数组里</li></ol><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string[]&#125; A</span></span><br><span class="line"><span class="comment"> * @return &#123;string[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> commonChars = <span class="function"><span class="keyword">function</span>(<span class="params">A</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = []</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> item <span class="keyword">of</span> A[<span class="number">0</span>] )&#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">let</span> i = <span class="number">1</span>; i &lt; A.length; i ++ )&#123;</span><br><span class="line">            <span class="keyword">let</span> index = A[i].indexOf( item )</span><br><span class="line">            <span class="keyword">if</span>( index === <span class="number">-1</span> )&#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>( i === A.length - <span class="number">1</span> )&#123;</span><br><span class="line">                    res.push( item )</span><br><span class="line">                &#125;</span><br><span class="line">                A[i] = A[i].replace( item, <span class="string">""</span> )</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="解题思路二"><a href="#解题思路二" class="headerlink" title="解题思路二"></a>解题思路二</h2><p>因为每个元素都必须含有该字母，故可以使用 <code>Array.every()</code> 函数来判定每个元素都存在该字母</p><p><strong>解释：</strong></p><p><code>Array.every( cb=()=&gt;{} )</code> 方法的每一项回调函数都返回 <code>true</code> 的时候，该方法返回 <code>true</code></p><h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> commonChars = <span class="function"><span class="keyword">function</span>(<span class="params">A</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> res = []</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> item <span class="keyword">of</span> A[<span class="number">0</span>] )&#123;</span><br><span class="line">        <span class="keyword">if</span>( A.every( <span class="function"><span class="params">nowItem</span> =&gt;</span> nowItem.includes( item ) ) )&#123;</span><br><span class="line">            A = A.map( <span class="function"><span class="params">m</span> =&gt;</span> m.replace( item, <span class="string">"0"</span> ) )</span><br><span class="line">            res.push( item )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>10.13-每日一题--两两交换链表中的节点</title>
       <link href="/2020/10/13/10-13-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
       <url>/2020/10/13/10-13-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
