@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>数据结构-二叉查找树 | curTain</title>
+  
+  <meta name="keywords" content="curtain的小站">
+  
+  
+
+  
+  <link rel="alternate" href="/atom.xml" title="curTain">
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://518test.curtaintan.club/blog.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11.26/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="curTain" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>curTain</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;主页
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/archives/"
+            
+              rel="nofollow"
+            
+            
+            id="archives">
+            <i class='fas fa-archive fa-fw'></i>&nbsp;归档
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/friends/"
+            
+              rel="nofollow"
+            
+            
+            id="friends">
+            <i class='fas fa-link fa-fw'></i>&nbsp;友链
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          curTain
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;首页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/projects/"
+                  
+                  
+                  id="projects">
+									<i class='fas fa-code-branch fa-fw'></i>&nbsp;我的作品
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/friends/"
+                
+                  rel="nofollow"
+                
+                
+                id="friends">
+								<i class='fas fa-link fa-fw'></i>&nbsp;我的友链
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/10/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/">
+        数据结构-二叉查找树
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="http://blog.curtaintan.club" rel="nofollow">
+        
+          <i class="fas fa-user" aria-hidden="true"></i>
+        
+        <p>tanTantan</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-10-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>数据结构</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h2 id="api-设计"><a href="#api-设计" class="headerlink" title="api 设计"></a>api 设计</h2><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryTree</span> </span>&#123;</span><br><span class="line">    root = <span class="literal">null</span></span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    size()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.n</span><br><span class="line">    &#125;</span><br><span class="line">    putNode( key, value )&#123;</span><br><span class="line">        <span class="keyword">this</span>.root = <span class="keyword">this</span>.put( <span class="keyword">this</span>.root, key, value )</span><br><span class="line">    &#125;</span><br><span class="line">    put( node, key, value )&#123;</span><br><span class="line">        <span class="keyword">if</span>( node === <span class="literal">null</span> )&#123;</span><br><span class="line">            <span class="keyword">this</span>.n ++</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> TreeNode( key, value, <span class="literal">null</span>, <span class="literal">null</span> )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果 node 子树不为空</span></span><br><span class="line">        <span class="comment">// 比较 node 节点的键和 key 的大小</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>( key &gt; node.key )&#123;</span><br><span class="line">            <span class="comment">// 如果 key 大于 node 节点的键，则继续找 node 的右子节点</span></span><br><span class="line">            node.right = <span class="keyword">this</span>.put( node.right, key, value )</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>( key &lt; node.key )&#123;</span><br><span class="line">            <span class="comment">//  如果小于 node 节点的键，继续寻找左子节点</span></span><br><span class="line">            node.left = <span class="keyword">this</span>.put( node.left, key, value )</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 相等，替换当前节点的值</span></span><br><span class="line">            node.value = value</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node</span><br><span class="line">    &#125;</span><br><span class="line">    getValue( key )&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.get( <span class="keyword">this</span>.root, key )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">get</span>( node, key )&#123;</span><br><span class="line">        <span class="keyword">if</span>( node === <span class="literal">null</span> )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 比较 key 和 x 节点的键的大小</span></span><br><span class="line">        <span class="keyword">if</span>( key &gt; node.key )&#123;</span><br><span class="line">            <span class="comment">// key 大于当前节点，继续寻找右节点</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">get</span>( node.right, key )</span><br><span class="line">        &#125; else if( key &lt; node.key )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">get</span>( node.left, key )</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            <span class="keyword">return</span> node.value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除树中 key 对应的节点，并返回删除后的新树</span></span><br><span class="line">    deleteNode( key )&#123;</span><br><span class="line">        <span class="keyword">this</span>.delete( <span class="keyword">this</span>.root, key )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span>( node, key )&#123;</span><br><span class="line">        <span class="keyword">if</span>( node === <span class="literal">null</span> )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>( key &gt; node.key )&#123;</span><br><span class="line">            node.right = <span class="keyword">this</span>.delete( node.right, key )</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>( key &lt; node.key )&#123;</span><br><span class="line">            node.left = <span class="keyword">this</span>.delete( node.left, key )</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 如果 key 相等，删除当前节点</span></span><br><span class="line">            <span class="keyword">this</span>.n --</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判定当前节点是否只有一个子节点，只有一个子节点，就把那个子节点接到父节点</span></span><br><span class="line">            <span class="keyword">if</span>( !node.left )&#123;</span><br><span class="line">                <span class="keyword">return</span> node.right</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>( !node.right )&#123;</span><br><span class="line">                <span class="keyword">return</span> node.left</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果两个子节点都在，获取右子节点最小的子节点，</span></span><br><span class="line">            <span class="comment">// 为什么获取右边的，因为这样的交换操作次数可以最小</span></span><br><span class="line">            <span class="comment">// 如果是取左边最大值的话，需要不断的创建节点，交换顺序</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 得到右子树中最小的节点</span></span><br><span class="line">            <span class="keyword">let</span> minNode = node.right</span><br><span class="line">            <span class="keyword">while</span>( minNode.left !== <span class="literal">null</span> )&#123;</span><br><span class="line">                <span class="keyword">if</span>( minNode.left.left === <span class="literal">null</span> )&#123;</span><br><span class="line">                    <span class="keyword">let</span> temp = minNode.left</span><br><span class="line">                    <span class="comment">// 删除右子树中最小的节点</span></span><br><span class="line">                    minNode.left = <span class="literal">null</span></span><br><span class="line">                    minNode = temp</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    minNode = minNode.left</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 让 node 节点的左子树成为 minNode 的左子树</span></span><br><span class="line">            minNode.left = node.left</span><br><span class="line">            <span class="comment">// 让 node 节点的左子树成为 minNode 的右子树</span></span><br><span class="line">            minNode.right = node.right</span><br><span class="line">            <span class="comment">// 让 node 节点的父节点指向 minNode 节点</span></span><br><span class="line">            node = minNode</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在整颗树中查找最小的键</span></span><br><span class="line">    getTreeMin()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.getNodeMin( <span class="keyword">this</span>.root )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getNodeMin( node )&#123;</span><br><span class="line">        <span class="keyword">if</span>( node.left )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.getNodeMin( node.left )</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> node</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在整颗树中找最大的值</span></span><br><span class="line">    getTreeMax()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.getNodeMax( <span class="keyword">this</span>.root )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getNodeMax( node )&#123;</span><br><span class="line">        <span class="keyword">if</span>( node.right )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.getNodeMax( node.right )</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> node</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取指定树中的所有节点,并将节点的 key 放入到队列中</span></span><br><span class="line">    <span class="comment">// 先序遍历</span></span><br><span class="line">    preMap( node, queue=[] )&#123;</span><br><span class="line">        <span class="keyword">if</span>( !node ) <span class="keyword">return</span></span><br><span class="line">        queue.push( node.key )</span><br><span class="line">        <span class="comment">// 递归左子节点</span></span><br><span class="line">        node.left &amp;&amp; <span class="keyword">this</span>.preMap( node.left, queue )</span><br><span class="line">        <span class="comment">// 递归右子节点</span></span><br><span class="line">        node.right &amp;&amp; <span class="keyword">this</span>.preMap( node.right, queue )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 中序遍历</span></span><br><span class="line">    midMap( node, queue=[] )&#123;</span><br><span class="line">        <span class="keyword">if</span>( !node ) <span class="keyword">return</span></span><br><span class="line">        node.left &amp;&amp; <span class="keyword">this</span>.midMap( node.left, queue )</span><br><span class="line">        queue.push( node.key )</span><br><span class="line">        node.right &amp;&amp; <span class="keyword">this</span>.midMap( node.right, queue )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 后序遍历</span></span><br><span class="line">    afterMap( node, queue=[] )&#123;</span><br><span class="line">        <span class="keyword">if</span>( !node ) <span class="keyword">return</span></span><br><span class="line">        node.left &amp;&amp; <span class="keyword">this</span>.midMap( node.left, queue )</span><br><span class="line">        node.right &amp;&amp; <span class="keyword">this</span>.midMap( node.right, queue )</span><br><span class="line">        queue.push( node.key )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 层序遍历</span></span><br><span class="line">    layerMap()&#123;</span><br><span class="line">        <span class="comment">// 定义两个队列，一个存储 key，另一个存储节点</span></span><br><span class="line">        <span class="keyword">let</span> keys = []</span><br><span class="line">        <span class="keyword">let</span> queue = [ <span class="keyword">this</span>.root ]</span><br><span class="line">        <span class="keyword">while</span>( queue.length )&#123;</span><br><span class="line">            <span class="keyword">let</span> item = queue.shift()</span><br><span class="line">            keys.push( item.key )</span><br><span class="line">            item.left &amp;&amp; queue.push( item.left )</span><br><span class="line">            item.right &amp;&amp; queue.push( item.right )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> keys</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回整个树的高度</span></span><br><span class="line">    getTreeDepth()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.getNodeDepth( <span class="keyword">this</span>.root )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回指定树的高度</span></span><br><span class="line">    getNodeDepth( node )&#123;</span><br><span class="line">        <span class="keyword">if</span>( !node ) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> max = <span class="number">0</span></span><br><span class="line">        <span class="keyword">let</span> maxL = <span class="number">0</span></span><br><span class="line">        <span class="keyword">let</span> maxR = <span class="number">0</span></span><br><span class="line">        <span class="comment">// 左子树的最大深度</span></span><br><span class="line">        <span class="keyword">if</span>( !node.left )&#123;</span><br><span class="line">            maxL = <span class="keyword">this</span>.getNodeDepth( node.left )</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 右子树的最大深度</span></span><br><span class="line">        <span class="keyword">if</span>( !node.right )&#123;</span><br><span class="line">            maxR = <span class="keyword">this</span>.getNodeDepth( node.right )</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        max = maxL &gt; maxR ? maxL+<span class="number">1</span> : maxR+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> max</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> binaryTree = <span class="keyword">new</span> BinaryTree()</span><br><span class="line"></span><br><span class="line">binaryTree.putNode( <span class="number">1</span>, <span class="number">1</span> )</span><br><span class="line">binaryTree.putNode( <span class="number">9</span>, <span class="number">9</span> )</span><br><span class="line">binaryTree.putNode( <span class="number">2</span>, <span class="number">2</span> )</span><br><span class="line">binaryTree.putNode( <span class="number">8</span>, <span class="number">8</span> )</span><br><span class="line">binaryTree.putNode( <span class="number">3</span>, <span class="number">3</span> )</span><br><span class="line">binaryTree.putNode( <span class="number">7</span>, <span class="number">7</span> )</span><br><span class="line">binaryTree.putNode( <span class="number">4</span>, <span class="number">4</span> )</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"搜索树："</span>, binaryTree )</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> min = binaryTree.getTreeMin()</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"最小值："</span>, min )</span><br><span class="line"><span class="keyword">let</span> max = binaryTree.getTreeMax()</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"最小值："</span>, max )</span><br><span class="line"></span><br><span class="line"><span class="comment">// 层序遍历</span></span><br><span class="line"><span class="keyword">let</span> premap = binaryTree.layerMap()</span><br><span class="line"><span class="built_in">console</span>.log( <span class="string">"前序："</span>, premap )</span><br></pre></td></tr></table></figure>
+
+
+
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-16T19:50:37+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年10月16日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/leetcode/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>leetcode</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%A0%91/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>树</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>二叉查找树</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.curtaintan.club/2020/10/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/&title=数据结构-二叉查找树 | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://blog.curtaintan.club/2020/10/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/&title=数据结构-二叉查找树 | curTain&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/10/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86/" rel="prev" title="数据结构-堆">
+                                  
+                                      数据结构-堆
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 二叉树</a> <a class="tag" href="/tags/%E5%A0%86/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 堆</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '数据结构-二叉查找树',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://speed.moe/images/94023bd1a60711bea47670702ff87934.jpg'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:1948750473@qq.com"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/curtainTan"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=109496832"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#api-设计"><span class="toc-text">api 设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml"
+            class="social fas fa-rss flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:1948750473@qq.com"
+            class="social fab fa-qq flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/curtainTan"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=109496832"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis@1.0.6/js/volantis.min.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "GEEeIvDIi3q1sX8wJjKfp7a6-gzGzoHsz",
+    appKey: "ULa1eyYDGzPyNX0rW3lfCYj0",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.11/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
