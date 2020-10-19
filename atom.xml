@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.curtaintan.club/"/>
-  <updated>2020-10-16T11:50:37.901Z</updated>
+  <updated>2020-10-19T11:18:30.271Z</updated>
   <id>http://blog.curtaintan.club/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>10.19-每日一题--比较含退格的字符串</title>
+    <link href="http://blog.curtaintan.club/2020/10/19/10-19-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+    <id>http://blog.curtaintan.club/2020/10/19/10-19-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</id>
+    <published>2020-10-19T08:57:05.000Z</published>
+    <updated>2020-10-19T11:18:30.271Z</updated>
+    
+    <content type="html"><![CDATA[<ol start="844"><li>比较含退格的字符串</li></ol><a id="more"></a><h2 id="844-比较含退格的字符串"><a href="#844-比较含退格的字符串" class="headerlink" title="844. 比较含退格的字符串"></a>844. 比较含退格的字符串</h2><p>给定 S 和 T 两个字符串，当它们分别被输入到空白的文本编辑器后，判断二者是否相等，并返回结果。 # 代表退格字符。</p><p>注意：如果对空文本输入退格字符，文本继续为空。</p><p>示例 1：</p><blockquote><p>输入：S = “ab#c”, T = “ad#c”<br>输出：true<br>解释：S 和 T 都会变成 “ac”。</p></blockquote><p>示例 2：</p><blockquote><p>输入：S = “ab##”, T = “c#d#”<br>输出：true<br>解释：S 和 T 都会变成 “”。</p></blockquote><p>示例 3：</p><blockquote><p>输入：S = “a##c”, T = “#a#c”<br>输出：true<br>解释：S 和 T 都会变成 “c”。</p></blockquote><p>示例 4：</p><blockquote><p>输入：S = “a#c”, T = “b”<br>输出：false<br>解释：S 会变成 “c”，但 T 仍然是 “b”。</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>使用正则匹配，替换元素</p><p><strong>注意</strong></p><p>使用模式匹配符 <code>g</code> 时，正则会记录当前匹配的位置到 <code>lastIndex</code> 上，下次匹配时，会从 <code>lastIndex</code> 处开始匹配</p><p><strong>测试</strong></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/.?#/g</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">"ab##"</span>.replace( reg, <span class="string">""</span> )</span><br><span class="line"><span class="built_in">console</span>.log( str ) <span class="comment">// a         第一次匹配 b#   第二次匹配 #</span></span><br></pre></td></tr></table></figure><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> backspaceCompare = <span class="function"><span class="keyword">function</span>(<span class="params">S, T</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reg = <span class="regexp">/.?#/</span></span><br><span class="line">    <span class="keyword">while</span>( reg.test( S ) )&#123;</span><br><span class="line">        S = S.replace( <span class="regexp">/.?#/</span>, <span class="string">""</span> )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>( reg.test( T ) )&#123;</span><br><span class="line">        T = T.replace( <span class="regexp">/.?#/</span>, <span class="string">""</span> )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> S === T</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol start=&quot;844&quot;&gt;
+&lt;li&gt;比较含退格的字符串&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://blog.curtaintan.club/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetcode" scheme="http://blog.curtaintan.club/tags/leetcode/"/>
+    
+      <category term="正则" scheme="http://blog.curtaintan.club/tags/%E6%AD%A3%E5%88%99/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构-二叉查找树</title>
@@ -538,32 +565,6 @@
     
     
       <category term="js基础" scheme="http://blog.curtaintan.club/tags/js%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="科普" scheme="http://blog.curtaintan.club/tags/%E7%A7%91%E6%99%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>红宝书第二章-HTML中的js</title>
-    <link href="http://blog.curtaintan.club/2020/09/28/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%BA%8C%E7%AB%A0-HTML%E4%B8%AD%E7%9A%84js/"/>
-    <id>http://blog.curtaintan.club/2020/09/28/%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%AC%AC%E4%BA%8C%E7%AB%A0-HTML%E4%B8%AD%E7%9A%84js/</id>
-    <published>2020-09-28T00:51:11.000Z</published>
-    <updated>2020-09-28T08:33:24.832Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="一、-lt-script-gt-元素"><a href="#一、-lt-script-gt-元素" class="headerlink" title="一、&lt;script&gt; 元素"></a>一、&lt;script&gt; 元素</h2><p><code>&lt;script&gt;</code> 元素由网景公司创造出来，并在网景浏览器2中实现，<code>&lt;script&gt;</code> 元素有以下 8 个属性</p><style>table th:first-of-type {    width: 130px;}table th:nth-of-type(2) {    width: 100px;}</style><table><thead><tr><th>属性名</th><th>填写</th><th>说明</th></tr></thead><tbody><tr><td>async</td><td>选填</td><td>表示立即下载该脚本，但不阻止其他页面操作，比如下载资源或等待掐他脚本加载</td></tr><tr><td>charset</td><td>可选</td><td>使用 src 属性指定的代码字符集，很少使用</td></tr><tr><td>corssorigin</td><td>可选</td><td>配置相关请求的CORS设置，默认不使用 CORS</td></tr><tr><td>defer</td><td>可选</td><td>立即下载脚本，不阻止页面其他操作，在文档解析完成后再执行脚本</td></tr><tr><td>integrity</td><td>可选</td><td>允许对比接收到的资源和指定的加密签名以验证资源的完整性，如果接收到的资源的签名与这个属性指定的签名不匹配，页面会报错，脚本不执行</td></tr><tr><td>language</td><td>废弃</td><td>用来标识代码块中的脚本语言，如 <code>VB</code>、<code>JS</code></td></tr><tr><td>src</td><td>可选</td><td>包含要执行代码的外部文件</td></tr><tr><td>type</td><td>可选</td><td>代替<code>language</code>，表示代码块中脚本语言的内容类型，一般是<code>text/javascript</code>，如果这个值是 <code>module</code> ，则代码会被当成 ES6 模块，而且只有这时候代码中才能出现 <code>import</code> 和 <code>export</code> 关键字</td></tr></tbody></table><p><strong>注意：</strong> 使用了 src 属性的 <code>&lt;script&gt;</code> 元素不应该再在元素中包含其他 javascript 代码，如果两者都提供的话，则浏览器只会下载并执行脚本，从而忽略行内代码</p><h3 id="lt-script-gt-标签位置"><a href="#lt-script-gt-标签位置" class="headerlink" title="&lt;script&gt; 标签位置"></a><code>&lt;script&gt;</code> 标签位置</h3><p>由于 script 标签会打断 DOM 的解析，所以将脚本放置在文档首部会阻塞 DOM 的解析，导致页面加载变慢，所以一般将 script 标签放在 body 元素中的内容后面，页面会在处理 js 代码之前完成渲染页面</p><h3 id="推迟脚本执行"><a href="#推迟脚本执行" class="headerlink" title="推迟脚本执行"></a>推迟脚本执行</h3><p>HTML4.0.1 为 script 标签定义了 defer 属性，这个属性表示脚本在整个页面解析完成之后再运行，HTML5 规范要求脚本要求脚本按照他们出现的顺序执行，因此第一个推迟的脚本会在第二个推迟的脚本之前运行（defer脚本按顺序执行），并且两者都会在 <code>DOMContentLoaded</code> 事件之前执行</p><h3 id="异步执行脚本"><a href="#异步执行脚本" class="headerlink" title="异步执行脚本"></a>异步执行脚本</h3><p>HTML5 为 script 元素定义了 async 属性，async 与 defer 类似，脚本的加载不会阻塞 DOM 的解析，但是 async 脚本加载完成会立即执行，如果此时还在进行 ODM 的解析，会打断 DOM 解析，被标记为 async 的脚本不能保证按照他们出现的顺序执行，异步脚本会在页面的 <code>load</code> 事件前执行</p><h3 id="动态加载脚本"><a href="#动态加载脚本" class="headerlink" title="动态加载脚本"></a>动态加载脚本</h3><p>除了 script 标签，还有其他方式加载脚本，</p><ol><li>使用 js 创建 script 标签</li><li>在文档头部预加载：<code>&lt;link rel=&quot;preload&quot; href=&quot;a.js&quot;&gt;</code></li></ol><h4 id="lt-noscript-gt-元素"><a href="#lt-noscript-gt-元素" class="headerlink" title="&lt;noscript&gt; 元素"></a><code>&lt;noscript&gt; 元素</code></h4><p>针对早期浏览器不支持 javascript 的问题，需要一个页面优雅降级的处理方案，<code>&lt;noscript&gt;</code> 元素出现，对不支持 javascript 的浏览器提供替代内容，与 <code>&lt;canvas&gt;</code> 元素中添加内容的目的一样，用于提示用户不支持相关操作</p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ol><li>使用外部 javascript 文件时，必须将 src 属性设置为包含文件的 URL</li><li>对于不推迟执行的脚本，通常会把 <code>&lt;script&gt;</code> 元素放到页面尾部，介于主内容尾部和<code>&lt;/body&gt;</code>标签之前</li><li>使用 defer 属性会把脚本推迟到文档渲染完毕之后执行，推迟的脚本总是按照他们被列出的次序执行</li><li>使用 async 属性异步加载脚本，让脚本加载完成立马执行</li><li>通过使用 <code>&lt;noscript&gt;</code> 元素指定浏览器不支持脚本时显示的内容</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;一、-lt-script-gt-元素&quot;&gt;&lt;a href=&quot;#一、-lt-script-gt-元素&quot; class=&quot;headerlink&quot; title=&quot;一、&amp;lt;script&amp;gt; 元素&quot;&gt;&lt;/a&gt;一、&amp;lt;script&amp;gt; 元素&lt;/h2&gt;&lt;p&gt;&lt;cod
-      
-    
-    </summary>
-    
-    
-      <category term="红宝书" scheme="http://blog.curtaintan.club/categories/%E7%BA%A2%E5%AE%9D%E4%B9%A6/"/>
-    
     
       <category term="科普" scheme="http://blog.curtaintan.club/tags/%E7%A7%91%E6%99%AE/"/>
     
