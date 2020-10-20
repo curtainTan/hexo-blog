@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>10.20-每日一题--重排链表</title>
+      <link href="/2020/10/20/10-20-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
+      <url>/2020/10/20/10-20-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<ol start="143"><li>重排链表</li></ol><a id="more"></a><h2 id="143-重排链表"><a href="#143-重排链表" class="headerlink" title="143. 重排链表"></a><a href="https://leetcode-cn.com/problems/reorder-list/" target="_blank" rel="noopener">143. 重排链表</a></h2><p>给定一个单链表 L：L0→L1→…→Ln-1→Ln ，<br>将其重新排列后变为： L0→Ln→L1→Ln-1→L2→Ln-2→…</p><p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p><p>示例 1:</p><blockquote><p>给定链表 1-&gt;2-&gt;3-&gt;4, 重新排列为 1-&gt;4-&gt;2-&gt;3.</p></blockquote><p>示例 2:</p><blockquote><p>给定链表 1-&gt;2-&gt;3-&gt;4-&gt;5, 重新排列为 1-&gt;5-&gt;2-&gt;4-&gt;3.</p></blockquote><h2 id="题解思路"><a href="#题解思路" class="headerlink" title="题解思路"></a>题解思路</h2><p>遍历链表，将节点存入数组，再依次前后取出元素即可</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reorderList = <span class="function"><span class="keyword">function</span>(<span class="params">head</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = []</span><br><span class="line">    <span class="keyword">while</span>( head )&#123;</span><br><span class="line">        arr.push( head )</span><br><span class="line">        head = head.next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> newNode = <span class="keyword">new</span> ListNode()</span><br><span class="line">    <span class="keyword">let</span> node = newNode</span><br><span class="line">    <span class="keyword">while</span>( arr.length )&#123;</span><br><span class="line">        <span class="keyword">let</span> item = arr.shift()</span><br><span class="line">        item.next = <span class="literal">null</span></span><br><span class="line">        node.next = item</span><br><span class="line">        node = node.next</span><br><span class="line">        item = arr.pop()</span><br><span class="line">        <span class="keyword">if</span>( item )&#123;</span><br><span class="line">            item.next = <span class="literal">null</span></span><br><span class="line">            node.next = item</span><br><span class="line">            node = node.next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newNode.next</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>10.19-每日一题--比较含退格的字符串</title>
       <link href="/2020/10/19/10-19-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/"/>
       <url>/2020/10/19/10-19-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
